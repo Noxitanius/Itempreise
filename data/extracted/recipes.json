@@ -626,7 +626,7 @@
       {
         "type": "item",
         "id": "Ingredient_Bar_Adamantite",
-        "qty": 6
+        "qty": 16
       },
       {
         "type": "item",
@@ -636,7 +636,7 @@
       {
         "type": "item",
         "id": "Ingredient_Leather_Heavy",
-        "qty": 4
+        "qty": 5
       }
     ]
   },
@@ -647,7 +647,7 @@
       {
         "type": "item",
         "id": "Ingredient_Bar_Cobalt",
-        "qty": 6
+        "qty": 14
       },
       {
         "type": "item",
@@ -689,7 +689,7 @@
       {
         "type": "item",
         "id": "Ingredient_Bar_Iron",
-        "qty": 6
+        "qty": 8
       },
       {
         "type": "item",
@@ -698,7 +698,7 @@
       },
       {
         "type": "item",
-        "id": "Ingredient_Leather_Light",
+        "id": "Ingredient_Leather_Medium",
         "qty": 4
       }
     ]
@@ -752,12 +752,12 @@
       {
         "type": "item",
         "id": "Ingredient_Bar_Thorium",
-        "qty": 6
+        "qty": 12
       },
       {
         "type": "item",
         "id": "Ingredient_Fabric_Scrap_Linen",
-        "qty": 3
+        "qty": 4
       },
       {
         "type": "item",
@@ -767,23 +767,23 @@
     ]
   },
   "Weapon_Mace_Onyxium": {
-    "time_seconds": 0.0,
+    "time_seconds": 4.5,
     "knowledge_required": false,
     "inputs": [
       {
-        "type": "resource",
-        "id": "Wood_Trunk",
-        "qty": 2
-      },
-      {
-        "type": "resource",
-        "id": "Rock",
-        "qty": 3
+        "type": "item",
+        "id": "Ingredient_Bar_Onyxium",
+        "qty": 10
       },
       {
         "type": "item",
-        "id": "Ingredient_Fibre",
-        "qty": 2
+        "id": "Ingredient_Leather_Storm",
+        "qty": 4
+      },
+      {
+        "type": "item",
+        "id": "Ingredient_Voidheart",
+        "qty": 1
       }
     ]
   },
@@ -794,17 +794,17 @@
       {
         "type": "item",
         "id": "Ingredient_Bar_Mithril",
-        "qty": 4
+        "qty": 10
       },
       {
         "type": "item",
         "id": "Ingredient_Leather_Storm",
-        "qty": 3
+        "qty": 4
       },
       {
         "type": "item",
-        "id": "Ingredient_Fabric_Scrap_Stormsilk",
-        "qty": 3
+        "id": "Ingredient_Voidheart",
+        "qty": 1
       }
     ]
   },
@@ -836,7 +836,7 @@
       {
         "type": "item",
         "id": "Ingredient_Bar_Mithril",
-        "qty": 6
+        "qty": 10
       },
       {
         "type": "item",
@@ -1505,34 +1505,69 @@
     ]
   },
   "Ore_Mithril": {
-    "time_seconds": 4.0,
-    "knowledge_required": false,
-    "inputs": [
-      {
-        "type": "resource",
-        "id": "Salvage_Mithril",
-        "qty": 1
-      }
-    ]
-  },
-  "Ore_Onyxium": {
-    "time_seconds": 4.0,
-    "knowledge_required": false,
-    "inputs": [
-      {
-        "type": "resource",
-        "id": "Salvage_Onyxium",
-        "qty": 1
-      }
-    ]
-  },
-  "Ingredient_Bar_Prisma": {
-    "time_seconds": 4.0,
+    "time_seconds": 5.0,
     "knowledge_required": false,
     "inputs": [
       {
         "type": "item",
-        "id": "Ore_Prisma",
+        "id": "Ingredient_Bar_Silver",
+        "qty": 5
+      },
+      {
+        "type": "item",
+        "id": "Ingredient_Bar_Gold",
+        "qty": 5
+      },
+      {
+        "type": "item",
+        "id": "Ingredient_Bar_Adamantite",
+        "qty": 5
+      },
+      {
+        "type": "item",
+        "id": "Ingredient_Bar_Cobalt",
+        "qty": 5
+      }
+    ]
+  },
+  "Ore_Onyxium": {
+    "time_seconds": 3.0,
+    "knowledge_required": false,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Ingredient_Bar_Mithril",
+        "qty": 3
+      },
+      {
+        "type": "item",
+        "id": "Ingredient_Crystal_Purple",
+        "qty": 5
+      },
+      {
+        "type": "item",
+        "id": "Ingredient_Void_Essence",
+        "qty": 5
+      }
+    ]
+  },
+  "Ingredient_Bar_Prisma": {
+    "time_seconds": 5.0,
+    "knowledge_required": false,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Ingredient_Bar_Mithril",
+        "qty": 1
+      },
+      {
+        "type": "item",
+        "id": "Ingredient_Bar_Onyxium",
+        "qty": 1
+      },
+      {
+        "type": "item",
+        "id": "Rock_Gem_Emerald",
         "qty": 1
       }
     ]

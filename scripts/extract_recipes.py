@@ -48,12 +48,28 @@ def extract_recipe(obj: dict) -> dict | None:
     }
 
 
+def extract_item_id(obj: dict, fallback: str) -> str:
+    for key in ("ItemId", "Id", "Identifier"):
+        v = obj.get(key)
+        if isinstance(v, str) and v.strip():
+            return v.strip()
+    return fallback
+
+
+def source_priority(path: Path) -> int:
+    s = str(path).replace("\\", "/").lower()
+    if "/endgame/" in s:
+        return 3
+    return 1
+
+
 def main() -> None:
     raw = Path("data/raw")
     if not raw.exists():
         raise SystemExit("Missing data/raw")
 
     recipes = {}  # item_id -> recipe
+    sources = {}  # item_id -> (priority, path)
 
     # Scan folders
     for p in raw.rglob("*.json"):
@@ -71,9 +87,12 @@ def main() -> None:
         if not recipe:
             continue
 
-        # Fallback id: filename stem
-        item_id = p.stem
-        recipes[item_id] = recipe
+        item_id = extract_item_id(obj, p.stem)
+        prio = source_priority(p)
+        prev = sources.get(item_id)
+        if (prev is None) or (prio > prev[0]):
+            recipes[item_id] = recipe
+            sources[item_id] = (prio, str(p))
 
     # Scan archives (.zip/.jar)
     for ext in ("*.zip", "*.jar"):
@@ -95,8 +114,12 @@ def main() -> None:
                         recipe = extract_recipe(obj)
                         if not recipe:
                             continue
-                        item_id = Path(name).stem
-                        recipes[item_id] = recipe
+                        item_id = extract_item_id(obj, Path(name).stem)
+                        prio = 1
+                        prev = sources.get(item_id)
+                        if (prev is None) or (prio > prev[0]):
+                            recipes[item_id] = recipe
+                            sources[item_id] = (prio, f"{zpath}:{name}")
             except BadZipFile:
                 continue
 
