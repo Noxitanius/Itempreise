@@ -1,0 +1,46 @@
+{
+  "BAR:prisma": [
+    "Ingredient_Bar_Prisma"
+  ],
+  "BAR:onyxium": [
+    "Ingredient_Bar_Onyxium"
+  ],
+  "ORE_ITEM:Ore_Prisma": [
+    "Ore_Prisma"
+  ],
+  "ORE_ITEM:Ore_Onyxium": [
+    "Ore_Onyxium"
+  ],
+  "LEATHER:light": [
+    "Armor_Leather_Light_Chest",
+    "Armor_Leather_Light_Hands",
+    "Armor_Leather_Light_Head",
+    "Armor_Leather_Light_Legs",
+    "Debug_Armor_Leather_Light_Chest_Mods",
+    "Ingredient_Leather_Light"
+  ],
+  "LEATHER:medium": [
+    "Armor_Leather_Medium_Chest",
+    "Armor_Leather_Medium_Hands",
+    "Armor_Leather_Medium_Head",
+    "Armor_Leather_Medium_Legs",
+    "Ingredient_Leather_Medium",
+    "Utility_Leather_Medium_Backpack"
+  ],
+  "LEATHER:heavy": [
+    "Armor_Leather_Heavy_Chest",
+    "Armor_Leather_Heavy_Hands",
+    "Armor_Leather_Heavy_Head",
+    "Armor_Leather_Heavy_Legs",
+    "Ingredient_Leather_Heavy"
+  ],
+  "LEATHER:storm": [
+    "Ingredient_Leather_Storm"
+  ],
+  "LEATHER:prism": [
+    "Ingredient_Leather_Prismic"
+  ],
+  "CLOTH:linen_scraps": [],
+  "CLOTH:shadow_weave": [],
+  "CLOTH:cinder_cloth": []
+}

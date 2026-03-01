@@ -1,0 +1,3 @@
+run_id,run_type,zone,duration_minutes,time_lost_minutes,notes,item_id,quantity
+Z1_MINE_01,mine,1,30,0,"Pickaxe+Food baseline",Ore_Copper,130
+Z1_MINE_01,mine,1,30,0,"",Ore_Iron,246

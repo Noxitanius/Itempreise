@@ -1,0 +1,50 @@
+economy:
+  nyra_per_minute: 0.75  # du kannst 0.5–1.0 fahren; 0.75 ist ein guter Start
+
+zones:
+  1:
+    risk_factor: 1.00
+    note: "Starter/relativ sicher"
+  2:
+    risk_factor: 1.25
+    note: "deutlich gefährlicher durch RPG Leveling"
+  3:
+    risk_factor: 1.60
+    note: "hohes Risiko, hohe Ausfallzeit"
+  4:
+    risk_factor: 2.20
+    note: "endgame danger, hoher Verlust durch Tode/wege"
+
+rarity:
+  very_common: 0.80
+  common: 1.00
+  uncommon: 1.25
+  rare: 1.60
+  very_rare: 2.10
+  mythic: 2.80
+
+guardrails:
+  # damit Masse niemals zur Gelddruckmaschine wird
+  mass_goods_cap_nyra_per_1000: 3.0
+
+  # endgame-materialien nie unter Minimum (später, wenn wir Kategorien haben)
+  endgame_floor_nyra_per_unit: 0.0
+
+  # optional später: Preisänderungen pro Patch limitieren
+  max_delta_per_snapshot: 0.10
+
+crafting:
+  craft_markup: 1.10
+  craft_time_nyra_per_min: 0.75
+  farm_dampening:
+    crop: 0.35
+    essence: 0.60
+
+boss_drops:
+  floor_by_item:
+    "BAR:prisma": 180.0
+    "BAR:onyxium": 120.0
+    "ORE_MATERIAL:prisma": 160.0
+    "ORE_MATERIAL:onyxium": 100.0
+    "ORE_ITEM:Ore_Prisma": 140.0
+    "ORE_ITEM:Ore_Onyxium": 90.0

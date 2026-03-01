@@ -1,0 +1,14 @@
+run_id,run_type,zone,duration_minutes,time_lost_minutes,notes,item_id,quantity
+Z1_MINE_01,mine,1,30,0,"Pickaxe+Food baseline",Ore_Copper,130
+Z1_MINE_01,mine,1,30,0,"",Ore_Iron,246
+Z1_MINE_02,mine,1,30,5,"Pickaxe+Food baseline with 5 minutes lost",Ore_Copper,296
+Z1_MINE_02,mine,1,30,5,"",Ore_Iron,352
+Z1_MINE_02,mine,1,30,5,"",Ore_Silver,2
+Z1_MINE_02,mine,1,30,5,"",Hide_Light,7
+Z1_MINE_02,mine,1,30,5,"",Essence_Fire,39
+Z1_MINE_02,mine,1,30,5,"",Cindercloth,27
+Z4_MINE_03,mine,1,30,10,"Pickaxe+Food baseline with 10 minutes lost",Ore_Adamantite,84
+Z4_MINE_03,mine,1,30,10,"",Cindercloth,10
+Z4_MINE_03,mine,1,30,10,"",Ore_Iron,15
+Z4_MINE_03,mine,1,30,10,"",Hide_Medium,12
+Z4_MINE_03,mine,1,30,10,"",Essence_Fire,22

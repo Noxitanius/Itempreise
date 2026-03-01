@@ -1,0 +1,20 @@
+run_id,run_type,zone,duration_minutes,time_lost_minutes,notes,item_id,quantity
+Z1_MINE_01,mine,1,30,0,"Pickaxe+Food baseline",Ore_Copper,0
+Z1_MINE_01,mine,1,30,0,"",Ore_Iron,0
+Z2_MINE_01,mine,2,30,0,"",Ore_Thorium,0
+Z3_MINE_01,mine,3,30,0,"",Ore_Cobalt,0
+Z3_MINE_01,mine,3,30,0,"",Ore_Gold,0
+Z4_MINE_01,mine,4,30,0,"",Ore_Mithril,0
+FARM_01,farm,1,30,0,"Potato farm incl harvest cycle",CROP:potato,0
+FARM_01,farm,1,30,0,"Essence from potato harvest",ESSENCE:life,0
+BOSS_01,boss,4,30,0,"Optional: boss loop",ORE_ITEM:Ore_Onyxium,0
+BOSS_01,boss,4,30,0,"Optional: boss loop",ORE_ITEM:Ore_Prisma,0
+BASIC_01,gather,1,30,0,"Basic gather run",BASIC:stick,0
+BASIC_01,gather,1,30,0,"Basic gather run",BASIC:plant_fiber,0
+BASIC_01,gather,1,30,0,"Basic gather run",BASIC:tree_sap,0
+HIDE_01,hunt,2,30,0,"Hunting hides",HIDE:light,0
+HIDE_01,hunt,2,30,0,"Hunting hides",HIDE:medium,0
+HIDE_02,hunt,3,30,0,"Hunting hides (storm)",HIDE:storm,0
+CLOTH_01,craft,1,30,0,"Cloth processing",CLOTH:linen_scraps,0
+CLOTH_02,craft,3,30,0,"Cloth processing",CLOTH:shadow_weave,0
+CLOTH_03,craft,2,30,0,"Cloth processing",CLOTH:cinder_cloth,0

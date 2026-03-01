@@ -1,0 +1,193 @@
+import csv
+from pathlib import Path
+import yaml
+
+RARITY_ORDER = ["very_common", "common", "uncommon", "rare", "very_rare", "mythic"]
+
+
+def load_policy(path: Path) -> dict:
+    return yaml.safe_load(path.read_text(encoding="utf-8"))
+
+
+def rarity_factor(policy: dict, rarity_tag: str) -> float:
+    return float(policy["rarity"].get(rarity_tag, 1.0))
+
+
+def zone_factor(policy: dict, zone: int) -> float:
+    return float(policy["zones"][zone]["risk_factor"])
+
+
+def bundle_for(canonical_kind: str, canonical_id: str) -> int:
+    if canonical_kind == "mass":
+        return 1000
+    if canonical_id.startswith("ORE_MATERIAL:") or canonical_id.startswith("BAR:"):
+        return 100
+    if canonical_id.startswith("CROP:"):
+        return 1000
+    return 1
+
+
+def minutes_per_unit(profile: str, canonical_kind: str, canonical_id: str) -> float | None:
+    # v0.1: only price the economically meaningful groups; leave the rest unpriced
+    if canonical_kind == "mass":
+        return 0.002
+    if canonical_id.startswith("ORE_MATERIAL:"):
+        # derive by profile
+        if profile == "ore_t1":
+            return 0.05
+        if profile == "ore_t2":
+            return 0.08
+        if profile == "ore_t3":
+            return 0.12
+        if profile == "ore_t4":
+            return 0.18
+        if profile == "endgame_mithril":
+            return 0.25
+        if profile == "endgame_onyxium":
+            return 0.35
+        if profile == "endgame_prisma":
+            return 0.50
+        # unknown ore
+        return 0.10
+
+    if canonical_id.startswith("BAR:"):
+        # bars track their material tier; use same as ore tier but slightly higher (processing)
+        bump = 1.15
+        base = 0.10
+        if profile == "ore_t1":
+            base = 0.05
+        elif profile == "ore_t2":
+            base = 0.08
+        elif profile == "ore_t3":
+            base = 0.12
+        elif profile == "ore_t4":
+            base = 0.18
+        elif profile == "endgame_mithril":
+            base = 0.25
+        elif profile == "endgame_onyxium":
+            base = 0.35
+        elif profile == "endgame_prisma":
+            base = 0.50
+        return base * bump
+
+    if canonical_id.startswith("CROP:"):
+        return 0.012
+
+    if canonical_kind in ("resource",):
+        # wood/fiber etc.
+        if (
+            "wood" in canonical_id.lower()
+            or "trunk" in canonical_id.lower()
+            or "log" in canonical_id.lower()
+        ):
+            return 0.01
+        return 0.01
+
+    # leave raw/misc unpriced for now
+    return None
+
+
+def apply_guardrails(
+    policy: dict, canonical_id: str, canonical_kind: str, bundle_qty: int, price: float
+) -> float:
+    # Mass cap per 1000
+    if canonical_kind == "mass":
+        cap = float(policy["guardrails"].get("mass_goods_cap_nyra_per_1000", 3.0))
+        # price is already for bundle (1000)
+        return min(price, cap)
+
+    # Endgame floors (per 100)
+    if canonical_id.startswith("BAR:") or canonical_id.startswith("ORE_MATERIAL:"):
+        key = canonical_id.split(":", 1)[1].lower()
+        if key == "mithril":
+            return max(price, 40.0)
+        if key == "onyxium":
+            return max(price, 80.0)
+        if key == "prisma":
+            return max(price, 140.0)
+
+    return price
+
+
+def main() -> None:
+    policy_path = Path("policies/policy.yml")
+    policy = load_policy(policy_path)
+
+    nyra_per_min = float(policy["economy"]["nyra_per_minute"])
+
+    src = Path("data/extracted/canonical_catalog.csv")
+    if not src.exists():
+        raise SystemExit("Missing data/extracted/canonical_catalog.csv")
+
+    out_dir = Path("data/snapshots")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "prices_v0_1.csv"
+
+    rows_out = []
+
+    with src.open("r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            canonical_id = row["canonical_id"]
+            canonical_kind = row["canonical_kind"]
+            profile = row["dominant_profile"]
+            zone = int(row["max_zone"])
+            rarity = row["rarity_tag"]
+
+            bqty = bundle_for(canonical_kind, canonical_id)
+            mpu = minutes_per_unit(profile, canonical_kind, canonical_id)
+            if mpu is None:
+                # skip unpriced entries in v0.1
+                continue
+
+            # price for ONE unit
+            base_unit = mpu * nyra_per_min
+            # apply zone + rarity
+            final_unit = base_unit * zone_factor(policy, zone) * rarity_factor(
+                policy, rarity
+            )
+
+            # bundle price
+            bundle_price = final_unit * bqty
+            bundle_price = apply_guardrails(
+                policy, canonical_id, canonical_kind, bqty, bundle_price
+            )
+
+            rows_out.append(
+                {
+                    "canonical_id": canonical_id,
+                    "canonical_kind": canonical_kind,
+                    "profile": profile,
+                    "zone": zone,
+                    "rarity_tag": rarity,
+                    "minutes_per_unit": round(mpu, 6),
+                    "nyra_per_minute": nyra_per_min,
+                    "bundle_qty": bqty,
+                    "price_nyra": round(bundle_price, 2),
+                    "confidence": "v0.1_model",
+                }
+            )
+
+    # Write
+    with out_path.open("w", newline="", encoding="utf-8") as f:
+        fieldnames = [
+            "canonical_id",
+            "canonical_kind",
+            "profile",
+            "zone",
+            "rarity_tag",
+            "minutes_per_unit",
+            "nyra_per_minute",
+            "bundle_qty",
+            "price_nyra",
+            "confidence",
+        ]
+        w = csv.DictWriter(f, fieldnames=fieldnames)
+        w.writeheader()
+        w.writerows(sorted(rows_out, key=lambda r: r["canonical_id"]))
+
+    print(f"Wrote: {out_path} ({len(rows_out)} priced rows)")
+
+
+if __name__ == "__main__":
+    main()
