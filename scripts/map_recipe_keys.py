@@ -32,6 +32,7 @@ def main() -> None:
     # Bars (only Ingredient_Bar_* recipes)
     mapping["BAR:prisma"] = find_key_startswith("Ingredient_Bar_Prisma")
     mapping["BAR:onyxium"] = find_key_startswith("Ingredient_Bar_Onyxium")
+    mapping["BAR:mithril"] = find_key_startswith("Ingredient_Bar_Mithril")
 
     # Ore items (craft/boss) – optional
     mapping["ORE_ITEM:Ore_Prisma"] = find_key_contains("ore", "prisma")

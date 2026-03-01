@@ -108,9 +108,9 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
                 break
         return (f"CROP:{m}" if m else f"CROP:{asset_id}", "crop")
 
-    # Wood resources
+    # Wood resources (any wood -> generic RESOURCE:wood)
     if kind == "resource" and category == "wood_resource":
-        return f"RESOURCE:{asset_id}", "resource"
+        return "RESOURCE:wood", "resource"
 
     # Terrain mass blocks -> group by rough family
     if kind == "block" and category == "terrain_block":

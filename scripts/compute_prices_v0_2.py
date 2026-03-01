@@ -238,6 +238,9 @@ def canonical_for_input(inp: dict) -> str | None:
         # fallback: treat as raw item
         return None
     elif t == "resource":
+        rs = iid.lower()
+        if rs.startswith("resource_wood_"):
+            return "RESOURCE:wood"
         return f"RESOURCE:{iid}"
     return None
 
@@ -320,7 +323,12 @@ def main() -> None:
                 continue
 
             recipe = recipes[rk]
-            inputs = recipe.get("inputs", [])
+            inputs = list(recipe.get("inputs", []))
+            if rk == "Ingredient_Bar_Mithril":
+                # add furnace fuel (any wood resource)
+                inputs.append(
+                    {"type": "resource", "id": "Resource_Wood_Fuel", "qty": 1}
+                )
             if not inputs:
                 continue
 
