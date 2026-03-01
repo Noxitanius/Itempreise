@@ -740,7 +740,12 @@ export default function App() {
     width: "100%",
   };
 
-  const selectStyle = { ...inputStyle, padding: "10px 10px" };
+  const selectStyle = {
+    ...inputStyle,
+    padding: "10px 10px",
+    color: "#111",
+    background: "#f2f2f2",
+  };
 
   return (
     <div style={{ ...shell, overflowX: "hidden" }}>
