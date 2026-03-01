@@ -754,7 +754,7 @@ export default function App() {
         <div style={{ width: "100%", maxWidth: "none", margin: "0 auto", padding: "0 16px", boxSizing: "border-box" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 16 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <img src={logo} alt="Nyrell" style={{ width: 28, height: 28 }} />
+            <img src={logo} alt="Nyrell" style={{ width: 56, height: 56 }} />
             <div>
               <div style={{ fontSize: 22, fontWeight: 800, letterSpacing: 0.2 }}>Nyrell Economy UI</div>
               <div style={{ opacity: 0.8, marginTop: 4, fontSize: 13 }}>
