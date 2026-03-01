@@ -158,11 +158,6 @@ def apply_mass_cap(policy: dict, canonical_kind: str, price: float) -> float:
     return min(price, cap)
 
 
-def boss_floor(policy: dict, canonical_id: str) -> float | None:
-    floors = policy.get("boss_drops", {}).get("floor_by_item", {})
-    return float(floors[canonical_id]) if canonical_id in floors else None
-
-
 def craft_markup(policy: dict) -> float:
     return float(policy.get("crafting", {}).get("craft_markup", 1.10))
 
@@ -310,10 +305,6 @@ def main() -> None:
             bundle_price = apply_mass_cap(policy, canonical_kind, bundle_price)
             bundle_price *= farm_damp(policy, canonical_id)
 
-            floor = boss_floor(policy, canonical_id)
-            if floor is not None:
-                bundle_price = max(bundle_price, floor)
-
             meta = {
                 "canonical_kind": canonical_kind,
                 "profile": profile,
@@ -329,10 +320,6 @@ def main() -> None:
         if canonical_id in base_prices:
             bqty, bprice, _ = base_prices[canonical_id]
             return bprice / bqty if bqty else None
-        floor = boss_floor(policy, canonical_id)
-        if floor is not None:
-            bqty = bundle_for("", canonical_id)
-            return floor / bqty if bqty else floor
         return None
 
     # BOM overrides
@@ -362,12 +349,8 @@ def main() -> None:
                 ore_id = c_in.split(":", 1)[1]
                 p = unit_price(f"ORE_ITEM:{ore_id}")
                 if p is None:
-                    floor = boss_floor(policy, f"ORE_ITEM:{ore_id}")
-                    if floor is not None:
-                        p = floor
-                    else:
-                        missing.append(ore_id)
-                        continue
+                    missing.append(ore_id)
+                    continue
                 total_cost_per_unit += p * qty
                 continue
 
@@ -384,10 +367,6 @@ def main() -> None:
         bqty, _, meta = base_prices[canonical_id]
         new_bundle = total_cost_per_unit * bqty
 
-        floor = boss_floor(policy, canonical_id)
-        if floor is not None:
-            new_bundle = max(new_bundle, floor)
-
         new_meta = {
             **meta,
             "calc": "bom_v0.3",
@@ -399,29 +378,6 @@ def main() -> None:
 
     for k, v in bom_overrides.items():
         base_prices[k] = v
-
-    # Virtual floor-only entries for boss-drop ore items
-    virtual_ids = ["ORE_ITEM:Ore_Prisma", "ORE_ITEM:Ore_Onyxium"]
-    for vid in virtual_ids:
-        if vid in base_prices:
-            continue
-        floor = boss_floor(policy, vid)
-        if floor is None:
-            continue
-        bqty = bundle_for("raw", vid)
-        price = floor
-        meta = {
-            "canonical_kind": "boss_drop_ore",
-            "profile": "boss_floor",
-            "zone": 4,
-            "rarity_tag": "mythic",
-            "calc": "floor_v0.3",
-            "recipe_key": "",
-            "missing_inputs": "",
-            "minutes_per_unit": "",
-        }
-        price, meta = apply_override(vid, bqty, price, meta, ovr_cfg)
-        base_prices[vid] = (bqty, price, meta)
 
     with out_path.open("w", newline="", encoding="utf-8") as f:
         fieldnames = [

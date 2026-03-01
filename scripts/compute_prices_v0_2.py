@@ -139,12 +139,6 @@ def apply_mass_cap(policy: dict, canonical_kind: str, bundle_qty: int, price: fl
     return min(price, cap)
 
 
-def boss_floor(policy: dict, canonical_id: str) -> float | None:
-    floors = policy.get("boss_drops", {}).get("floor_by_item", {})
-    # policy keys are like "BAR:prisma"
-    return float(floors[canonical_id]) if canonical_id in floors else None
-
-
 def craft_markup(policy: dict) -> float:
     return float(policy.get("crafting", {}).get("craft_markup", 1.10))
 
@@ -283,11 +277,6 @@ def main() -> None:
             # apply farm dampening
             bundle_price *= farm_damp(policy, canonical_id)
 
-            # apply boss floors (if set) – floors refer to bundle price
-            floor = boss_floor(policy, canonical_id)
-            if floor is not None:
-                bundle_price = max(bundle_price, floor)
-
             meta = {
                 "canonical_kind": canonical_kind,
                 "profile": profile,
@@ -304,12 +293,6 @@ def main() -> None:
         if canonical_id in base_prices:
             bqty, bprice, _ = base_prices[canonical_id]
             return bprice / bqty if bqty else None
-
-        # fallback: boss floor for non-catalog ids like ORE_ITEM:Ore_Prisma
-        floor = boss_floor(policy, canonical_id)
-        if floor is not None:
-            bqty = bundle_for("", canonical_id)
-            return floor / bqty if bqty else floor
 
         return None
 
@@ -337,21 +320,13 @@ def main() -> None:
                 missing.append(inp["id"])
                 continue
 
-            # For ORE_ITEM:<id> we may not have a model price; try boss floor fallback mapping:
+            # For ORE_ITEM:<id> we may not have a model price; skip if missing.
             if c_in.startswith("ORE_ITEM:"):
                 ore_id = c_in.split(":", 1)[1]
-                # map Ore_Prisma -> treat as boss-drop and use floor if defined, else try model if exists
-                # We'll define optional floors for ORE_ITEM:Ore_Prisma etc. if needed later.
                 p = unit_price(f"ORE_ITEM:{ore_id}")
                 if p is None:
-                    # try a floor from policy, else mark missing
-                    floor = boss_floor(policy, f"ORE_ITEM:{ore_id}")
-                    if floor is not None:
-                        # floor is for bundle; assume bundle=1 for ore item
-                        p = floor
-                    else:
-                        missing.append(ore_id)
-                        continue
+                    missing.append(ore_id)
+                    continue
                 total_cost_per_unit += p * qty
                 continue
 
@@ -373,11 +348,6 @@ def main() -> None:
         bqty, _, meta = base_prices[canonical_id]
         new_bundle = total_cost_per_unit * bqty
 
-        # Apply boss floor if configured for the bar
-        floor = boss_floor(policy, canonical_id)
-        if floor is not None:
-            new_bundle = max(new_bundle, floor)
-
         overrides[canonical_id] = (
             bqty,
             new_bundle,
@@ -392,33 +362,6 @@ def main() -> None:
     # Merge overrides into base_prices
     for k, v in overrides.items():
         base_prices[k] = v
-
-    # --- Emit virtual floor-only entries for boss-drop ore items (not present in canonical_catalog) ---
-    virtual_ids = ["ORE_ITEM:Ore_Prisma", "ORE_ITEM:Ore_Onyxium"]
-    for vid in virtual_ids:
-        if vid in base_prices:
-            continue
-
-        floor = boss_floor(policy, vid)
-        if floor is None:
-            continue
-
-        bqty = bundle_for("raw", vid)  # returns 100 for ORE_ITEM
-        price = floor  # floor is defined per bundle
-
-        base_prices[vid] = (
-            bqty,
-            price,
-            {
-                "canonical_kind": "boss_drop_ore",
-                "profile": "boss_floor",
-                "zone": 4,
-                "rarity_tag": "mythic",
-                "calc": "floor",
-                "recipe_key": "",
-                "missing_inputs": "",
-            },
-        )
 
     # Write snapshot
     with out_path.open("w", newline="", encoding="utf-8") as f:

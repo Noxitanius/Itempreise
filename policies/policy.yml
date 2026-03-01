@@ -39,12 +39,3 @@ crafting:
   farm_dampening:
     crop: 0.35
     essence: 0.60
-
-boss_drops:
-  floor_by_item:
-    "BAR:prisma": 180.0
-    "BAR:onyxium": 120.0
-    "ORE_MATERIAL:prisma": 160.0
-    "ORE_MATERIAL:onyxium": 100.0
-    "ORE_ITEM:Ore_Prisma": 140.0
-    "ORE_ITEM:Ore_Onyxium": 90.0
