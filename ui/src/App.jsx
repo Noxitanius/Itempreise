@@ -460,6 +460,11 @@ export default function App() {
 
   function openOverrideIssue() {
     const obj = overridesMap;
+    const selectedKey = selected?.canonical_id;
+    const selectedExample =
+      selectedKey && !obj[selectedKey]
+        ? { [selectedKey]: { price_nyra: 200.0, note: "Beispiel override" } }
+        : null;
     const payload = {
       meta: {
         author: "TODO:dein_github_name",
@@ -467,7 +472,8 @@ export default function App() {
       },
       overrides: Object.keys(obj).length
         ? obj
-        : {
+        : selectedExample ??
+          {
             "BAR:prisma": { price_nyra: 200.0, note: "Beispiel override" },
           },
     };
