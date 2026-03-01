@@ -104,6 +104,22 @@ async function loadJSONFile(file) {
   return JSON.parse(text);
 }
 
+function baseUrl() {
+  try {
+    // Vite injects BASE_URL at build time
+    return import.meta?.env?.BASE_URL ?? "/";
+  } catch {
+    return "/";
+  }
+}
+
+async function loadCSVFromUrl(url) {
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load ${url}`);
+  const text = await res.text();
+  return parseCSV(text);
+}
+
 function toCanonicalFromRecipeInput(inp) {
   const t = inp.type;
   const id = inp.id;
@@ -153,6 +169,26 @@ export default function App() {
 
   const [sortKey, setSortKey] = useState("price_b"); // price_a, price_b, delta_abs, delta_pct
   const [sortDir, setSortDir] = useState("desc");
+
+  // Auto-load default snapshots from repo (v0.1/v0.2)
+  useEffect(() => {
+    const loadDefaults = async () => {
+      const base = baseUrl();
+      try {
+        if (!pricesA) {
+          const rows = await loadCSVFromUrl(`${base}data/snapshots/prices_v0_1.csv`);
+          setPricesA({ name: "prices_v0_1.csv", rows });
+        }
+        if (!pricesB) {
+          const rows = await loadCSVFromUrl(`${base}data/snapshots/prices_v0_2.csv`);
+          setPricesB({ name: "prices_v0_2.csv", rows });
+        }
+      } catch {
+        // ignore if files not present
+      }
+    };
+    loadDefaults();
+  }, []);
 
   function handleCSV(setter) {
     return async (e) => {
@@ -699,6 +735,22 @@ export default function App() {
                   </label>
                   <input id="file-overrides" type="file" accept=".json" onChange={handleJSON(setOverrides)} style={{ display: "none" }} />
                   <div style={{ marginTop: 6, opacity: 0.8, fontSize: 12 }}>{overrides ? overrides.name : "Keine ausgewählt"}</div>
+                </div>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 6 }}>Defaults</div>
+                  <button
+                    onClick={async () => {
+                      const base = baseUrl();
+                      const rowsA = await loadCSVFromUrl(`${base}data/snapshots/prices_v0_1.csv`);
+                      const rowsB = await loadCSVFromUrl(`${base}data/snapshots/prices_v0_2.csv`);
+                      setPricesA({ name: "prices_v0_1.csv", rows: rowsA });
+                      setPricesB({ name: "prices_v0_2.csv", rows: rowsB });
+                    }}
+                    style={fileButtonStyle}
+                  >
+                    Defaults laden
+                  </button>
+                  <div style={{ marginTop: 6, opacity: 0.8, fontSize: 12 }}>A=v0.1, B=v0.2</div>
                 </div>
               </div>
             </Section>
