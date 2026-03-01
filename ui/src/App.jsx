@@ -136,6 +136,9 @@ function toCanonicalFromRecipeInput(inp) {
     if (s.startsWith("ingredient_bar_")) {
       return `BAR:${s.replace("ingredient_bar_", "")}`;
     }
+    if (s.startsWith("ingredient_crystal_")) {
+      return `CRYSTAL:${s.replace("ingredient_crystal_", "")}`;
+    }
     if (s.startsWith("ore_")) {
       return `ORE_ITEM:${id}`;
     }
@@ -143,6 +146,9 @@ function toCanonicalFromRecipeInput(inp) {
       const types = ["life", "void", "fire", "water", "ice", "earth", "air", "storm"];
       for (const et of types) if (s.includes(et)) return `ESSENCE:${et}`;
       return "ESSENCE:generic";
+    }
+    if (s.startsWith("rock_gem_") || s.includes("rock_gem_")) {
+      return `GEM:${s.replace("rock_gem_", "")}`;
     }
     return null;
   }
