@@ -1077,36 +1077,6 @@ export default function App() {
                       <div style={{ fontSize: 12, opacity: 0.75, fontWeight: 700 }}>Overrides</div>
                       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                         <button
-                          onClick={upsertOverride}
-                          style={{
-                            padding: "8px 10px",
-                            borderRadius: 12,
-                            border: "1px solid rgba(255,255,255,0.14)",
-                            background: "rgba(255,255,255,0.06)",
-                            color: "rgba(255,255,255,0.92)",
-                            cursor: "pointer",
-                            fontWeight: 700,
-                            fontSize: 12,
-                          }}
-                        >
-                          Save override
-                        </button>
-                        <button
-                          onClick={downloadOverrides}
-                          style={{
-                            padding: "8px 10px",
-                            borderRadius: 12,
-                            border: "1px solid rgba(255,255,255,0.14)",
-                            background: "rgba(255,255,255,0.06)",
-                            color: "rgba(255,255,255,0.92)",
-                            cursor: "pointer",
-                            fontWeight: 700,
-                            fontSize: 12,
-                          }}
-                        >
-                          Download overrides.json
-                        </button>
-                        <button
                           onClick={openOverrideIssue}
                           style={{
                             padding: "8px 10px",
@@ -1118,9 +1088,9 @@ export default function App() {
                             fontWeight: 700,
                             fontSize: 12,
                           }}
-                          title="Creates an Issue with overrides.json for automated PR"
+                          title="Erstellt ein Issue mit Overrides für automatischen PR"
                         >
-                          Create Issue
+                          Preisänderung beantragen
                         </button>
                         <button
                           onClick={saveOverridesLocal}
