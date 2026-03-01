@@ -465,7 +465,11 @@ export default function App() {
         author: "TODO:dein_github_name",
         timestamp: new Date().toISOString(),
       },
-      overrides: obj,
+      overrides: Object.keys(obj).length
+        ? obj
+        : {
+            "BAR:prisma": { price_nyra: 200.0, note: "Beispiel override" },
+          },
     };
     const json = JSON.stringify(payload, null, 2);
     const title = encodeURIComponent("Override Update");

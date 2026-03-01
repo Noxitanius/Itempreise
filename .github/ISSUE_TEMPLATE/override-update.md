@@ -13,6 +13,8 @@ labels: overrides
     "author": "TODO:dein_github_name",
     "timestamp": "2026-03-01T12:00:00Z"
   },
-  "overrides": {}
+  "overrides": {
+    "BAR:prisma": { "price_nyra": 200.0, "note": "Beispiel override" }
+  }
 }
 ```
