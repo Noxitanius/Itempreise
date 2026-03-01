@@ -319,8 +319,9 @@ def main() -> None:
         return None
 
     # Second pass: BOM pricing for craftable entries (BAR, LEATHER, CLOTH, etc.)
-    # Run multiple passes to resolve dependencies across chains.
-    for _ in range(5):
+    # Iterate until stable (or max passes) to resolve long dependency chains.
+    max_passes = 20
+    for _ in range(max_passes):
         overrides = {}
         for canonical_id in list(rows_by_id.keys()):
             # find recipe by candidate keys
@@ -403,6 +404,8 @@ def main() -> None:
                 },
             )
 
+        if not overrides:
+            break
         for k, v in overrides.items():
             base_prices[k] = v
 
