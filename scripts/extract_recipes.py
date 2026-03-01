@@ -44,6 +44,7 @@ def extract_recipe(obj: dict) -> dict | None:
     return {
         "time_seconds": float(r.get("TimeSeconds", 0) or 0),
         "knowledge_required": bool(r.get("KnowledgeRequired", False)),
+        "output_qty": int(r.get("OutputQuantity", 1) or 1),
         "inputs": inputs,
     }
 

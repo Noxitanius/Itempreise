@@ -331,6 +331,7 @@ def main() -> None:
 
             recipe = recipes[rk]
             inputs = list(recipe.get("inputs", []))
+            out_qty = int(recipe.get("output_qty", 1) or 1)
             if rk == "Ingredient_Bar_Mithril":
                 # add furnace fuel (charcoal)
                 inputs.append(
@@ -367,6 +368,10 @@ def main() -> None:
 
             if total_cost_per_unit <= 0:
                 continue
+
+            # Normalize by output quantity
+            if out_qty > 1:
+                total_cost_per_unit = total_cost_per_unit / out_qty
 
             # Craft markup
             total_cost_per_unit *= craft_markup(policy)
