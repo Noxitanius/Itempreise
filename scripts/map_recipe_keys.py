@@ -18,22 +18,31 @@ def main() -> None:
                 hits.append(k)
         return sorted(hits)
 
+    # prefer explicit prefix matches (case-insensitive)
+    def find_key_startswith(prefix: str):
+        pref = prefix.lower()
+        hits = []
+        for k in recipes.keys():
+            if k.lower().startswith(pref):
+                hits.append(k)
+        return sorted(hits)
+
     mapping = {}
 
-    # Bars
-    mapping["BAR:prisma"] = find_key_contains("bar", "prisma")
-    mapping["BAR:onyxium"] = find_key_contains("bar", "onyxium")
+    # Bars (only Ingredient_Bar_* recipes)
+    mapping["BAR:prisma"] = find_key_startswith("Ingredient_Bar_Prisma")
+    mapping["BAR:onyxium"] = find_key_startswith("Ingredient_Bar_Onyxium")
 
     # Ore items (craft/boss) – optional
     mapping["ORE_ITEM:Ore_Prisma"] = find_key_contains("ore", "prisma")
     mapping["ORE_ITEM:Ore_Onyxium"] = find_key_contains("ore", "onyxium")
 
-    # Leather (prefer Ingredient_Leather_* recipes; exclude Armor_ to avoid gear recipes)
-    mapping["LEATHER:light"] = find_key_contains("ingredient", "leather", "light", exclude_prefixes=("armor_",))
-    mapping["LEATHER:medium"] = find_key_contains("ingredient", "leather", "medium", exclude_prefixes=("armor_",))
-    mapping["LEATHER:heavy"] = find_key_contains("ingredient", "leather", "heavy", exclude_prefixes=("armor_",))
-    mapping["LEATHER:storm"] = find_key_contains("ingredient", "leather", "storm", exclude_prefixes=("armor_",))
-    mapping["LEATHER:prism"] = find_key_contains("ingredient", "leather", "prism", exclude_prefixes=("armor_",))
+    # Leather (only Ingredient_Leather_* recipes)
+    mapping["LEATHER:light"] = find_key_startswith("Ingredient_Leather_Light")
+    mapping["LEATHER:medium"] = find_key_startswith("Ingredient_Leather_Medium")
+    mapping["LEATHER:heavy"] = find_key_startswith("Ingredient_Leather_Heavy")
+    mapping["LEATHER:storm"] = find_key_startswith("Ingredient_Leather_Storm")
+    mapping["LEATHER:prism"] = find_key_startswith("Ingredient_Leather_Prismic")
 
     # Cloth scraps
     mapping["CLOTH:linen_scraps"] = find_key_contains("fabric", "scrap", "linen")
