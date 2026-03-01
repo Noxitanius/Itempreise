@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import logo from "./assets/logo.svg";
 
 // ---- tiny CSV parser (good enough for our snapshots) ----
 function parseCSV(text) {
@@ -78,7 +79,7 @@ function badge(text) {
       style={{
         padding: "2px 8px",
         borderRadius: 999,
-        border: "1px solid rgba(255,255,255,0.15)",
+          border: "1px solid rgba(76, 180, 170, 0.25)",
         fontSize: 12,
         opacity: 0.9,
         marginRight: 6,
@@ -695,26 +696,26 @@ export default function App() {
 
   const shell = {
     fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial",
-    background: "#0b0f14",
-    color: "rgba(255,255,255,0.92)",
+    background: "#071416",
+    color: "#e8f6f6",
     minHeight: "100vh",
     padding: 20,
   };
 
   const card = {
-    background: "rgba(255,255,255,0.04)",
-    border: "1px solid rgba(255,255,255,0.08)",
+    background: "rgba(10, 24, 28, 0.9)",
+    border: "1px solid rgba(76, 180, 170, 0.18)",
     borderRadius: 16,
     padding: 16,
   };
 
   const inputStyle = {
-    background: "rgba(255,255,255,0.06)",
-    border: "1px solid rgba(255,255,255,0.12)",
+    background: "#0d1f24",
+    border: "1px solid rgba(76, 180, 170, 0.22)",
     borderRadius: 12,
     padding: "10px 12px",
-    color: "rgba(255,255,255,0.92)",
-    width: "80%",
+    color: "#e8f6f6",
+    width: "100%",
     boxSizing: "border-box",
     outline: "none",
   };
@@ -727,9 +728,9 @@ export default function App() {
     boxSizing: "border-box",
     padding: "8px 12px",
     borderRadius: 10,
-    border: "1px solid rgba(255,255,255,0.14)",
-    background: "rgba(255,255,255,0.06)",
-    color: "rgba(255,255,255,0.92)",
+    border: "1px solid rgba(76, 180, 170, 0.24)",
+    background: "rgba(13, 31, 36, 0.9)",
+    color: "#e8f6f6",
     cursor: "pointer",
     fontWeight: 600,
     fontSize: 12,
@@ -743,8 +744,8 @@ export default function App() {
   const selectStyle = {
     ...inputStyle,
     padding: "10px 10px",
-    color: "#111",
-    background: "#f2f2f2",
+    color: "#0b1214",
+    background: "#dff2f1",
   };
 
   return (
@@ -752,10 +753,13 @@ export default function App() {
       <div style={{ width: "100%", maxWidth: "none", margin: "0 auto", padding: 0, boxSizing: "border-box" }}>
         <div style={{ width: "100%", maxWidth: "none", margin: "0 auto", padding: "0 16px", boxSizing: "border-box" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 16 }}>
-          <div>
-            <div style={{ fontSize: 22, fontWeight: 800, letterSpacing: 0.2 }}>Nyrell Economy UI</div>
-            <div style={{ opacity: 0.75, marginTop: 4, fontSize: 13 }}>
-              Load snapshots, filter, compare deltas, inspect BOM (recipes.json + key map).
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <img src={logo} alt="Nyrell" style={{ width: 28, height: 28 }} />
+            <div>
+              <div style={{ fontSize: 22, fontWeight: 800, letterSpacing: 0.2 }}>Nyrell Economy UI</div>
+              <div style={{ opacity: 0.8, marginTop: 4, fontSize: 13 }}>
+                Load snapshots, filter, compare deltas, inspect BOM (recipes.json + key map).
+              </div>
             </div>
           </div>
           <div style={{ opacity: 0.75, fontSize: 13, textAlign: "right" }}>
