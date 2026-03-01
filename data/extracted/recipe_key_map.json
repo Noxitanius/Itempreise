@@ -5,9 +5,7 @@
   "BAR:onyxium": [
     "Ingredient_Bar_Onyxium"
   ],
-  "ORE_ITEM:Ore_Prisma": [
-    "Ore_Prisma"
-  ],
+  "ORE_ITEM:Ore_Prisma": [],
   "ORE_ITEM:Ore_Onyxium": [
     "Ore_Onyxium"
   ],

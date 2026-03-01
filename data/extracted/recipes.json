@@ -13878,17 +13878,6 @@
       }
     ]
   },
-  "Ore_Prisma": {
-    "time_seconds": 4.0,
-    "knowledge_required": false,
-    "inputs": [
-      {
-        "type": "resource",
-        "id": "Salvage_Prisma",
-        "qty": 1
-      }
-    ]
-  },
   "Ore_Silver": {
     "time_seconds": 4.0,
     "knowledge_required": false,

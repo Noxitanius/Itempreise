@@ -70,6 +70,7 @@ def main() -> None:
 
     recipes = {}  # item_id -> recipe
     sources = {}  # item_id -> (priority, path)
+    skip_ids = {"Ore_Prisma"}
 
     # Scan folders
     for p in raw.rglob("*.json"):
@@ -88,6 +89,8 @@ def main() -> None:
             continue
 
         item_id = extract_item_id(obj, p.stem)
+        if item_id in skip_ids:
+            continue
         prio = source_priority(p)
         prev = sources.get(item_id)
         if (prev is None) or (prio > prev[0]):
@@ -115,6 +118,8 @@ def main() -> None:
                         if not recipe:
                             continue
                         item_id = extract_item_id(obj, Path(name).stem)
+                        if item_id in skip_ids:
+                            continue
                         prio = 1
                         prev = sources.get(item_id)
                         if (prev is None) or (prio > prev[0]):
