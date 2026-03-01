@@ -113,6 +113,12 @@ function baseUrl() {
   }
 }
 
+async function loadJSONFromUrl(url) {
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load ${url}`);
+  return res.json();
+}
+
 async function loadCSVFromUrl(url) {
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load ${url}`);
@@ -182,6 +188,24 @@ export default function App() {
         if (!pricesB) {
           const rows = await loadCSVFromUrl(`${base}data/snapshots/prices_v0_2.csv`);
           setPricesB({ name: "prices_v0_2.csv", rows });
+        }
+        if (!recipes) {
+          const obj = await loadJSONFromUrl(`${base}data/extracted/recipes.json`);
+          setRecipes({ name: "recipes.json", obj });
+        }
+        if (!recipeKeyMap) {
+          const obj = await loadJSONFromUrl(`${base}data/extracted/recipe_key_map.json`);
+          setRecipeKeyMap({ name: "recipe_key_map.json", obj });
+        }
+        if (!overrides) {
+          // prefer localStorage if present
+          const local = localStorage.getItem("nyrell_overrides");
+          if (local) {
+            setOverrides({ name: "overrides.local.json", obj: JSON.parse(local) });
+          } else {
+            const obj = await loadJSONFromUrl(`${base}data/overrides/overrides.json`);
+            setOverrides({ name: "overrides.json", obj });
+          }
         }
       } catch {
         // ignore if files not present
@@ -398,6 +422,27 @@ export default function App() {
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
+  }
+
+  function saveOverridesLocal() {
+    const obj = overrides?.obj ?? {};
+    localStorage.setItem("nyrell_overrides", JSON.stringify(obj));
+    setOverrides({ name: "overrides.local.json", obj });
+  }
+
+  function openOverrideIssue() {
+    const obj = overrides?.obj ?? {};
+    const json = JSON.stringify(obj, null, 2);
+    const title = encodeURIComponent("Override Update");
+    const body = encodeURIComponent(
+      "Paste overrides below:\n\n```json\n" + json + "\n```"
+    );
+    const url =
+      "https://github.com/Noxitanius/Itempreise/issues/new?labels=overrides&title=" +
+      title +
+      "&body=" +
+      body;
+    window.open(url, "_blank");
   }
 
   function exportFiltered() {
@@ -745,6 +790,12 @@ export default function App() {
                       const rowsB = await loadCSVFromUrl(`${base}data/snapshots/prices_v0_2.csv`);
                       setPricesA({ name: "prices_v0_1.csv", rows: rowsA });
                       setPricesB({ name: "prices_v0_2.csv", rows: rowsB });
+                      const r = await loadJSONFromUrl(`${base}data/extracted/recipes.json`);
+                      const k = await loadJSONFromUrl(`${base}data/extracted/recipe_key_map.json`);
+                      setRecipes({ name: "recipes.json", obj: r });
+                      setRecipeKeyMap({ name: "recipe_key_map.json", obj: k });
+                      const ov = await loadJSONFromUrl(`${base}data/overrides/overrides.json`);
+                      setOverrides({ name: "overrides.json", obj: ov });
                     }}
                     style={fileButtonStyle}
                   >
@@ -1002,6 +1053,38 @@ export default function App() {
                           }}
                         >
                           Download overrides.json
+                        </button>
+                        <button
+                          onClick={openOverrideIssue}
+                          style={{
+                            padding: "8px 10px",
+                            borderRadius: 12,
+                            border: "1px solid rgba(255,255,255,0.14)",
+                            background: "rgba(255,255,255,0.06)",
+                            color: "rgba(255,255,255,0.92)",
+                            cursor: "pointer",
+                            fontWeight: 700,
+                            fontSize: 12,
+                          }}
+                          title="Creates an Issue with overrides.json for automated PR"
+                        >
+                          Create Issue
+                        </button>
+                        <button
+                          onClick={saveOverridesLocal}
+                          style={{
+                            padding: "8px 10px",
+                            borderRadius: 12,
+                            border: "1px solid rgba(255,255,255,0.14)",
+                            background: "rgba(255,255,255,0.06)",
+                            color: "rgba(255,255,255,0.92)",
+                            cursor: "pointer",
+                            fontWeight: 700,
+                            fontSize: 12,
+                          }}
+                          title="Speichert Overrides im Browser (localStorage)"
+                        >
+                          Save local
                         </button>
                       </div>
                     </div>

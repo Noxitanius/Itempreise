@@ -1,0 +1,52 @@
+name: Overrides from Issue
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+jobs:
+  apply-overrides:
+    if: contains(github.event.issue.labels.*.name, 'overrides')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract overrides JSON from issue
+        id: extract
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const body = process.env.ISSUE_BODY || '';
+          const m = body.match(/```json\\s*([\\s\\S]*?)```/i);
+          if (!m) {
+            console.error('No ```json block found in issue body.');
+            process.exit(1);
+          }
+          const jsonText = m[1].trim();
+          try {
+            JSON.parse(jsonText);
+          } catch (e) {
+            console.error('Invalid JSON in issue body:', e.message);
+            process.exit(1);
+          }
+          fs.mkdirSync('data/overrides', { recursive: true });
+          fs.writeFileSync('data/overrides/overrides.json', jsonText + '\n', 'utf8');
+          console.log('Wrote data/overrides/overrides.json');
+          NODE
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Update overrides.json from issue #${{ github.event.issue.number }}"
+          title: "Update overrides.json (issue #${{ github.event.issue.number }})"
+          body: |
+            Auto-generated from issue #${{ github.event.issue.number }}.
+          branch: "overrides/issue-${{ github.event.issue.number }}"
+          delete-branch: true
