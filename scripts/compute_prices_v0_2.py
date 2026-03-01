@@ -249,6 +249,7 @@ def main() -> None:
 
     # First pass: compute v0.1-like prices for canonical ids we know how to model
     base_prices = {}  # canonical_id -> (bundle_qty, price_nyra, meta)
+    rows_by_id = {}
 
     with src.open("r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -259,6 +260,7 @@ def main() -> None:
             zone = int(row["max_zone"])
             rarity = row["rarity_tag"]
 
+            rows_by_id[canonical_id] = row
             bqty = bundle_for(canonical_kind, canonical_id)
             mpu = minutes_per_unit_v01(profile, canonical_kind, canonical_id)
 
@@ -297,71 +299,82 @@ def main() -> None:
         return None
 
     # Second pass: BOM pricing for craftable entries (BAR, LEATHER, CLOTH, etc.)
-    overrides = {}
-    for canonical_id in list(base_prices.keys()):
-        # find recipe by candidate keys
-        candidates = recipe_key_map.get(canonical_id, [])
-        rk = pick_best_recipe_key(recipes, candidates)
-        if rk is None:
-            continue
-
-        recipe = recipes[rk]
-        inputs = recipe.get("inputs", [])
-        if not inputs:
-            continue
-
-        total_cost_per_unit = 0.0
-        missing = []
-
-        for inp in inputs:
-            c_in = canonical_for_input(inp)
-            qty = float(inp["qty"])
-            if c_in is None:
-                missing.append(inp["id"])
+    # Run twice to resolve dependencies (e.g., BAR -> ORE_ITEM which is also BOM).
+    for _ in range(2):
+        overrides = {}
+        for canonical_id in list(rows_by_id.keys()):
+            # find recipe by candidate keys
+            candidates = recipe_key_map.get(canonical_id, [])
+            rk = pick_best_recipe_key(recipes, candidates)
+            if rk is None:
                 continue
 
-            # For ORE_ITEM:<id> we may not have a model price; skip if missing.
-            if c_in.startswith("ORE_ITEM:"):
-                ore_id = c_in.split(":", 1)[1]
-                p = unit_price(f"ORE_ITEM:{ore_id}")
-                if p is None:
-                    missing.append(ore_id)
+            recipe = recipes[rk]
+            inputs = recipe.get("inputs", [])
+            if not inputs:
+                continue
+
+            total_cost_per_unit = 0.0
+            missing = []
+
+            for inp in inputs:
+                c_in = canonical_for_input(inp)
+                qty = float(inp["qty"])
+                if c_in is None:
+                    missing.append(inp["id"])
                     continue
+
+                if c_in.startswith("ORE_ITEM:"):
+                    ore_id = c_in.split(":", 1)[1]
+                    p = unit_price(f"ORE_ITEM:{ore_id}")
+                    if p is None:
+                        missing.append(ore_id)
+                        continue
+                    total_cost_per_unit += p * qty
+                    continue
+
+                p = unit_price(c_in)
+                if p is None:
+                    missing.append(c_in)
+                    continue
+
                 total_cost_per_unit += p * qty
+
+            if total_cost_per_unit <= 0:
                 continue
 
-            p = unit_price(c_in)
-            if p is None:
-                # Some resources not priced in v0.1: treat as missing
-                missing.append(c_in)
-                continue
+            # Craft markup
+            total_cost_per_unit *= craft_markup(policy)
 
-            total_cost_per_unit += p * qty
+            # Convert to bundle price
+            if canonical_id in base_prices:
+                bqty, _, meta = base_prices[canonical_id]
+            else:
+                row = rows_by_id[canonical_id]
+                bqty = bundle_for(row["canonical_kind"], canonical_id)
+                meta = {
+                    "canonical_kind": row["canonical_kind"],
+                    "profile": row["dominant_profile"],
+                    "zone": int(row["max_zone"]),
+                    "rarity_tag": row["rarity_tag"],
+                    "minutes_per_unit": "",
+                    "calc": "bom",
+                }
+            new_bundle = total_cost_per_unit * bqty
 
-        if total_cost_per_unit <= 0:
-            continue
+            overrides[canonical_id] = (
+                bqty,
+                new_bundle,
+                {
+                    **meta,
+                    "calc": "bom",
+                    "recipe_key": rk,
+                    "missing_inputs": "|".join(missing) if missing else "",
+                },
+            )
 
-        # Craft markup
-        total_cost_per_unit *= craft_markup(policy)
-
-        # Convert to bundle price
-        bqty, _, meta = base_prices[canonical_id]
-        new_bundle = total_cost_per_unit * bqty
-
-        overrides[canonical_id] = (
-            bqty,
-            new_bundle,
-            {
-                **meta,
-                "calc": "bom",
-                "recipe_key": rk,
-                "missing_inputs": "|".join(missing) if missing else "",
-            },
-        )
-
-    # Merge overrides into base_prices
-    for k, v in overrides.items():
-        base_prices[k] = v
+        for k, v in overrides.items():
+            base_prices[k] = v
 
     # Write snapshot
     with out_path.open("w", newline="", encoding="utf-8") as f:

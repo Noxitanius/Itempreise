@@ -1652,14 +1652,14 @@ MASS:shale,mass,8,1,very_common,mass_block
 MASS:slate,mass,8,1,very_common,mass_block
 MASS:stone,mass,48,1,very_common,mass_block
 MASS:volcanic,mass,9,1,very_common,mass_block
+ORE_ITEM:Ore_Onyxium,ore_item,1,4,mythic,endgame_onyxium
 ORE_MATERIAL:adamantite,ore_material,6,3,very_rare,ore_t4
 ORE_MATERIAL:cobalt,ore_material,7,3,rare,ore_t3
 ORE_MATERIAL:copper,ore_material,6,1,common,ore_t1
 ORE_MATERIAL:gold,ore_material,6,3,rare,ore_t3
 ORE_MATERIAL:iron,ore_material,7,1,common,ore_t1
 ORE_MATERIAL:mithril,ore_material,6,4,very_rare,endgame_mithril
-ORE_MATERIAL:onyxium,ore_material,6,4,mythic,endgame_onyxium
-ORE_MATERIAL:prisma,ore_material,1,4,mythic,endgame_prisma
+ORE_MATERIAL:onyxium,ore_material,5,4,mythic,endgame_onyxium
 ORE_MATERIAL:silver,ore_material,7,2,uncommon,ore_t2
 ORE_MATERIAL:thorium,ore_material,6,2,uncommon,ore_t2
 RESOURCE:Alpha_Meat,raw,1,1,common,misc

@@ -13,7 +13,7 @@ def norm(s: str) -> str:
     return s.lower()
 
 
-def canonicalize(row: dict) -> tuple[str, str]:
+def canonicalize(row: dict) -> tuple[str, str] | None:
     """return (canonical_key, canonical_kind)"""
     asset_id = row["id"]
     kind = row["kind"]
@@ -65,10 +65,20 @@ def canonicalize(row: dict) -> tuple[str, str]:
         return "CLOTH:bolt", "cloth"
 
     # Ore blocks/items: map to ORE_MATERIAL:<material>
-    if category in ("ore_block", "ore_item"):
+    if category == "ore_block":
         if material:
             return f"ORE_MATERIAL:{material}", "ore_material"
         return "ORE_MATERIAL:unknown", "ore_material"
+
+    # Ore items: keep craft-only ores as ORE_ITEM, otherwise as material
+    if category == "ore_item":
+        if material == "prisma":
+            return None
+        if material == "onyxium":
+            return f"ORE_ITEM:{asset_id}", "ore_item"
+        if material:
+            return f"ORE_MATERIAL:{material}", "ore_material"
+        return f"ORE_ITEM:{asset_id}", "ore_item"
 
     # Bars
     if category == "bar_item":
@@ -140,7 +150,10 @@ def main() -> None:
     with src.open("r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            key, ckind = canonicalize(row)
+            res = canonicalize(row)
+            if res is None:
+                continue
+            key, ckind = res
 
             # Aggregate: keep max zone, max rarity "weight" via tag order, and count variants
             zone_raw = row.get("default_zone", "").strip()
