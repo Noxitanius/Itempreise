@@ -319,8 +319,8 @@ def main() -> None:
         return None
 
     # Second pass: BOM pricing for craftable entries (BAR, LEATHER, CLOTH, etc.)
-    # Run twice to resolve dependencies (e.g., BAR -> ORE_ITEM which is also BOM).
-    for _ in range(2):
+    # Run multiple passes to resolve dependencies across chains.
+    for _ in range(5):
         overrides = {}
         for canonical_id in list(rows_by_id.keys()):
             # find recipe by candidate keys
