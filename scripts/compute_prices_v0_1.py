@@ -82,6 +82,8 @@ def minutes_per_unit(profile: str, canonical_kind: str, canonical_id: str) -> fl
         ):
             return 0.01
         return 0.01
+    if canonical_id == "BASIC:charcoal":
+        return 0.0
 
     # leave raw/misc unpriced for now
     return None
@@ -136,19 +138,21 @@ def main() -> None:
 
             bqty = bundle_for(canonical_kind, canonical_id)
             mpu = minutes_per_unit(profile, canonical_kind, canonical_id)
-            if mpu is None:
+            if mpu is None and canonical_id != "BASIC:charcoal":
                 # skip unpriced entries in v0.1
                 continue
 
-            # price for ONE unit
-            base_unit = mpu * nyra_per_min
-            # apply zone + rarity
-            final_unit = base_unit * zone_factor(policy, zone) * rarity_factor(
-                policy, rarity
-            )
-
-            # bundle price
-            bundle_price = final_unit * bqty
+            if canonical_id == "BASIC:charcoal":
+                bundle_price = 0.10 * bqty
+            else:
+                # price for ONE unit
+                base_unit = mpu * nyra_per_min
+                # apply zone + rarity
+                final_unit = base_unit * zone_factor(policy, zone) * rarity_factor(
+                    policy, rarity
+                )
+                # bundle price
+                bundle_price = final_unit * bqty
             bundle_price = apply_guardrails(
                 policy, canonical_id, canonical_kind, bqty, bundle_price
             )
@@ -164,7 +168,7 @@ def main() -> None:
                     "nyra_per_minute": nyra_per_min,
                     "bundle_qty": bqty,
                     "price_nyra": round(bundle_price, 2),
-                    "confidence": "v0.1_model",
+                    "confidence": "v0.1_fixed" if canonical_id == "BASIC:charcoal" else "v0.1_model",
                 }
             )
 

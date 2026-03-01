@@ -10,6 +10,7 @@ BAR:onyxium,bar,1,4,mythic,endgame_onyxium
 BAR:prisma,bar,1,4,mythic,endgame_prisma
 BAR:silver,bar,1,2,uncommon,ore_t2
 BAR:thorium,bar,1,2,uncommon,ore_t2
+BASIC:charcoal,basic,1,1,common,basic_gather
 BASIC:plant_fiber,basic,1,1,common,basic_gather
 BASIC:stick,basic,1,1,common,basic_gather
 BASIC:tree_sap,basic,1,1,common,basic_gather
@@ -1031,7 +1032,6 @@ ITEM:Ingredient_Bolt_Cotton,raw,1,1,common,misc
 ITEM:Ingredient_Bolt_Silk,raw,1,1,common,misc
 ITEM:Ingredient_Bolt_Wool,raw,1,1,common,misc
 ITEM:Ingredient_Bone_Fragment,raw,1,1,common,misc
-ITEM:Ingredient_Charcoal,raw,1,1,common,misc
 ITEM:Ingredient_Chitin_Sturdy,raw,1,1,common,misc
 ITEM:Ingredient_Dough,raw,1,1,common,misc
 ITEM:Ingredient_Feathers_Blue,raw,1,1,common,misc

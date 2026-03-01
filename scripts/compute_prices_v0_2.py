@@ -132,6 +132,8 @@ def minutes_per_unit_v01(profile: str, canonical_kind: str, canonical_id: str) -
         return 0.04
     if canonical_kind == "gem":
         return 0.05
+    if canonical_id == "BASIC:charcoal":
+        return 0.0
 
     return None
 
@@ -185,6 +187,8 @@ def canonical_for_input(inp: dict) -> str | None:
         s = iid.lower()
         if s.startswith("ingredient_stick"):
             return "BASIC:stick"
+        if s.startswith("ingredient_charcoal"):
+            return "BASIC:charcoal"
         if s.startswith("ingredient_fibre") or s.startswith("ingredient_fiber"):
             return "BASIC:plant_fiber"
         if s.startswith("ingredient_tree_sap"):
@@ -277,14 +281,17 @@ def main() -> None:
             bqty = bundle_for(canonical_kind, canonical_id)
             mpu = minutes_per_unit_v01(profile, canonical_kind, canonical_id)
 
-            if mpu is None:
+            if mpu is None and canonical_id != "BASIC:charcoal":
                 continue
 
-            base_unit = mpu * nyra_per_min
-            final_unit = base_unit * zone_factor(policy, zone) * rarity_factor(
-                policy, rarity
-            )
-            bundle_price = final_unit * bqty
+            if canonical_id == "BASIC:charcoal":
+                bundle_price = 0.10 * bqty
+            else:
+                base_unit = mpu * nyra_per_min
+                final_unit = base_unit * zone_factor(policy, zone) * rarity_factor(
+                    policy, rarity
+                )
+                bundle_price = final_unit * bqty
 
             # apply mass cap
             bundle_price = apply_mass_cap(policy, canonical_kind, bqty, bundle_price)
@@ -298,7 +305,7 @@ def main() -> None:
                 "zone": zone,
                 "rarity_tag": rarity,
                 "minutes_per_unit": mpu,
-                "calc": "model",
+                "calc": "fixed" if canonical_id == "BASIC:charcoal" else "model",
             }
             base_prices[canonical_id] = (bqty, bundle_price, meta)
 
@@ -325,9 +332,9 @@ def main() -> None:
             recipe = recipes[rk]
             inputs = list(recipe.get("inputs", []))
             if rk == "Ingredient_Bar_Mithril":
-                # add furnace fuel (any wood resource)
+                # add furnace fuel (charcoal)
                 inputs.append(
-                    {"type": "resource", "id": "Resource_Wood_Fuel", "qty": 1}
+                    {"type": "item", "id": "Ingredient_Charcoal", "qty": 1}
                 )
             if not inputs:
                 continue

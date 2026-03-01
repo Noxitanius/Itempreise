@@ -23,6 +23,8 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
     s = norm(asset_id)
 
     # Basics
+    if "ingredient_charcoal" in s:
+        return "BASIC:charcoal", "basic"
     if "ingredient_stick" in s:
         return "BASIC:stick", "basic"
     if "ingredient_fibre" in s or "ingredient_fiber" in s:

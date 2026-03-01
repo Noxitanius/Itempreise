@@ -268,7 +268,7 @@ Ingredient_Bolt_Linen,item,cloth_item,,1,common,cloth_processing
 Ingredient_Bolt_Silk,item,item_misc,,1,common,misc
 Ingredient_Bolt_Wool,item,item_misc,,1,common,misc
 Ingredient_Bone_Fragment,item,item_misc,,1,common,misc
-Ingredient_Charcoal,item,item_misc,,1,common,misc
+Ingredient_Charcoal,item,basic_item,,1,common,basic_gather
 Ingredient_Chitin_Sturdy,item,item_misc,,1,common,misc
 Ingredient_Crystal_Blue,item,crystal_item,,4,very_rare,crystal
 Ingredient_Crystal_Cyan,item,crystal_item,,4,very_rare,crystal

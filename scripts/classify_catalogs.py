@@ -119,6 +119,8 @@ def detect_category(kind: str, asset_id: str) -> str:
         return "cloth_item"
     if "ingredient_bolt" in s and ("linen" in s or "shadow" in s or "cinder" in s):
         return "cloth_item"
+    if "ingredient_charcoal" in s:
+        return "basic_item"
     if "ingredient_bar_" in s or "bar_" in s or "ingot" in s:
         return "bar_item"
     if "seed" in s:

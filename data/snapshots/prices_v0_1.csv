@@ -10,6 +10,7 @@ BAR:onyxium,bar,endgame_onyxium,4,mythic,0.4025,0.75,100,185.96,v0.1_model
 BAR:prisma,bar,endgame_prisma,4,mythic,0.575,0.75,100,265.65,v0.1_model
 BAR:silver,bar,ore_t2,2,uncommon,0.092,0.75,100,10.78,v0.1_model
 BAR:thorium,bar,ore_t2,2,uncommon,0.092,0.75,100,10.78,v0.1_model
+BASIC:charcoal,basic,basic_gather,1,common,0.0,0.75,1,0.1,v0.1_fixed
 CROP:apple,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model
 CROP:carrot,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model
 CROP:potato,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model
