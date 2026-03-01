@@ -152,8 +152,8 @@ function toCanonicalFromRecipeInput(inp) {
 }
 
 export default function App() {
-  const [pricesA, setPricesA] = useState(null); // v0.2
-  const [pricesB, setPricesB] = useState(null); // v0.3
+  const [pricesA, setPricesA] = useState(null); // v0.1
+  const [pricesB, setPricesB] = useState(null); // v0.2
   const [recipes, setRecipes] = useState(null);
   const [recipeKeyMap, setRecipeKeyMap] = useState(null);
   const [overrides, setOverrides] = useState(null); // { name, obj }
@@ -642,17 +642,14 @@ export default function App() {
         }
       }
 
-      // 4) Unchanged between A and B but telemetry expected changes
+      // 4) Unchanged between A and B (informational)
       if (r.price_a != null && r.price_b != null && Math.abs(r.price_b - r.price_a) < 1e-6) {
-        if ((calc || "").toLowerCase().includes("v0.3")) {
-          out.push({
-            severity: "info",
-            type: "unchanged",
-            canonical_id: id,
-            message:
-              "No delta A→B despite v0.3 calc (maybe same minutes, or floor dominates).",
-          });
-        }
+        out.push({
+          severity: "info",
+          type: "unchanged",
+          canonical_id: id,
+          message: "No delta A→B (same calc or floors dominating).",
+        });
       }
     }
 
@@ -781,7 +778,7 @@ export default function App() {
                 }}
               >
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 6 }}>Snapshot A (v0.2)</div>
+                  <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 6 }}>Snapshot A (v0.1)</div>
                   <label htmlFor="file-snap-a" style={fileLabelStyle}>
                     <span style={fileButtonStyle}>Datei auswählen</span>
                   </label>
@@ -789,7 +786,7 @@ export default function App() {
                   <div style={{ marginTop: 6, opacity: 0.8, fontSize: 12 }}>{pricesA ? pricesA.name : "Keine ausgewählt"}</div>
                 </div>
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 6 }}>Snapshot B (v0.3)</div>
+                  <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 6 }}>Snapshot B (v0.2)</div>
                   <label htmlFor="file-snap-b" style={fileLabelStyle}>
                     <span style={fileButtonStyle}>Datei auswählen</span>
                   </label>
