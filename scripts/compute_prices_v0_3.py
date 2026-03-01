@@ -30,7 +30,12 @@ def load_overrides(path: Path) -> dict:
     if not path.exists():
         return {}
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        obj = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(obj, dict) and "overrides" in obj and isinstance(obj["overrides"], dict):
+            return obj["overrides"]
+        if isinstance(obj, dict):
+            return obj
+        return {}
     except Exception as e:
         print(f"[WARN] Failed to load overrides: {path} ({e})")
         return {}

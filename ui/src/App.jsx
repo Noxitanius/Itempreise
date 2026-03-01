@@ -164,6 +164,20 @@ export default function App() {
     note: "",
   });
 
+  function normalizeOverridesPayload(obj) {
+    if (!obj || typeof obj !== "object") return { meta: {}, overrides: {} };
+    if (obj.overrides && typeof obj.overrides === "object") {
+      return { meta: obj.meta ?? {}, overrides: obj.overrides };
+    }
+    return { meta: {}, overrides: obj };
+  }
+
+  const overridesPayload = useMemo(
+    () => normalizeOverridesPayload(overrides?.obj),
+    [overrides]
+  );
+  const overridesMap = overridesPayload.overrides;
+
   const [selectedId, setSelectedId] = useState(null);
 
   const [search, setSearch] = useState("");
@@ -333,8 +347,7 @@ export default function App() {
 
   useEffect(() => {
     if (!selected) return;
-    const obj = overrides?.obj ?? {};
-    const cur = obj[selected.canonical_id] ?? {};
+    const cur = overridesMap[selected.canonical_id] ?? {};
     setOverrideDraft({
       price_nyra: cur.price_nyra ?? "",
       floor_nyra: cur.floor_nyra ?? "",
@@ -383,7 +396,8 @@ export default function App() {
   function upsertOverride() {
     if (!selected) return;
     const id = selected.canonical_id;
-    const obj = { ...(overrides?.obj ?? {}) };
+    const payload = normalizeOverridesPayload(overrides?.obj);
+    const obj = { ...payload.overrides };
 
     const cleanNum = (v) => {
       if (v === "" || v == null) return undefined;
@@ -407,12 +421,19 @@ export default function App() {
       obj[id] = entry;
     }
 
-    setOverrides({ name: "overrides.json", obj });
+    setOverrides({ name: "overrides.json", obj: { meta: payload.meta, overrides: obj } });
   }
 
   function downloadOverrides() {
-    const obj = overrides?.obj ?? {};
-    const text = JSON.stringify(obj, null, 2);
+    const payload = normalizeOverridesPayload(overrides?.obj);
+    const finalPayload = {
+      meta: {
+        author: payload.meta.author ?? "local",
+        timestamp: new Date().toISOString(),
+      },
+      overrides: payload.overrides,
+    };
+    const text = JSON.stringify(finalPayload, null, 2);
     const blob = new Blob([text], { type: "application/json;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -425,17 +446,33 @@ export default function App() {
   }
 
   function saveOverridesLocal() {
-    const obj = overrides?.obj ?? {};
-    localStorage.setItem("nyrell_overrides", JSON.stringify(obj));
-    setOverrides({ name: "overrides.local.json", obj });
+    const payload = normalizeOverridesPayload(overrides?.obj);
+    const finalPayload = {
+      meta: {
+        author: payload.meta.author ?? "local",
+        timestamp: new Date().toISOString(),
+      },
+      overrides: payload.overrides,
+    };
+    localStorage.setItem("nyrell_overrides", JSON.stringify(finalPayload));
+    setOverrides({ name: "overrides.local.json", obj: finalPayload });
   }
 
   function openOverrideIssue() {
-    const obj = overrides?.obj ?? {};
-    const json = JSON.stringify(obj, null, 2);
+    const obj = overridesMap;
+    const payload = {
+      meta: {
+        author: "TODO:dein_github_name",
+        timestamp: new Date().toISOString(),
+      },
+      overrides: obj,
+    };
+    const json = JSON.stringify(payload, null, 2);
     const title = encodeURIComponent("Override Update");
     const body = encodeURIComponent(
-      "Paste overrides below:\n\n```json\n" + json + "\n```"
+      "Bitte GitHub-Username eintragen und Overrides prüfen.\n\n```json\n" +
+        json +
+        "\n```"
     );
     const url =
       "https://github.com/Noxitanius/Itempreise/issues/new?labels=overrides&title=" +
@@ -1146,7 +1183,7 @@ export default function App() {
                     </div>
 
                     <div style={{ marginTop: 10, opacity: 0.7, fontSize: 12 }}>
-                      Loaded overrides: {overrides ? Object.keys(overrides.obj ?? {}).length : 0}
+                      Loaded overrides: {Object.keys(overridesMap ?? {}).length}
                     </div>
                   </div>
                 </div>

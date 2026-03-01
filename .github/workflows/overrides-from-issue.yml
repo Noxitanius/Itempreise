@@ -28,14 +28,30 @@ jobs:
             process.exit(1);
           }
           const jsonText = m[1].trim();
+          let obj;
           try {
-            JSON.parse(jsonText);
+            obj = JSON.parse(jsonText);
           } catch (e) {
             console.error('Invalid JSON in issue body:', e.message);
             process.exit(1);
           }
+          // Normalize to { meta, overrides }
+          if (!obj || typeof obj !== 'object') {
+            console.error('JSON must be an object.');
+            process.exit(1);
+          }
+          if (!obj.overrides) {
+            obj = {
+              meta: { author: 'unknown', timestamp: new Date().toISOString() },
+              overrides: obj,
+            };
+          }
+          if (!obj.overrides || typeof obj.overrides !== 'object') {
+            console.error('Invalid overrides payload: "overrides" must be an object.');
+            process.exit(1);
+          }
           fs.mkdirSync('data/overrides', { recursive: true });
-          fs.writeFileSync('data/overrides/overrides.json', jsonText + '\n', 'utf8');
+          fs.writeFileSync('data/overrides/overrides.json', JSON.stringify(obj, null, 2) + '\n', 'utf8');
           console.log('Wrote data/overrides/overrides.json');
           NODE
         env:
