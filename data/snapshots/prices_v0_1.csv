@@ -26,8 +26,6 @@ ORE_MATERIAL:cobalt,ore_material,ore_t3,3,rare,0.12,0.75,100,23.04,v0.1_model
 ORE_MATERIAL:copper,ore_material,ore_t1,1,common,0.05,0.75,100,3.75,v0.1_model
 ORE_MATERIAL:gold,ore_material,ore_t3,3,rare,0.12,0.75,100,23.04,v0.1_model
 ORE_MATERIAL:iron,ore_material,ore_t1,1,common,0.05,0.75,100,3.75,v0.1_model
-ORE_MATERIAL:mithril,ore_material,endgame_mithril,4,very_rare,0.25,0.75,100,86.63,v0.1_model
-ORE_MATERIAL:onyxium,ore_material,endgame_onyxium,4,mythic,0.35,0.75,100,161.7,v0.1_model
 ORE_MATERIAL:silver,ore_material,ore_t2,2,uncommon,0.08,0.75,100,9.38,v0.1_model
 ORE_MATERIAL:thorium,ore_material,ore_t2,2,uncommon,0.08,0.75,100,9.38,v0.1_model
 RESOURCE:wood,resource,wood_basic,1,common,0.01,0.75,1,0.01,v0.1_model

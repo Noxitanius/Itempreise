@@ -1659,8 +1659,6 @@ ORE_MATERIAL:cobalt,ore_material,7,3,rare,ore_t3
 ORE_MATERIAL:copper,ore_material,6,1,common,ore_t1
 ORE_MATERIAL:gold,ore_material,6,3,rare,ore_t3
 ORE_MATERIAL:iron,ore_material,7,1,common,ore_t1
-ORE_MATERIAL:mithril,ore_material,5,4,very_rare,endgame_mithril
-ORE_MATERIAL:onyxium,ore_material,5,4,mythic,endgame_onyxium
 ORE_MATERIAL:silver,ore_material,7,2,uncommon,ore_t2
 ORE_MATERIAL:thorium,ore_material,6,2,uncommon,ore_t2
 RESOURCE:Alpha_Meat,raw,1,1,common,misc

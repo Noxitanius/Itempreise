@@ -76,6 +76,8 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
 
     # Ore blocks/items: map to ORE_MATERIAL:<material>
     if category == "ore_block":
+        if material in ("mithril", "onyxium"):
+            return None
         if material:
             return f"ORE_MATERIAL:{material}", "ore_material"
         return "ORE_MATERIAL:unknown", "ore_material"
