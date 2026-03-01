@@ -82,7 +82,7 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
     if category == "ore_item":
         if material == "prisma":
             return None
-        if material == "onyxium":
+        if material in ("onyxium", "mithril"):
             return f"ORE_ITEM:{asset_id}", "ore_item"
         if material:
             return f"ORE_MATERIAL:{material}", "ore_material"

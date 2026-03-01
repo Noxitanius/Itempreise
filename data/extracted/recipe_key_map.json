@@ -9,6 +9,9 @@
   "ORE_ITEM:Ore_Onyxium": [
     "Ore_Onyxium"
   ],
+  "ORE_ITEM:Ore_Mithril": [
+    "Ore_Mithril"
+  ],
   "LEATHER:light": [
     "Ingredient_Leather_Light"
   ],

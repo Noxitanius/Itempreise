@@ -36,6 +36,7 @@ def main() -> None:
     # Ore items (craft/boss) – optional
     mapping["ORE_ITEM:Ore_Prisma"] = find_key_contains("ore", "prisma")
     mapping["ORE_ITEM:Ore_Onyxium"] = find_key_contains("ore", "onyxium")
+    mapping["ORE_ITEM:Ore_Mithril"] = find_key_contains("ore", "mithril")
 
     # Leather (only Ingredient_Leather_* recipes)
     mapping["LEATHER:light"] = find_key_startswith("Ingredient_Leather_Light")
