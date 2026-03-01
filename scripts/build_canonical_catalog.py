@@ -64,6 +64,14 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
             return "CLOTH:linen_scraps", "cloth"
         return "CLOTH:bolt", "cloth"
 
+    # Crystals & Gems
+    if "ingredient_crystal_" in s:
+        t = s.replace("ingredient_crystal_", "")
+        return f"CRYSTAL:{t}", "crystal"
+    if s.startswith("rock_gem_") or "rock_gem_" in s:
+        t = s.replace("rock_gem_", "")
+        return f"GEM:{t}", "gem"
+
     # Ore blocks/items: map to ORE_MATERIAL:<material>
     if category == "ore_block":
         if material:

@@ -101,6 +101,10 @@ def detect_category(kind: str, asset_id: str) -> str:
         return "resource_misc"
 
     # kind == "item"
+    if "ingredient_crystal_" in s:
+        return "crystal_item"
+    if s.startswith("rock_gem_") or "rock_gem_" in s:
+        return "gem_item"
     if "ingredient_stick" in s:
         return "basic_item"
     if "ingredient_fibre" in s or "ingredient_fiber" in s:
@@ -161,6 +165,8 @@ DEFAULT_PROFILES = {
     "hide_item": (None, None, "hide_drop"),
     "leather_item": (None, None, "leather_processing"),
     "cloth_item": (None, None, "cloth_processing"),
+    "crystal_item": (4, "very_rare", "crystal"),
+    "gem_item": (4, "very_rare", "gem"),
     "bar_item": (None, None, "bar_from_ore"),  # zone/rarity from material
     "seed_item": (1, "common", "seed"),
     "crop_item": (1, "common", "crop"),

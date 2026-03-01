@@ -128,6 +128,10 @@ def minutes_per_unit_v01(profile: str, canonical_kind: str, canonical_id: str) -
         return 0.02
     if canonical_kind == "cloth":
         return 0.015
+    if canonical_kind == "crystal":
+        return 0.04
+    if canonical_kind == "gem":
+        return 0.05
 
     return None
 
@@ -215,6 +219,12 @@ def canonical_for_input(inp: dict) -> str | None:
             if "linen" in s:
                 return "CLOTH:linen_scraps"
             return "CLOTH:bolt"
+        if s.startswith("ingredient_crystal_"):
+            t = s.replace("ingredient_crystal_", "")
+            return f"CRYSTAL:{t}"
+        if s.startswith("rock_gem_") or "rock_gem_" in s:
+            t = s.replace("rock_gem_", "")
+            return f"GEM:{t}"
         if s.startswith("ingredient_bar_"):
             mat = s.replace("ingredient_bar_", "")
             return f"BAR:{mat}"
