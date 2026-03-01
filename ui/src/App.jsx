@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import logo from "./assets/logo.svg";
+import logo from "./assets/logo.png";
 
 // ---- tiny CSV parser (good enough for our snapshots) ----
 function parseCSV(text) {
