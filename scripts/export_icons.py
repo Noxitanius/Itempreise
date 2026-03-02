@@ -16,6 +16,9 @@ def main() -> None:
         Path("data/raw/Assets/Common"),
         Path("data/raw/Assets/Client"),
         Path("data/raw/Assets"),
+        Path("data/raw/Endgame/Common"),
+        Path("data/raw/Endgame/Client"),
+        Path("data/raw/Endgame"),
     ]
 
     out_root = Path("ui/public")
