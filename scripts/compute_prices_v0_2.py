@@ -5,6 +5,16 @@ import yaml
 
 RARITY_ORDER = ["very_common", "common", "uncommon", "rare", "very_rare", "mythic"]
 
+MANUAL_BUNDLE_PRICES = {
+    "Ore_Cobalt": 9.0,  # per bundle (100)
+    "Ore_Gold": 12.0,  # per bundle (100)
+    "Ore_Silver": 12.0,  # per bundle (100)
+    "Ore_Adamantite": 20.0,  # per bundle (100)
+    "Ingredient_Hide_Light": 1.0 / 6.0,  # per hide
+    "Ingredient_Hide_Medium": 1.0 / 4.0,  # per hide
+    "Ingredient_Hide_Heavy": 1.0 / 2.0,  # per hide
+}
+
 
 def load_policy(path: Path) -> dict:
     return yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -406,6 +416,13 @@ def main() -> None:
             break
         for k, v in overrides.items():
             base_prices[k] = v
+
+    # Apply manual bundle prices (final override)
+    for cid, price in MANUAL_BUNDLE_PRICES.items():
+        if cid in base_prices:
+            bqty, _, meta = base_prices[cid]
+            meta = {**meta, "calc": "manual"}
+            base_prices[cid] = (bqty, float(price), meta)
 
     # Write snapshot
     with out_path.open("w", newline="", encoding="utf-8") as f:

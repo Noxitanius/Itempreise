@@ -4,6 +4,16 @@ import yaml
 
 RARITY_ORDER = ["very_common", "common", "uncommon", "rare", "very_rare", "mythic"]
 
+MANUAL_BUNDLE_PRICES = {
+    "Ore_Cobalt": 9.0,  # per bundle (100)
+    "Ore_Gold": 12.0,  # per bundle (100)
+    "Ore_Silver": 12.0,  # per bundle (100)
+    "Ore_Adamantite": 20.0,  # per bundle (100)
+    "Ingredient_Hide_Light": 1.0 / 6.0,  # per hide
+    "Ingredient_Hide_Medium": 1.0 / 4.0,  # per hide
+    "Ingredient_Hide_Heavy": 1.0 / 2.0,  # per hide
+}
+
 
 def load_policy(path: Path) -> dict:
     return yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -227,6 +237,8 @@ def main() -> None:
             bundle_price = apply_guardrails(
                 policy, canonical_id, canonical_kind, bqty, bundle_price
             )
+            if canonical_id in MANUAL_BUNDLE_PRICES:
+                bundle_price = float(MANUAL_BUNDLE_PRICES[canonical_id])
 
             rows_out.append(
                 {
