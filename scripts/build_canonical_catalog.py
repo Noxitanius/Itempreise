@@ -38,6 +38,32 @@ def canonicalize(row: dict, id_set: set[str]) -> tuple[str, str] | None:
         return None
     if s.startswith("plant_crop_") and s.endswith("_block"):
         return None
+    if asset_id == "Plant_Crop_Apple_Block_Wall":
+        return None
+    if asset_id == "Template_Crop_Berry_Block":
+        return None
+    if asset_id == "Essence":
+        return None
+    if asset_id == "Ingredient_Life_Essence_100":
+        return None
+    if asset_id.startswith("Rock_Crystal_") and (
+        asset_id.endswith("_Large")
+        or asset_id.endswith("_Medium")
+        or asset_id.endswith("_Small")
+    ):
+        return None
+    if asset_id.startswith("Cloth_Roof_"):
+        return None
+    if asset_id.startswith("Plant_Moss_Short_"):
+        return None
+    if asset_id.startswith("Plant_Moss_Rug_"):
+        return None
+    if asset_id.startswith("Plant_Moss_Cave"):
+        return None
+    if asset_id.startswith("Rock_Gold_Brick_") and asset_id != "Rock_Gold_Brick":
+        return None
+    if asset_id.startswith("Rock_Slate_Brick_") and asset_id != "Rock_Slate_Brick":
+        return None
     if s.startswith("ore_") and any(k in s for k in ("_basalt", "_magma", "_shale", "_slate", "_stone", "_volcanic", "_sandstone", "_calcite", "_mud")):
         return None
     if category == "ore_block" and material in ("mithril", "onyxium", "prisma"):

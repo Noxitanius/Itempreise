@@ -79,7 +79,6 @@ Ore_Gold,ore_material,ore_t3,3,rare,0.12,0.75,100,12.0,v0.1_model,Icons/ItemsGen
 Ore_Iron,ore_material,ore_t1,1,common,0.05,0.75,100,3.75,v0.1_model,Icons/ItemsGenerated/Ore_Iron.png
 Ore_Silver,ore_material,ore_t2,2,uncommon,0.08,0.75,100,12.0,v0.1_model,Icons/ItemsGenerated/Ore_Silver.png
 Ore_Thorium,ore_material,ore_t2,2,uncommon,0.08,0.75,100,9.38,v0.1_model,Icons/ItemsGenerated/Ore_Thorium.png
-Plant_Crop_Apple_Block_Wall,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Plant_Crop_Apple_Block_Wall.png
 Plant_Crop_Aubergine_Item,crop,misc,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Plant_Crop_Aubergine.png
 Plant_Crop_Carrot_Item,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Plant_Crop_Carrot.png
 Plant_Crop_Cauliflower_Item,crop,misc,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Plant_Crop_Cauliflower.png
@@ -157,9 +156,5 @@ Rock_Sandstone_White:2,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_mo
 Rock_Sandstone_White:3,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,
 Rock_Sandstone_White:4,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,
 Rock_Slate_Brick,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,Icons/ResourceTypes/Any_Rock.png
-Rock_Slate_Brick_Decorative,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,
-Rock_Slate_Brick_Ornate,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,
-Rock_Slate_Brick_Smooth,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,
-Template_Crop_Berry_Block,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Plant_Bush_Green_Berry.png
 Weapon_Bomb_Popberry,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Weapon_Bomb_Popberry.png
 Weapon_Bomb_Potion_Poison,potion,potion,2,uncommon,0.02,0.75,1,0.02,v0.1_model,Icons/ItemsGenerated/Weapon_Bomb_Potion_Poison.png
