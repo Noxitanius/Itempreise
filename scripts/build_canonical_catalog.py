@@ -5,7 +5,16 @@ from pathlib import Path
 ORE_RE = r"^Ore_([A-Za-z0-9]+)_"  # Ore_Cobalt_Basalt -> cobalt
 ING_BAR_RE = r"^Ingredient_Bar_([A-Za-z0-9]+)$"
 SEED_RE = r"seed"  # simple heuristic
-CROP_WORDS = ["wheat", "potato", "carrot", "chili", "apple", "sunflower"]
+CROP_WORDS = [
+    "wheat",
+    "potato",
+    "carrot",
+    "chili",
+    "apple",
+    "sunflower",
+    "berry",
+    "berries",
+]
 WOOD_WORDS = ["wood", "trunk", "log"]
 
 
@@ -31,6 +40,14 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
         return "BASIC:plant_fiber", "basic"
     if "ingredient_tree_sap" in s:
         return "BASIC:tree_sap", "basic"
+    if "ingredient_feather" in s or "ingredient_feathers" in s:
+        return "BASIC:feather_dark", "basic"
+    if "ingredient_powder_boom" in s:
+        return "BASIC:boom_powder", "basic"
+    if "ingredient_sac_venom" in s:
+        return "BASIC:venom_sac", "basic"
+    if "ingredient_voidheart" in s:
+        return "BASIC:voidheart", "basic"
 
     # Hides / Leather
     if "ingredient_hide" in s:
@@ -64,6 +81,14 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
             return "CLOTH:cinder_cloth", "cloth"
         if "linen" in s:
             return "CLOTH:linen_scraps", "cloth"
+        return "CLOTH:bolt", "cloth"
+    if "ingredient_bolt" in s and ("cotton" in s or "silk" in s or "wool" in s):
+        if "cotton" in s:
+            return "CLOTH:cotton", "cloth"
+        if "silk" in s:
+            return "CLOTH:silk", "cloth"
+        if "wool" in s:
+            return "CLOTH:wool", "cloth"
         return "CLOTH:bolt", "cloth"
 
     # Crystals & Gems
@@ -115,6 +140,8 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
     # Wood resources (any wood -> generic RESOURCE:wood)
     if kind == "resource" and category == "wood_resource":
         return "RESOURCE:wood", "resource"
+    if kind == "resource" and ("rock" in s or "rubble" in s):
+        return "MASS:stone", "mass"
 
     # Terrain mass blocks -> group by rough family
     if kind == "block" and category == "terrain_block":
@@ -144,6 +171,10 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
                 et = t
                 break
         return (f"ESSENCE:{et}" if et else "ESSENCE:generic", "essence")
+
+    # Potions
+    if s.startswith("potion_") or "potion_" in s:
+        return f"POTION:{asset_id}", "potion"
 
     # Armor / Weapon / Tool -> keep explicit ids but tag as gear
     if s.startswith("armor_") or "armor_" in s:

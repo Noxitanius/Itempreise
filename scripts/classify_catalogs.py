@@ -121,12 +121,22 @@ def detect_category(kind: str, asset_id: str) -> str:
         return "cloth_item"
     if "ingredient_charcoal" in s:
         return "basic_item"
+    if "ingredient_bolt_" in s:
+        return "cloth_item"
+    if "ingredient_fabric_scrap" in s:
+        return "cloth_item"
     if "ingredient_bar_" in s or "bar_" in s or "ingot" in s:
         return "bar_item"
     if "seed" in s:
         return "seed_item"
-    if any(x in s for x in ["wheat", "potato", "carrot", "chili", "apple", "sunflower"]):
+    if any(x in s for x in ["wheat", "potato", "carrot", "chili", "apple", "sunflower", "berry", "berries"]):
         return "crop_item"
+    if "ingredient_feather" in s or "ingredient_feathers" in s:
+        return "basic_item"
+    if "ingredient_powder" in s or "ingredient_sac_venom" in s or "ingredient_voidheart" in s:
+        return "basic_item"
+    if "potion_" in s:
+        return "potion_item"
     if s.startswith("armor_") or "armor_" in s:
         return "armor_item"
     if s.startswith("weapon_") or "weapon_" in s:
@@ -174,6 +184,7 @@ DEFAULT_PROFILES = {
     "bar_item": (None, None, "bar_from_ore"),  # zone/rarity from material
     "seed_item": (1, "common", "seed"),
     "crop_item": (1, "common", "crop"),
+    "potion_item": (2, "uncommon", "potion"),
     "armor_item": (None, None, "gear"),  # zone/rarity from material if present
     "weapon_item": (None, None, "gear"),
     "tool_item": (None, None, "gear"),
@@ -237,6 +248,12 @@ def assign_zone_rarity_profile(kind: str, category: str, material: str | None, a
             z, r, p = 2, "uncommon", "cloth_processing"
         elif "linen" in norm(asset_id):
             z, r, p = 1, "common", "cloth_processing"
+        elif "cotton" in norm(asset_id):
+            z, r, p = 1, "common", "cloth_processing"
+        elif "wool" in norm(asset_id):
+            z, r, p = 2, "uncommon", "cloth_processing"
+        elif "silk" in norm(asset_id):
+            z, r, p = 3, "rare", "cloth_processing"
 
     return z, r, p
 

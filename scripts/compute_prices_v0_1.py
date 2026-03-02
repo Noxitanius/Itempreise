@@ -91,6 +91,30 @@ def minutes_per_unit(profile: str, canonical_kind: str, canonical_id: str) -> fl
         ):
             return 0.01
         return 0.01
+    if canonical_kind == "basic":
+        return 0.01
+    if canonical_kind == "hide":
+        if profile == "hide_drop_t1":
+            return 0.03
+        if profile == "hide_drop_t2":
+            return 0.05
+        if profile == "hide_drop_t3":
+            return 0.07
+        if profile == "hide_drop_storm":
+            return 0.10
+        if profile == "hide_drop_prism":
+            return 0.15
+        return 0.06
+    if canonical_kind == "leather":
+        return 0.02
+    if canonical_kind == "cloth":
+        return 0.015
+    if canonical_kind == "crystal":
+        return 0.04
+    if canonical_kind == "gem":
+        return 0.05
+    if canonical_kind == "potion":
+        return 0.02
     if canonical_id == "BASIC:charcoal":
         return 0.0
 
@@ -152,6 +176,14 @@ def canonical_to_item_id(canonical_id: str) -> str | None:
         return "Ingredient_Fibre"
     if canonical_id == "BASIC:tree_sap":
         return "Ingredient_Tree_Sap"
+    if canonical_id == "BASIC:feather_dark":
+        return "Ingredient_Feathers_Dark"
+    if canonical_id == "BASIC:boom_powder":
+        return "Ingredient_Powder_Boom"
+    if canonical_id == "BASIC:venom_sac":
+        return "Ingredient_Sac_Venom"
+    if canonical_id == "BASIC:voidheart":
+        return "Ingredient_Voidheart"
     if canonical_id.startswith("HIDE:"):
         t = canonical_id.split(":", 1)[1]
         if t == "prism":
@@ -170,6 +202,12 @@ def canonical_to_item_id(canonical_id: str) -> str | None:
             return "Ingredient_Fabric_Scrap_Cindercloth"
         if t == "linen_scraps":
             return "Ingredient_Fabric_Scrap_Linen"
+        if t == "cotton":
+            return "Ingredient_Bolt_Cotton"
+        if t == "silk":
+            return "Ingredient_Bolt_Silk"
+        if t == "wool":
+            return "Ingredient_Bolt_Wool"
         return None
     if canonical_id.startswith("CROP:"):
         t = canonical_id.split(":", 1)[1]
@@ -185,8 +223,11 @@ def canonical_to_item_id(canonical_id: str) -> str | None:
             "onion": "Plant_Crop_Onion_Item",
             "lettuce": "Plant_Crop_Lettuce_Item",
             "rice": "Plant_Crop_Rice_Item",
+            "berry": "Plant_Fruit_Berries_Red",
         }
         return crop_map.get(t)
+    if canonical_id.startswith("POTION:"):
+        return canonical_id.split(":", 1)[1]
     if canonical_id == "RESOURCE:wood":
         return "Ingredient_Tree_Bark"
     if canonical_id.startswith("MASS:"):

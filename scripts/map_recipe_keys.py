@@ -35,7 +35,6 @@ def main() -> None:
     mapping["BAR:mithril"] = find_key_startswith("Ingredient_Bar_Mithril")
 
     # Ore items (craft/boss) – optional
-    mapping["ORE_ITEM:Ore_Prisma"] = find_key_contains("ore", "prisma")
     mapping["ORE_ITEM:Ore_Onyxium"] = find_key_contains("ore", "onyxium")
     mapping["ORE_ITEM:Ore_Mithril"] = find_key_contains("ore", "mithril")
 
@@ -50,6 +49,9 @@ def main() -> None:
     mapping["CLOTH:linen_scraps"] = find_key_contains("fabric", "scrap", "linen")
     mapping["CLOTH:shadow_weave"] = find_key_contains("fabric", "scrap", "shadow")
     mapping["CLOTH:cinder_cloth"] = find_key_contains("fabric", "scrap", "cinder")
+    mapping["CLOTH:cotton"] = find_key_startswith("Ingredient_Bolt_Cotton")
+    mapping["CLOTH:silk"] = find_key_startswith("Ingredient_Bolt_Silk")
+    mapping["CLOTH:wool"] = find_key_startswith("Ingredient_Bolt_Wool")
 
     out = Path("data/extracted/recipe_key_map.json")
     out.write_text(json.dumps(mapping, indent=2), encoding="utf-8")

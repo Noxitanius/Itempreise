@@ -8,7 +8,6 @@
   "BAR:mithril": [
     "Ingredient_Bar_Mithril"
   ],
-  "ORE_ITEM:Ore_Prisma": [],
   "ORE_ITEM:Ore_Onyxium": [
     "Ore_Onyxium"
   ],
@@ -32,5 +31,14 @@
   ],
   "CLOTH:linen_scraps": [],
   "CLOTH:shadow_weave": [],
-  "CLOTH:cinder_cloth": []
+  "CLOTH:cinder_cloth": [],
+  "CLOTH:cotton": [
+    "Ingredient_Bolt_Cotton"
+  ],
+  "CLOTH:silk": [
+    "Ingredient_Bolt_Silk"
+  ],
+  "CLOTH:wool": [
+    "Ingredient_Bolt_Wool"
+  ]
 }

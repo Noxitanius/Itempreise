@@ -141,6 +141,8 @@ def minutes_per_unit_v01(profile: str, canonical_kind: str, canonical_id: str) -
         return 0.04
     if canonical_kind == "gem":
         return 0.05
+    if canonical_kind == "potion":
+        return 0.02
     if canonical_id == "BASIC:charcoal":
         return 0.0
 
@@ -207,6 +209,14 @@ def canonical_to_item_id(canonical_id: str) -> str | None:
         return "Ingredient_Fibre"
     if canonical_id == "BASIC:tree_sap":
         return "Ingredient_Tree_Sap"
+    if canonical_id == "BASIC:feather_dark":
+        return "Ingredient_Feathers_Dark"
+    if canonical_id == "BASIC:boom_powder":
+        return "Ingredient_Powder_Boom"
+    if canonical_id == "BASIC:venom_sac":
+        return "Ingredient_Sac_Venom"
+    if canonical_id == "BASIC:voidheart":
+        return "Ingredient_Voidheart"
     if canonical_id.startswith("HIDE:"):
         t = canonical_id.split(":", 1)[1]
         if t == "prism":
@@ -225,6 +235,12 @@ def canonical_to_item_id(canonical_id: str) -> str | None:
             return "Ingredient_Fabric_Scrap_Cindercloth"
         if t == "linen_scraps":
             return "Ingredient_Fabric_Scrap_Linen"
+        if t == "cotton":
+            return "Ingredient_Bolt_Cotton"
+        if t == "silk":
+            return "Ingredient_Bolt_Silk"
+        if t == "wool":
+            return "Ingredient_Bolt_Wool"
         return None
     if canonical_id.startswith("CROP:"):
         t = canonical_id.split(":", 1)[1]
@@ -240,10 +256,15 @@ def canonical_to_item_id(canonical_id: str) -> str | None:
             "onion": "Plant_Crop_Onion_Item",
             "lettuce": "Plant_Crop_Lettuce_Item",
             "rice": "Plant_Crop_Rice_Item",
+            "berry": "Plant_Fruit_Berries_Red",
         }
         return crop_map.get(t)
+    if canonical_id.startswith("POTION:"):
+        return canonical_id.split(":", 1)[1]
     if canonical_id == "RESOURCE:wood":
         return "Ingredient_Tree_Bark"
+    if canonical_id.startswith("POTION:"):
+        return canonical_id.split(":", 1)[1]
     if canonical_id.startswith("MASS:"):
         t = canonical_id.split(":", 1)[1]
         if t and t != "other":
@@ -265,6 +286,20 @@ def recipe_key_candidates(canonical_id: str) -> list[str]:
         return [canonical_id.split(":", 1)[1]]
     if canonical_id.startswith("TOOL:"):
         return [canonical_id.split(":", 1)[1]]
+    if canonical_id.startswith("CLOTH:"):
+        t = canonical_id.split(":", 1)[1]
+        if t == "cotton":
+            return ["Ingredient_Bolt_Cotton"]
+        if t == "silk":
+            return ["Ingredient_Bolt_Silk"]
+        if t == "wool":
+            return ["Ingredient_Bolt_Wool"]
+        if t == "linen_scraps":
+            return ["Ingredient_Fabric_Scrap_Linen"]
+        if t == "shadow_weave":
+            return ["Ingredient_Fabric_Scrap_Shadoweave"]
+        if t == "cinder_cloth":
+            return ["Ingredient_Fabric_Scrap_Cindercloth"]
     # If later we support direct ore items as crafts:
     if canonical_id.startswith("ORE_ITEM:"):
         x = canonical_id.split(":", 1)[1]
@@ -286,6 +321,14 @@ def canonical_for_input(inp: dict) -> str | None:
             return "BASIC:plant_fiber"
         if s.startswith("ingredient_tree_sap"):
             return "BASIC:tree_sap"
+        if s.startswith("ingredient_feather") or s.startswith("ingredient_feathers"):
+            return "BASIC:feather_dark"
+        if s.startswith("ingredient_powder_boom"):
+            return "BASIC:boom_powder"
+        if s.startswith("ingredient_sac_venom"):
+            return "BASIC:venom_sac"
+        if s.startswith("ingredient_voidheart"):
+            return "BASIC:voidheart"
         if s.startswith("ingredient_hide"):
             if "prism" in s or "prisma" in s:
                 return "HIDE:prism"
@@ -316,6 +359,14 @@ def canonical_for_input(inp: dict) -> str | None:
             if "linen" in s:
                 return "CLOTH:linen_scraps"
             return "CLOTH:bolt"
+        if "ingredient_bolt" in s and ("cotton" in s or "silk" in s or "wool" in s):
+            if "cotton" in s:
+                return "CLOTH:cotton"
+            if "silk" in s:
+                return "CLOTH:silk"
+            if "wool" in s:
+                return "CLOTH:wool"
+            return "CLOTH:bolt"
         if s.startswith("ingredient_crystal_"):
             t = s.replace("ingredient_crystal_", "")
             return f"CRYSTAL:{t}"
@@ -325,17 +376,27 @@ def canonical_for_input(inp: dict) -> str | None:
         if s.startswith("ingredient_bar_"):
             mat = s.replace("ingredient_bar_", "")
             return f"BAR:{mat}"
+        if s.startswith("rock_") or s.startswith("rubble_"):
+            return "MASS:stone"
         if s.startswith("ore_"):
             # IMPORTANT: in your server, Prisma/Onyxium ore items exist but are NOT minable.
             # Still, recipe inputs can use Ore_Prisma, so we keep as ORE_ITEM:<id>
             # and later tie these to boss floors or to their own BOM if defined.
             return f"ORE_ITEM:{iid}"
+        if s.startswith("plant_fruit_berries"):
+            return "CROP:berry"
+        if s.startswith("potion_") or "potion_" in s:
+            return f"POTION:{iid}"
         if "essence" in s:
             return "ESSENCE:life"
         # fallback: treat as raw item
         return None
     elif t == "resource":
         rs = iid.lower()
+        if rs in ("rock", "rubble"):
+            return "MASS:stone"
+        if rs in ("wood_all", "wood_trunk", "wood"):
+            return "RESOURCE:wood"
         if rs.startswith("resource_wood_"):
             return "RESOURCE:wood"
         return f"RESOURCE:{iid}"
