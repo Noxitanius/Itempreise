@@ -189,6 +189,12 @@ def canonical_to_item_id(canonical_id: str) -> str | None:
         return crop_map.get(t)
     if canonical_id == "RESOURCE:wood":
         return "Ingredient_Tree_Bark"
+    if canonical_id.startswith("MASS:"):
+        t = canonical_id.split(":", 1)[1]
+        if t and t != "other":
+            if t == "magma":
+                return "Rock_Magma_Cooled"
+            return f"Rock_{t.capitalize()}"
     return None
 
 

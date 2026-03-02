@@ -372,6 +372,11 @@ export default function App() {
       : `${appBase}${p.replace(/^\/+/, "")}`;
   };
 
+  const iconFallbackForPath = (p) => {
+    if (!p) return "";
+    return `${appBase}${p.replace(/^\/+/, "")}`;
+  };
+
   useEffect(() => {
     if (!selected) return;
     const cur = overridesMap[selected.canonical_id] ?? {};
@@ -1009,7 +1014,15 @@ export default function App() {
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                     {iconUrl ? (
-                      <img src={iconUrl} alt="" style={{ width: 28, height: 28, borderRadius: 6 }} />
+                      <img
+                        src={iconUrl}
+                        alt=""
+                        style={{ width: 28, height: 28, borderRadius: 6 }}
+                        onError={(e) => {
+                          const fb = iconFallbackForPath(iconPath);
+                          if (fb && e.currentTarget.src !== fb) e.currentTarget.src = fb;
+                        }}
+                      />
                     ) : null}
                     <div style={{ fontSize: 16, fontWeight: 800 }}>{selected.canonical_id}</div>
                   </div>
@@ -1092,6 +1105,13 @@ export default function App() {
                                           src={iconForPath(priceLookup.get(i.canonical)?.icon_path)}
                                           alt=""
                                           style={{ width: 18, height: 18, borderRadius: 4 }}
+                                          onError={(e) => {
+                                            const fb = iconFallbackForPath(
+                                              priceLookup.get(i.canonical)?.icon_path
+                                            );
+                                            if (fb && e.currentTarget.src !== fb)
+                                              e.currentTarget.src = fb;
+                                          }}
                                         />
                                       ) : null}
                                       <div style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", fontSize: 12 }}>
@@ -1324,6 +1344,10 @@ export default function App() {
                             src={iconForPath(r.icon_path_b || r.icon_path_a)}
                             alt=""
                             style={{ width: 18, height: 18, borderRadius: 4 }}
+                            onError={(e) => {
+                              const fb = iconFallbackForPath(r.icon_path_b || r.icon_path_a);
+                              if (fb && e.currentTarget.src !== fb) e.currentTarget.src = fb;
+                            }}
                           />
                         ) : null}
                         <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", fontSize: 12 }}>
