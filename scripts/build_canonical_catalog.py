@@ -23,7 +23,7 @@ def norm(s: str) -> str:
 
 
 def canonicalize(row: dict) -> tuple[str, str] | None:
-    """return (canonical_key, canonical_kind)"""
+    """return (canonical_id, canonical_kind) where canonical_id == original asset id"""
     asset_id = row["id"]
     kind = row["kind"]
     category = row["category"]
@@ -31,167 +31,58 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
 
     s = norm(asset_id)
 
-    # Basics
-    if "ingredient_charcoal" in s:
-        return "BASIC:charcoal", "basic"
-    if "ingredient_stick" in s:
-        return "BASIC:stick", "basic"
-    if "ingredient_fibre" in s or "ingredient_fiber" in s:
-        return "BASIC:plant_fiber", "basic"
-    if "ingredient_tree_sap" in s:
-        return "BASIC:tree_sap", "basic"
-    if "ingredient_feather" in s or "ingredient_feathers" in s:
-        return "BASIC:feather_dark", "basic"
-    if "ingredient_powder_boom" in s:
-        return "BASIC:boom_powder", "basic"
-    if "ingredient_sac_venom" in s:
-        return "BASIC:venom_sac", "basic"
-    if "ingredient_voidheart" in s:
-        return "BASIC:voidheart", "basic"
+    # Exclusions
+    if category == "ore_block" and material in ("mithril", "onyxium", "prisma"):
+        return None
+    if category == "ore_item" and material == "prisma":
+        return None
 
-    # Hides / Leather
-    if "ingredient_hide" in s:
-        if "prism" in s or "prisma" in s:
-            return "HIDE:prism", "hide"
-        for t in ["storm", "heavy", "medium", "light"]:
-            if t in s:
-                return f"HIDE:{t}", "hide"
-        return "HIDE:generic", "hide"
-    if "ingredient_leather" in s:
-        if "prism" in s or "prisma" in s:
-            return "LEATHER:prism", "leather"
-        for t in ["storm", "heavy", "medium", "light"]:
-            if t in s:
-                return f"LEATHER:{t}", "leather"
-        return "LEATHER:generic", "leather"
-
-    # Cloth / Scraps
-    if "fabric_scrap" in s or "ingredient_fabric_scrap" in s:
-        if "shadow" in s:
-            return "CLOTH:shadow_weave", "cloth"
-        if "cinder" in s:
-            return "CLOTH:cinder_cloth", "cloth"
-        if "linen" in s:
-            return "CLOTH:linen_scraps", "cloth"
-        return "CLOTH:scraps", "cloth"
-    if "ingredient_bolt" in s and ("linen" in s or "shadow" in s or "cinder" in s):
-        if "shadow" in s:
-            return "CLOTH:shadow_weave", "cloth"
-        if "cinder" in s:
-            return "CLOTH:cinder_cloth", "cloth"
-        if "linen" in s:
-            return "CLOTH:linen_scraps", "cloth"
-        return "CLOTH:bolt", "cloth"
-    if "ingredient_bolt" in s and ("cotton" in s or "silk" in s or "wool" in s):
-        if "cotton" in s:
-            return "CLOTH:cotton", "cloth"
-        if "silk" in s:
-            return "CLOTH:silk", "cloth"
-        if "wool" in s:
-            return "CLOTH:wool", "cloth"
-        return "CLOTH:bolt", "cloth"
-
-    # Crystals & Gems
-    if "ingredient_crystal_" in s:
-        t = s.replace("ingredient_crystal_", "")
-        return f"CRYSTAL:{t}", "crystal"
-    if s.startswith("rock_gem_") or "rock_gem_" in s:
-        t = s.replace("rock_gem_", "")
-        return f"GEM:{t}", "gem"
-
-    # Ore blocks/items: map to ORE_MATERIAL:<material>
-    if category == "ore_block":
-        if material in ("mithril", "onyxium"):
-            return None
-        if material:
-            return f"ORE_MATERIAL:{material}", "ore_material"
-        return "ORE_MATERIAL:unknown", "ore_material"
-
-    # Ore items: keep craft-only ores as ORE_ITEM, otherwise as material
-    if category == "ore_item":
-        if material == "prisma":
-            return None
-        if material in ("onyxium", "mithril"):
-            return f"ORE_ITEM:{asset_id}", "ore_item"
-        if material:
-            return f"ORE_MATERIAL:{material}", "ore_material"
-        return f"ORE_ITEM:{asset_id}", "ore_item"
-
-    # Bars
+    # Kind mapping (keep original ids)
     if category == "bar_item":
-        if material:
-            return f"BAR:{material}", "bar"
-        return "BAR:generic", "bar"
-
-    # Seeds
+        return asset_id, "bar"
+    if category == "ore_block":
+        return asset_id, "ore_material"
+    if category == "ore_item":
+        if material in ("onyxium", "mithril"):
+            return asset_id, "ore_item"
+        return asset_id, "ore_material"
     if category == "seed_item":
-        # keep specific seeds as-is for now
-        return f"SEED:{asset_id}", "seed"
-
-    # Crops (best effort)
+        return asset_id, "seed"
     if category == "crop_item":
-        m = None
-        for w in CROP_WORDS:
-            if w in s:
-                m = w
-                break
-        return (f"CROP:{m}" if m else f"CROP:{asset_id}", "crop")
+        return asset_id, "crop"
+    if category == "basic_item":
+        return asset_id, "basic"
+    if category == "hide_item":
+        return asset_id, "hide"
+    if category == "leather_item":
+        return asset_id, "leather"
+    if category == "cloth_item":
+        return asset_id, "cloth"
+    if category == "crystal_item":
+        return asset_id, "crystal"
+    if category == "gem_item":
+        return asset_id, "gem"
+    if category == "potion_item":
+        return asset_id, "potion"
+    if category in ("armor_item", "weapon_item", "tool_item"):
+        return asset_id, "gear"
 
-    # Wood resources (any wood -> generic RESOURCE:wood)
-    if kind == "resource" and category == "wood_resource":
-        return "RESOURCE:wood", "resource"
-    if kind == "resource" and ("rock" in s or "rubble" in s):
-        return "MASS:stone", "mass"
-
-    # Terrain mass blocks -> group by rough family
+    # Resources / blocks
+    if kind == "resource":
+        if category == "wood_resource":
+            return asset_id, "resource"
+        if "rock" in s or "rubble" in s:
+            return asset_id, "mass"
+        return asset_id, "resource"
     if kind == "block" and category == "terrain_block":
-        # group common families to reduce noise
-        fam = None
-        for w in [
-            "stone",
-            "basalt",
-            "shale",
-            "slate",
-            "sandstone",
-            "marble",
-            "volcanic",
-            "magma",
-        ]:
-            if w in s:
-                fam = w
-                break
-        return (f"MASS:{fam}" if fam else "MASS:other", "mass")
+        return asset_id, "mass"
 
-    # Essences (best effort): Ingredient_Void_Essence / Essence_Life etc.
+    # Essences
     if "essence" in s:
-        # try detect type
-        et = None
-        for t in ["life", "void", "fire", "water", "ice", "earth", "air", "storm"]:
-            if t in s:
-                et = t
-                break
-        return (f"ESSENCE:{et}" if et else "ESSENCE:generic", "essence")
+        return asset_id, "essence"
 
-    # Potions
-    if s.startswith("potion_") or "potion_" in s:
-        return f"POTION:{asset_id}", "potion"
-
-    # Armor / Weapon / Tool -> keep explicit ids but tag as gear
-    if s.startswith("armor_") or "armor_" in s:
-        return f"ARMOR:{asset_id}", "gear"
-    if s.startswith("weapon_") or "weapon_" in s:
-        return f"WEAPON:{asset_id}", "gear"
-    if s.startswith("tool_") or "tool_" in s:
-        return f"TOOL:{asset_id}", "gear"
-    if s.startswith("endgame_"):
-        # check tools first to avoid matching "axe" inside "pickaxe"
-        if any(x in s for x in ["pickaxe", "shovel", "hammer", "sickle", "saw"]):
-            return f"TOOL:{asset_id}", "gear"
-        if any(x in s for x in ["sword", "dagger", "daggers", "spear", "bow", "staff", "mace", "axe"]):
-            return f"WEAPON:{asset_id}", "gear"
-
-    # Default: keep as-is (we will refine later)
-    return f"{kind.upper()}:{asset_id}", "raw"
+    # Default: keep as-is
+    return asset_id, "raw"
 
 
 def main() -> None:

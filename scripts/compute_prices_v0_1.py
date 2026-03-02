@@ -29,9 +29,9 @@ def zone_factor(policy: dict, zone: int) -> float:
 def bundle_for(canonical_kind: str, canonical_id: str) -> int:
     if canonical_kind == "mass":
         return 1000
-    if canonical_id.startswith("ORE_MATERIAL:") or canonical_id.startswith("BAR:"):
+    if canonical_kind in ("ore_material", "bar", "ore_item"):
         return 100
-    if canonical_id.startswith("CROP:"):
+    if canonical_kind == "crop":
         return 1000
     return 1
 
@@ -40,7 +40,7 @@ def minutes_per_unit(profile: str, canonical_kind: str, canonical_id: str) -> fl
     # v0.1: only price the economically meaningful groups; leave the rest unpriced
     if canonical_kind == "mass":
         return 0.002
-    if canonical_id.startswith("ORE_MATERIAL:"):
+    if canonical_kind == "ore_material":
         # derive by profile
         if profile == "ore_t1":
             return 0.05
@@ -59,7 +59,7 @@ def minutes_per_unit(profile: str, canonical_kind: str, canonical_id: str) -> fl
         # unknown ore
         return 0.10
 
-    if canonical_id.startswith("BAR:"):
+    if canonical_kind == "bar":
         # bars track their material tier; use same as ore tier but slightly higher (processing)
         bump = 1.15
         base = 0.10
@@ -79,7 +79,7 @@ def minutes_per_unit(profile: str, canonical_kind: str, canonical_id: str) -> fl
             base = 0.50
         return base * bump
 
-    if canonical_id.startswith("CROP:"):
+    if canonical_kind == "crop":
         return 0.012
 
     if canonical_kind in ("resource",):
@@ -115,7 +115,7 @@ def minutes_per_unit(profile: str, canonical_kind: str, canonical_id: str) -> fl
         return 0.05
     if canonical_kind == "potion":
         return 0.02
-    if canonical_id == "BASIC:charcoal":
+    if canonical_id.lower() == "ingredient_charcoal":
         return 0.0
 
     # leave raw/misc unpriced for now
@@ -132,111 +132,20 @@ def apply_guardrails(
         return min(price, cap)
 
     # Endgame floors (per 100)
-    if canonical_id.startswith("BAR:") or canonical_id.startswith("ORE_MATERIAL:"):
-        key = canonical_id.split(":", 1)[1].lower()
-        if key == "mithril":
+    if canonical_kind in ("bar", "ore_material"):
+        s = canonical_id.lower()
+        if "mithril" in s:
             return max(price, 40.0)
-        if key == "onyxium":
+        if "onyxium" in s:
             return max(price, 80.0)
-        if key == "prisma":
+        if "prisma" in s or "prism" in s:
             return max(price, 140.0)
 
     return price
 
 
 def canonical_to_item_id(canonical_id: str) -> str | None:
-    if canonical_id.startswith("BAR:"):
-        mat = canonical_id.split(":", 1)[1]
-        return f"Ingredient_Bar_{mat.capitalize()}"
-    if canonical_id.startswith("ORE_ITEM:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("ORE_MATERIAL:"):
-        mat = canonical_id.split(":", 1)[1]
-        return f"Ore_{mat.capitalize()}"
-    if canonical_id.startswith("ARMOR:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("WEAPON:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("TOOL:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("CRYSTAL:"):
-        t = canonical_id.split(":", 1)[1]
-        return f"Ingredient_Crystal_{t.capitalize()}"
-    if canonical_id.startswith("GEM:"):
-        t = canonical_id.split(":", 1)[1]
-        return f"Rock_Gem_{t.capitalize()}"
-    if canonical_id.startswith("ESSENCE:"):
-        t = canonical_id.split(":", 1)[1]
-        return f"Ingredient_{t.capitalize()}_Essence"
-    if canonical_id == "BASIC:charcoal":
-        return "Ingredient_Charcoal"
-    if canonical_id == "BASIC:stick":
-        return "Ingredient_Stick"
-    if canonical_id == "BASIC:plant_fiber":
-        return "Ingredient_Fibre"
-    if canonical_id == "BASIC:tree_sap":
-        return "Ingredient_Tree_Sap"
-    if canonical_id == "BASIC:feather_dark":
-        return "Ingredient_Feathers_Dark"
-    if canonical_id == "BASIC:boom_powder":
-        return "Ingredient_Powder_Boom"
-    if canonical_id == "BASIC:venom_sac":
-        return "Ingredient_Sac_Venom"
-    if canonical_id == "BASIC:voidheart":
-        return "Ingredient_Voidheart"
-    if canonical_id.startswith("HIDE:"):
-        t = canonical_id.split(":", 1)[1]
-        if t == "prism":
-            return "Ingredient_Hide_Prismic"
-        return f"Ingredient_Hide_{t.capitalize()}"
-    if canonical_id.startswith("LEATHER:"):
-        t = canonical_id.split(":", 1)[1]
-        if t == "prism":
-            return "Ingredient_Leather_Prismic"
-        return f"Ingredient_Leather_{t.capitalize()}"
-    if canonical_id.startswith("CLOTH:"):
-        t = canonical_id.split(":", 1)[1]
-        if t == "shadow_weave":
-            return "Ingredient_Fabric_Scrap_Shadoweave"
-        if t == "cinder_cloth":
-            return "Ingredient_Fabric_Scrap_Cindercloth"
-        if t == "linen_scraps":
-            return "Ingredient_Fabric_Scrap_Linen"
-        if t == "cotton":
-            return "Ingredient_Bolt_Cotton"
-        if t == "silk":
-            return "Ingredient_Bolt_Silk"
-        if t == "wool":
-            return "Ingredient_Bolt_Wool"
-        return None
-    if canonical_id.startswith("CROP:"):
-        t = canonical_id.split(":", 1)[1]
-        crop_map = {
-            "potato": "Plant_Crop_Potato_Item",
-            "wheat": "Plant_Crop_Wheat_Item",
-            "carrot": "Plant_Crop_Carrot_Item",
-            "chili": "Plant_Crop_Chilli_Item",
-            "corn": "Plant_Crop_Corn_Item",
-            "tomato": "Plant_Crop_Tomato_Item",
-            "pumpkin": "Plant_Crop_Pumpkin_Item",
-            "turnip": "Plant_Crop_Turnip_Item",
-            "onion": "Plant_Crop_Onion_Item",
-            "lettuce": "Plant_Crop_Lettuce_Item",
-            "rice": "Plant_Crop_Rice_Item",
-            "berry": "Plant_Fruit_Berries_Red",
-        }
-        return crop_map.get(t)
-    if canonical_id.startswith("POTION:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id == "RESOURCE:wood":
-        return "Ingredient_Tree_Bark"
-    if canonical_id.startswith("MASS:"):
-        t = canonical_id.split(":", 1)[1]
-        if t and t != "other":
-            if t == "magma":
-                return "Rock_Magma_Cooled"
-            return f"Rock_{t.capitalize()}"
-    return None
+    return canonical_id
 
 
 def main() -> None:
@@ -267,11 +176,11 @@ def main() -> None:
 
             bqty = bundle_for(canonical_kind, canonical_id)
             mpu = minutes_per_unit(profile, canonical_kind, canonical_id)
-            if mpu is None and canonical_id != "BASIC:charcoal":
+            if mpu is None and canonical_id.lower() != "ingredient_charcoal":
                 # skip unpriced entries in v0.1
                 continue
 
-            if canonical_id == "BASIC:charcoal":
+            if canonical_id.lower() == "ingredient_charcoal":
                 bundle_price = 0.10 * bqty
             else:
                 # price for ONE unit

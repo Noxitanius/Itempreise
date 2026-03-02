@@ -57,11 +57,9 @@ def zone_factor(policy: dict, zone: int) -> float:
 def bundle_for(canonical_kind: str, canonical_id: str) -> int:
     if canonical_kind == "mass":
         return 1000
-    if canonical_id.startswith("ORE_MATERIAL:") or canonical_id.startswith("BAR:"):
+    if canonical_kind in ("ore_material", "bar", "ore_item"):
         return 100
-    if canonical_id.startswith("ORE_ITEM:"):
-        return 100
-    if canonical_id.startswith("CROP:") or canonical_id.startswith("ESSENCE:"):
+    if canonical_kind in ("crop", "essence"):
         return 1000
     return 1
 
@@ -71,7 +69,7 @@ def minutes_per_unit_v01(profile: str, canonical_kind: str, canonical_id: str) -
     if canonical_kind == "mass":
         return 0.002
 
-    if canonical_id.startswith("ORE_MATERIAL:"):
+    if canonical_kind == "ore_material":
         if profile == "ore_t1":
             return 0.05
         if profile == "ore_t2":
@@ -88,7 +86,7 @@ def minutes_per_unit_v01(profile: str, canonical_kind: str, canonical_id: str) -
             return 0.50
         return 0.10
 
-    if canonical_id.startswith("BAR:"):
+    if canonical_kind == "bar":
         bump = 1.15
         base = 0.10
         if profile == "ore_t1":
@@ -107,11 +105,11 @@ def minutes_per_unit_v01(profile: str, canonical_kind: str, canonical_id: str) -
             base = 0.50
         return base * bump
 
-    if canonical_id.startswith("CROP:"):
+    if canonical_kind == "crop":
         # v0.2: we still compute raw time but apply damping later
         return 0.012
 
-    if canonical_id.startswith("ESSENCE:"):
+    if canonical_kind == "essence":
         # Essence raw model: tuned later via telemetry, damping applied later
         return 0.0075
 
@@ -143,7 +141,7 @@ def minutes_per_unit_v01(profile: str, canonical_kind: str, canonical_id: str) -
         return 0.05
     if canonical_kind == "potion":
         return 0.02
-    if canonical_id == "BASIC:charcoal":
+    if canonical_id.lower() == "ingredient_charcoal":
         return 0.0
 
     return None
@@ -160,151 +158,31 @@ def craft_markup(policy: dict) -> float:
     return float(policy.get("crafting", {}).get("craft_markup", 1.10))
 
 
-def farm_damp(policy: dict, canonical_id: str) -> float:
+def farm_damp(policy: dict, canonical_kind: str) -> float:
     # optional configurable dampening
     fd = policy.get("crafting", {}).get("farm_dampening", None)
     if isinstance(fd, dict):
-        if canonical_id.startswith("CROP:"):
+        if canonical_kind == "crop":
             return float(fd.get("crop", 0.35))
-        if canonical_id.startswith("ESSENCE:"):
+        if canonical_kind == "essence":
             return float(fd.get("essence", 0.60))
         return 1.0
     # If you did not add farm_dampening block, use hard defaults:
-    if canonical_id.startswith("CROP:"):
+    if canonical_kind == "crop":
         return 0.35
-    if canonical_id.startswith("ESSENCE:"):
+    if canonical_kind == "essence":
         return 0.60
     return 1.0
 
 
 def canonical_to_item_id(canonical_id: str) -> str | None:
-    if canonical_id.startswith("BAR:"):
-        mat = canonical_id.split(":", 1)[1]
-        return f"Ingredient_Bar_{mat.capitalize()}"
-    if canonical_id.startswith("ORE_ITEM:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("ORE_MATERIAL:"):
-        mat = canonical_id.split(":", 1)[1]
-        return f"Ore_{mat.capitalize()}"
-    if canonical_id.startswith("ARMOR:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("WEAPON:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("TOOL:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("CRYSTAL:"):
-        t = canonical_id.split(":", 1)[1]
-        return f"Ingredient_Crystal_{t.capitalize()}"
-    if canonical_id.startswith("GEM:"):
-        t = canonical_id.split(":", 1)[1]
-        return f"Rock_Gem_{t.capitalize()}"
-    if canonical_id.startswith("ESSENCE:"):
-        t = canonical_id.split(":", 1)[1]
-        return f"Ingredient_{t.capitalize()}_Essence"
-    if canonical_id == "BASIC:charcoal":
-        return "Ingredient_Charcoal"
-    if canonical_id == "BASIC:stick":
-        return "Ingredient_Stick"
-    if canonical_id == "BASIC:plant_fiber":
-        return "Ingredient_Fibre"
-    if canonical_id == "BASIC:tree_sap":
-        return "Ingredient_Tree_Sap"
-    if canonical_id == "BASIC:feather_dark":
-        return "Ingredient_Feathers_Dark"
-    if canonical_id == "BASIC:boom_powder":
-        return "Ingredient_Powder_Boom"
-    if canonical_id == "BASIC:venom_sac":
-        return "Ingredient_Sac_Venom"
-    if canonical_id == "BASIC:voidheart":
-        return "Ingredient_Voidheart"
-    if canonical_id.startswith("HIDE:"):
-        t = canonical_id.split(":", 1)[1]
-        if t == "prism":
-            return "Ingredient_Hide_Prismic"
-        return f"Ingredient_Hide_{t.capitalize()}"
-    if canonical_id.startswith("LEATHER:"):
-        t = canonical_id.split(":", 1)[1]
-        if t == "prism":
-            return "Ingredient_Leather_Prismic"
-        return f"Ingredient_Leather_{t.capitalize()}"
-    if canonical_id.startswith("CLOTH:"):
-        t = canonical_id.split(":", 1)[1]
-        if t == "shadow_weave":
-            return "Ingredient_Fabric_Scrap_Shadoweave"
-        if t == "cinder_cloth":
-            return "Ingredient_Fabric_Scrap_Cindercloth"
-        if t == "linen_scraps":
-            return "Ingredient_Fabric_Scrap_Linen"
-        if t == "cotton":
-            return "Ingredient_Bolt_Cotton"
-        if t == "silk":
-            return "Ingredient_Bolt_Silk"
-        if t == "wool":
-            return "Ingredient_Bolt_Wool"
-        return None
-    if canonical_id.startswith("CROP:"):
-        t = canonical_id.split(":", 1)[1]
-        crop_map = {
-            "potato": "Plant_Crop_Potato_Item",
-            "wheat": "Plant_Crop_Wheat_Item",
-            "carrot": "Plant_Crop_Carrot_Item",
-            "chili": "Plant_Crop_Chilli_Item",
-            "corn": "Plant_Crop_Corn_Item",
-            "tomato": "Plant_Crop_Tomato_Item",
-            "pumpkin": "Plant_Crop_Pumpkin_Item",
-            "turnip": "Plant_Crop_Turnip_Item",
-            "onion": "Plant_Crop_Onion_Item",
-            "lettuce": "Plant_Crop_Lettuce_Item",
-            "rice": "Plant_Crop_Rice_Item",
-            "berry": "Plant_Fruit_Berries_Red",
-        }
-        return crop_map.get(t)
-    if canonical_id.startswith("POTION:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id == "RESOURCE:wood":
-        return "Ingredient_Tree_Bark"
-    if canonical_id.startswith("POTION:"):
-        return canonical_id.split(":", 1)[1]
-    if canonical_id.startswith("MASS:"):
-        t = canonical_id.split(":", 1)[1]
-        if t and t != "other":
-            if t == "magma":
-                return "Rock_Magma_Cooled"
-            return f"Rock_{t.capitalize()}"
-    return None
+    # canonical_id now equals the original item id
+    return canonical_id
 
 
 def recipe_key_candidates(canonical_id: str) -> list[str]:
-    # Map canonical ids to likely recipe keys (filename stems)
-    # BAR:prisma -> Ingredient_Bar_Prisma
-    if canonical_id.startswith("BAR:"):
-        mat = canonical_id.split(":", 1)[1]
-        return [f"Ingredient_Bar_{mat.capitalize()}", f"Ingredient_Bar_{mat.upper()}"]
-    if canonical_id.startswith("ARMOR:"):
-        return [canonical_id.split(":", 1)[1]]
-    if canonical_id.startswith("WEAPON:"):
-        return [canonical_id.split(":", 1)[1]]
-    if canonical_id.startswith("TOOL:"):
-        return [canonical_id.split(":", 1)[1]]
-    if canonical_id.startswith("CLOTH:"):
-        t = canonical_id.split(":", 1)[1]
-        if t == "cotton":
-            return ["Ingredient_Bolt_Cotton"]
-        if t == "silk":
-            return ["Ingredient_Bolt_Silk"]
-        if t == "wool":
-            return ["Ingredient_Bolt_Wool"]
-        if t == "linen_scraps":
-            return ["Ingredient_Fabric_Scrap_Linen"]
-        if t == "shadow_weave":
-            return ["Ingredient_Fabric_Scrap_Shadoweave"]
-        if t == "cinder_cloth":
-            return ["Ingredient_Fabric_Scrap_Cindercloth"]
-    # If later we support direct ore items as crafts:
-    if canonical_id.startswith("ORE_ITEM:"):
-        x = canonical_id.split(":", 1)[1]
-        return [x]
-    return []
+    # canonical_id is already the item id
+    return [canonical_id]
 
 
 def canonical_for_input(inp: dict) -> str | None:
@@ -312,107 +190,9 @@ def canonical_for_input(inp: dict) -> str | None:
     t = inp["type"]
     iid = inp["id"]
     if t == "item":
-        s = iid.lower()
-        if s.startswith("ingredient_stick"):
-            return "BASIC:stick"
-        if s.startswith("ingredient_charcoal"):
-            return "BASIC:charcoal"
-        if s.startswith("ingredient_fibre") or s.startswith("ingredient_fiber"):
-            return "BASIC:plant_fiber"
-        if s.startswith("ingredient_tree_sap"):
-            return "BASIC:tree_sap"
-        if s.startswith("ingredient_feather") or s.startswith("ingredient_feathers"):
-            return "BASIC:feather_dark"
-        if s.startswith("ingredient_powder_boom"):
-            return "BASIC:boom_powder"
-        if s.startswith("ingredient_sac_venom"):
-            return "BASIC:venom_sac"
-        if s.startswith("ingredient_voidheart"):
-            return "BASIC:voidheart"
-        if s.startswith("ingredient_hide"):
-            if "prism" in s or "prisma" in s:
-                return "HIDE:prism"
-            for t in ["storm", "heavy", "medium", "light"]:
-                if t in s:
-                    return f"HIDE:{t}"
-            return "HIDE:generic"
-        if s.startswith("ingredient_leather"):
-            if "prism" in s or "prisma" in s:
-                return "LEATHER:prism"
-            for t in ["storm", "heavy", "medium", "light"]:
-                if t in s:
-                    return f"LEATHER:{t}"
-            return "LEATHER:generic"
-        if "fabric_scrap" in s or "ingredient_fabric_scrap" in s:
-            if "shadow" in s:
-                return "CLOTH:shadow_weave"
-            if "cinder" in s:
-                return "CLOTH:cinder_cloth"
-            if "linen" in s:
-                return "CLOTH:linen_scraps"
-            return "CLOTH:scraps"
-        if "ingredient_bolt" in s and ("linen" in s or "shadow" in s or "cinder" in s):
-            if "shadow" in s:
-                return "CLOTH:shadow_weave"
-            if "cinder" in s:
-                return "CLOTH:cinder_cloth"
-            if "linen" in s:
-                return "CLOTH:linen_scraps"
-            return "CLOTH:bolt"
-        if "ingredient_bolt" in s and ("cotton" in s or "silk" in s or "wool" in s):
-            if "cotton" in s:
-                return "CLOTH:cotton"
-            if "silk" in s:
-                return "CLOTH:silk"
-            if "wool" in s:
-                return "CLOTH:wool"
-            return "CLOTH:bolt"
-        if s.startswith("ingredient_crystal_"):
-            t = s.replace("ingredient_crystal_", "")
-            return f"CRYSTAL:{t}"
-        if s.startswith("rock_gem_") or "rock_gem_" in s:
-            t = s.replace("rock_gem_", "")
-            return f"GEM:{t}"
-        if s.startswith("ingredient_bar_"):
-            mat = s.replace("ingredient_bar_", "")
-            return f"BAR:{mat}"
-        if s.startswith("rock_") or s.startswith("rubble_"):
-            return "MASS:stone"
-        if s.startswith("ore_"):
-            # Map vanilla ores to ORE_MATERIAL, endgame ores to ORE_ITEM
-            if "onyxium" in s or "mithril" in s:
-                return f"ORE_ITEM:{iid}"
-            for mat in [
-                "copper",
-                "iron",
-                "thorium",
-                "cobalt",
-                "silver",
-                "gold",
-                "adamantite",
-                "bronze",
-                "steel",
-            ]:
-                if mat in s:
-                    return f"ORE_MATERIAL:{mat}"
-            return f"ORE_ITEM:{iid}"
-        if s.startswith("plant_fruit_berries"):
-            return "CROP:berry"
-        if s.startswith("potion_") or "potion_" in s:
-            return f"POTION:{iid}"
-        if "essence" in s:
-            return "ESSENCE:life"
-        # fallback: treat as raw item
-        return None
+        return iid
     elif t == "resource":
-        rs = iid.lower()
-        if rs in ("rock", "rubble"):
-            return "MASS:stone"
-        if rs in ("wood_all", "wood_trunk", "wood"):
-            return "RESOURCE:wood"
-        if rs.startswith("resource_wood_"):
-            return "RESOURCE:wood"
-        return f"RESOURCE:{iid}"
+        return iid
     return None
 
 
@@ -449,10 +229,10 @@ def main() -> None:
             bqty = bundle_for(canonical_kind, canonical_id)
             mpu = minutes_per_unit_v01(profile, canonical_kind, canonical_id)
 
-            if mpu is None and canonical_id != "BASIC:charcoal":
+            if mpu is None and canonical_id.lower() != "ingredient_charcoal":
                 continue
 
-            if canonical_id == "BASIC:charcoal":
+            if canonical_id.lower() == "ingredient_charcoal":
                 bundle_price = 0.10 * bqty
             else:
                 base_unit = mpu * nyra_per_min
@@ -465,7 +245,7 @@ def main() -> None:
             bundle_price = apply_mass_cap(policy, canonical_kind, bqty, bundle_price)
 
             # apply farm dampening
-            bundle_price *= farm_damp(policy, canonical_id)
+            bundle_price *= farm_damp(policy, canonical_kind)
 
             meta = {
                 "canonical_kind": canonical_kind,
@@ -473,7 +253,7 @@ def main() -> None:
                 "zone": zone,
                 "rarity_tag": rarity,
                 "minutes_per_unit": mpu,
-                "calc": "fixed" if canonical_id == "BASIC:charcoal" else "model",
+                "calc": "fixed" if canonical_id.lower() == "ingredient_charcoal" else "model",
                 "icon_path": icons.get(canonical_to_item_id(canonical_id) or "", ""),
             }
             base_prices[canonical_id] = (bqty, bundle_price, meta)
@@ -510,12 +290,11 @@ def main() -> None:
                     inputs.append(
                         {"type": "item", "id": "Ingredient_Charcoal", "qty": 1}
                     )
-            elif canonical_id.startswith("BAR:"):
+            elif canonical_kind == "bar":
                 # Fallback: vanilla ore -> bar processing (recipe files not present)
-                mat = canonical_id.split(":", 1)[1]
+                mat = canonical_id.replace("Ingredient_Bar_", "")
                 synth_recipe_key = f"SYNTH:ORE_MATERIAL:{mat}"
-                # Use canonical ore material directly
-                inputs = [{"type": "canonical", "id": f"ORE_MATERIAL:{mat}", "qty": 1}]
+                inputs = [{"type": "canonical", "id": f"Ore_{mat}", "qty": 1}]
                 out_qty = 1
             else:
                 continue
@@ -534,15 +313,6 @@ def main() -> None:
                 qty = float(inp["qty"])
                 if c_in is None:
                     missing.append(inp["id"])
-                    continue
-
-                if c_in.startswith("ORE_ITEM:"):
-                    ore_id = c_in.split(":", 1)[1]
-                    p = unit_price(f"ORE_ITEM:{ore_id}")
-                    if p is None:
-                        missing.append(ore_id)
-                        continue
-                    total_cost_per_unit += p * qty
                     continue
 
                 p = unit_price(c_in)
