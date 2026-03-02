@@ -1297,7 +1297,7 @@ export default function App() {
                       { h: "calc(B)", w: "10%" },
                       { h: "price(A)", w: "10%" },
                       { h: "price(B)", w: "10%" },
-                      { h: "Δ%", w: "10%" },
+                      { h: "bundle", w: "10%" },
                     ].map((c) => (
                       <th
                         key={c.h}
@@ -1352,7 +1352,7 @@ export default function App() {
                       <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.price_a == null ? "—" : r.price_a.toFixed(0)}</td>
                       <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.price_b == null ? "—" : r.price_b.toFixed(0)}</td>
                       <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                        {r.pct == null ? "—" : `${r.pct >= 0 ? "+" : ""}${r.pct.toFixed(1)}%`}
+                        {r.bundle_qty_b ?? r.bundle_qty_a ?? "—"}
                       </td>
                     </tr>
                   ))}
