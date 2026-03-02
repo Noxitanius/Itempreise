@@ -22,7 +22,7 @@ def norm(s: str) -> str:
     return s.lower()
 
 
-def canonicalize(row: dict) -> tuple[str, str] | None:
+def canonicalize(row: dict, id_set: set[str]) -> tuple[str, str] | None:
     """return (canonical_id, canonical_kind) where canonical_id == original asset id"""
     asset_id = row["id"]
     kind = row["kind"]
@@ -31,7 +31,7 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
 
     s = norm(asset_id)
 
-    # Exclusions
+    # Exclusions / remaps
     if asset_id.startswith("Salvage_"):
         return None
     if s.startswith("plant_") and "_stage_" in s:
@@ -44,6 +44,12 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
         return None
     if category == "ore_item" and material == "prisma":
         return None
+    if asset_id.startswith("Ingredient_Life_Essence_"):
+        suffix = asset_id.split("Ingredient_Life_Essence_", 1)[1]
+        if suffix not in ("100", "Concentrated"):
+            candidate = f"Plant_Crop_{suffix}_Item"
+            if candidate in id_set:
+                return candidate, "crop"
 
     # Kind mapping (keep original ids)
     if category == "bar_item":
@@ -105,40 +111,44 @@ def main() -> None:
 
     with src.open("r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        for row in reader:
-            res = canonicalize(row)
-            if res is None:
-                continue
-            key, ckind = res
+        rows = list(reader)
 
-            # Aggregate: keep max zone, max rarity "weight" via tag order, and count variants
-            zone_raw = row.get("default_zone", "").strip()
-            z = int(zone_raw) if zone_raw else 1
-            rarity = row["rarity_tag"]
-            profile = row["profile"]
+    id_set = {r["id"] for r in rows if r.get("id")}
 
-            rec = agg.get(key)
-            if not rec:
-                agg[key] = {
-                    "canonical_id": key,
-                    "canonical_kind": ckind,
-                    "source_count": 1,
-                    "max_zone": z,
-                    "rarity_tag": rarity,
-                    "dominant_profile": profile,
-                }
-            else:
-                rec["source_count"] += 1
-                rec["max_zone"] = max(rec["max_zone"], z)
-                # Keep the "rarest" tag by fixed order (unknown -> lowest)
-                order = ["very_common", "common", "uncommon", "rare", "very_rare", "mythic"]
-                r_new = rarity if rarity in order else "common"
-                r_cur = rec["rarity_tag"] if rec["rarity_tag"] in order else "common"
-                if order.index(r_new) > order.index(r_cur):
-                    rec["rarity_tag"] = r_new
-                # Prefer non-misc profiles as dominant
-                if rec["dominant_profile"] == "misc" and profile != "misc":
-                    rec["dominant_profile"] = profile
+    for row in rows:
+        res = canonicalize(row, id_set)
+        if res is None:
+            continue
+        key, ckind = res
+
+        # Aggregate: keep max zone, max rarity "weight" via tag order, and count variants
+        zone_raw = row.get("default_zone", "").strip()
+        z = int(zone_raw) if zone_raw else 1
+        rarity = row["rarity_tag"]
+        profile = row["profile"]
+
+        rec = agg.get(key)
+        if not rec:
+            agg[key] = {
+                "canonical_id": key,
+                "canonical_kind": ckind,
+                "source_count": 1,
+                "max_zone": z,
+                "rarity_tag": rarity,
+                "dominant_profile": profile,
+            }
+        else:
+            rec["source_count"] += 1
+            rec["max_zone"] = max(rec["max_zone"], z)
+            # Keep the "rarest" tag by fixed order (unknown -> lowest)
+            order = ["very_common", "common", "uncommon", "rare", "very_rare", "mythic"]
+            r_new = rarity if rarity in order else "common"
+            r_cur = rec["rarity_tag"] if rec["rarity_tag"] in order else "common"
+            if order.index(r_new) > order.index(r_cur):
+                rec["rarity_tag"] = r_new
+            # Prefer non-misc profiles as dominant
+            if rec["dominant_profile"] == "misc" and profile != "misc":
+                rec["dominant_profile"] = profile
 
     # Write
     with out.open("w", newline="", encoding="utf-8") as f:

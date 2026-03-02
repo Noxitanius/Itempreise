@@ -215,6 +215,10 @@ def canonical_for_input(inp: dict) -> str | None:
     t = inp["type"]
     iid = inp["id"]
     if t == "item":
+        if iid.startswith("Ingredient_Life_Essence_"):
+            suffix = iid.split("Ingredient_Life_Essence_", 1)[1]
+            if suffix not in ("100", "Concentrated"):
+                return f"Plant_Crop_{suffix}_Item"
         return iid
     elif t == "resource":
         return iid
