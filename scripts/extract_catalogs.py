@@ -106,6 +106,16 @@ def scan_zip(file_path: Path) -> tuple[set[str], set[str], set[str]]:
                 item_ids |= a
                 resource_type_ids |= b
                 block_type_ids |= c
+
+                # Heuristic: item definition files often include Icon but no Id.
+                # If so, use filename stem as item id.
+                try:
+                    obj = json.loads(text)
+                    if isinstance(obj, dict):
+                        if "Icon" in obj and isinstance(obj.get("Icon"), str):
+                            item_ids.add(Path(name).stem)
+                except Exception:
+                    pass
     except BadZipFile:
         pass
 
@@ -126,6 +136,18 @@ def scan_folder(folder: Path) -> tuple[set[str], set[str], set[str]]:
         item_ids |= a
         resource_type_ids |= b
         block_type_ids |= c
+
+        # Heuristic: item definition files often include Icon but no Id.
+        # If so, use filename stem as item id when file path is under Items/.
+        try:
+            obj = json.loads(text)
+            if isinstance(obj, dict):
+                if "Icon" in obj and isinstance(obj.get("Icon"), str):
+                    p_str = str(p).lower()
+                    if "item\\items" in p_str or "item/items" in p_str or "\\items\\" in p_str or "/items/" in p_str:
+                        item_ids.add(p.stem)
+        except Exception:
+            pass
 
     return item_ids, resource_type_ids, block_type_ids
 
@@ -163,6 +185,16 @@ def main() -> None:
 
     out_dir = Path("data/extracted")
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Merge item ids discovered by extract_items.py (uses broader heuristics)
+    items_json = out_dir / "items.json"
+    if items_json.exists():
+        try:
+            extra_items = json.loads(items_json.read_text(encoding="utf-8"))
+            if isinstance(extra_items, list):
+                item_ids |= {v for v in extra_items if looks_like_asset_id(str(v))}
+        except Exception:
+            pass
 
     write_sorted(out_dir / "item_ids.json", item_ids)
     write_sorted(out_dir / "resource_type_ids.json", resource_type_ids)

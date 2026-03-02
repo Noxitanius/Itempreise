@@ -143,6 +143,13 @@ def detect_category(kind: str, asset_id: str) -> str:
         return "weapon_item"
     if s.startswith("tool_") or "tool_" in s:
         return "tool_item"
+    # Endgame naming (Endgame_Sword_Prisma, Endgame_Pickaxe_Prisma, etc.)
+    if s.startswith("endgame_"):
+        # check tools first to avoid matching "axe" inside "pickaxe"
+        if any(x in s for x in ["pickaxe", "shovel", "hammer", "sickle", "saw"]):
+            return "tool_item"
+        if any(x in s for x in ["sword", "dagger", "daggers", "spear", "bow", "staff", "mace", "axe"]):
+            return "weapon_item"
     if "ore_" in s:
         return "ore_item"
     return "item_misc"

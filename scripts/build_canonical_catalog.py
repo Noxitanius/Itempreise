@@ -183,6 +183,12 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
         return f"WEAPON:{asset_id}", "gear"
     if s.startswith("tool_") or "tool_" in s:
         return f"TOOL:{asset_id}", "gear"
+    if s.startswith("endgame_"):
+        # check tools first to avoid matching "axe" inside "pickaxe"
+        if any(x in s for x in ["pickaxe", "shovel", "hammer", "sickle", "saw"]):
+            return f"TOOL:{asset_id}", "gear"
+        if any(x in s for x in ["sword", "dagger", "daggers", "spear", "bow", "staff", "mace", "axe"]):
+            return f"WEAPON:{asset_id}", "gear"
 
     # Default: keep as-is (we will refine later)
     return f"{kind.upper()}:{asset_id}", "raw"
