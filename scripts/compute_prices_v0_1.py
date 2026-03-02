@@ -27,6 +27,8 @@ def zone_factor(policy: dict, zone: int) -> float:
 
 
 def bundle_for(canonical_kind: str, canonical_id: str) -> int:
+    if canonical_id == "Plant_Sapling_Apple":
+        return 1
     if canonical_kind == "mass":
         return 1000
     if canonical_kind in ("ore_material", "bar", "ore_item"):
