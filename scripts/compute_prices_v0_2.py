@@ -14,6 +14,7 @@ MANUAL_BUNDLE_PRICES = {
     "Ingredient_Hide_Medium": 25.0,  # per bundle (100)
     "Ingredient_Hide_Heavy": 50.0,  # per bundle (100)
     "Ingredient_Chitin_Sturdy": 37.5,  # per bundle (100)
+    "Ingredient_Voidheart": 3.0,  # per bundle (1)
 }
 
 
