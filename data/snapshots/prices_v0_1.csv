@@ -12,9 +12,9 @@ BAR:silver,bar,ore_t2,2,uncommon,0.092,0.75,100,10.78,v0.1_model,Icons/ItemsGene
 BAR:thorium,bar,ore_t2,2,uncommon,0.092,0.75,100,10.78,v0.1_model,Icons/ItemsGenerated/Ingredient_Bar_Thorium.png
 BASIC:charcoal,basic,basic_gather,1,common,0.0,0.75,1,0.1,v0.1_fixed,Icons/ItemsGenerated/Rubble_Charcoal_Small.png
 CROP:apple,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,
-CROP:carrot,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,
-CROP:potato,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,
-CROP:wheat,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,
+CROP:carrot,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Plant_Crop_Carrot.png
+CROP:potato,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Plant_Crop_Potato.png
+CROP:wheat,crop,crop,1,common,0.012,0.75,1000,9.0,v0.1_model,Icons/ItemsGenerated/Plant_Crop_Wheat.png
 MASS:basalt,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,
 MASS:marble,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,
 MASS:shale,mass,mass_block,1,very_common,0.002,0.75,1000,1.2,v0.1_model,
@@ -28,4 +28,4 @@ ORE_MATERIAL:gold,ore_material,ore_t3,3,rare,0.12,0.75,100,23.04,v0.1_model,Icon
 ORE_MATERIAL:iron,ore_material,ore_t1,1,common,0.05,0.75,100,3.75,v0.1_model,Icons/ItemsGenerated/Ore_Iron.png
 ORE_MATERIAL:silver,ore_material,ore_t2,2,uncommon,0.08,0.75,100,9.38,v0.1_model,Icons/ItemsGenerated/Ore_Silver.png
 ORE_MATERIAL:thorium,ore_material,ore_t2,2,uncommon,0.08,0.75,100,9.38,v0.1_model,Icons/ItemsGenerated/Ore_Thorium.png
-RESOURCE:wood,resource,wood_basic,1,common,0.01,0.75,1,0.01,v0.1_model,
+RESOURCE:wood,resource,wood_basic,1,common,0.01,0.75,1,0.01,v0.1_model,Icons/ItemsGenerated/Ingredient_Tree_Bark.png

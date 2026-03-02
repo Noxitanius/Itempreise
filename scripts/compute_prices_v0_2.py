@@ -201,6 +201,49 @@ def canonical_to_item_id(canonical_id: str) -> str | None:
         return f"Ingredient_{t.capitalize()}_Essence"
     if canonical_id == "BASIC:charcoal":
         return "Ingredient_Charcoal"
+    if canonical_id == "BASIC:stick":
+        return "Ingredient_Stick"
+    if canonical_id == "BASIC:plant_fiber":
+        return "Ingredient_Fibre"
+    if canonical_id == "BASIC:tree_sap":
+        return "Ingredient_Tree_Sap"
+    if canonical_id.startswith("HIDE:"):
+        t = canonical_id.split(":", 1)[1]
+        if t == "prism":
+            return "Ingredient_Hide_Prismic"
+        return f"Ingredient_Hide_{t.capitalize()}"
+    if canonical_id.startswith("LEATHER:"):
+        t = canonical_id.split(":", 1)[1]
+        if t == "prism":
+            return "Ingredient_Leather_Prismic"
+        return f"Ingredient_Leather_{t.capitalize()}"
+    if canonical_id.startswith("CLOTH:"):
+        t = canonical_id.split(":", 1)[1]
+        if t == "shadow_weave":
+            return "Ingredient_Fabric_Scrap_Shadoweave"
+        if t == "cinder_cloth":
+            return "Ingredient_Fabric_Scrap_Cindercloth"
+        if t == "linen_scraps":
+            return "Ingredient_Fabric_Scrap_Linen"
+        return None
+    if canonical_id.startswith("CROP:"):
+        t = canonical_id.split(":", 1)[1]
+        crop_map = {
+            "potato": "Plant_Crop_Potato_Item",
+            "wheat": "Plant_Crop_Wheat_Item",
+            "carrot": "Plant_Crop_Carrot_Item",
+            "chili": "Plant_Crop_Chilli_Item",
+            "corn": "Plant_Crop_Corn_Item",
+            "tomato": "Plant_Crop_Tomato_Item",
+            "pumpkin": "Plant_Crop_Pumpkin_Item",
+            "turnip": "Plant_Crop_Turnip_Item",
+            "onion": "Plant_Crop_Onion_Item",
+            "lettuce": "Plant_Crop_Lettuce_Item",
+            "rice": "Plant_Crop_Rice_Item",
+        }
+        return crop_map.get(t)
+    if canonical_id == "RESOURCE:wood":
+        return "Ingredient_Tree_Bark"
     return None
 
 
