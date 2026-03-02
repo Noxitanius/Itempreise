@@ -175,6 +175,20 @@ function toCanonicalFromRecipeInput(inp) {
       return `CRYSTAL:${s.replace("ingredient_crystal_", "")}`;
     }
     if (s.startsWith("ore_")) {
+      if (s.includes("onyxium") || s.includes("mithril")) return `ORE_ITEM:${id}`;
+      for (const mat of [
+        "copper",
+        "iron",
+        "thorium",
+        "cobalt",
+        "silver",
+        "gold",
+        "adamantite",
+        "bronze",
+        "steel",
+      ]) {
+        if (s.includes(mat)) return `ORE_MATERIAL:${mat}`;
+      }
       return `ORE_ITEM:${id}`;
     }
     if (s.includes("essence")) {

@@ -29,10 +29,26 @@ def main() -> None:
 
     mapping = {}
 
-    # Bars (only Ingredient_Bar_* recipes)
-    mapping["BAR:prisma"] = find_key_startswith("Ingredient_Bar_Prisma")
-    mapping["BAR:onyxium"] = find_key_startswith("Ingredient_Bar_Onyxium")
-    mapping["BAR:mithril"] = find_key_startswith("Ingredient_Bar_Mithril")
+    # Bars (prefer furnace recipe, fallback to Ingredient_Bar_*)
+    def bar_recipe_key(mat: str):
+        return (
+            find_key_startswith(f"Recipe_Bar_{mat}_Furnace")
+            or find_key_startswith(f"Recipe_Bar_{mat}")
+            or find_key_startswith(f"Ingredient_Bar_{mat}")
+        )
+
+    mapping["BAR:prisma"] = bar_recipe_key("Prisma")
+    mapping["BAR:onyxium"] = bar_recipe_key("Onyxium")
+    mapping["BAR:mithril"] = bar_recipe_key("Mithril")
+    mapping["BAR:adamantite"] = bar_recipe_key("Adamantite")
+    mapping["BAR:cobalt"] = bar_recipe_key("Cobalt")
+    mapping["BAR:thorium"] = bar_recipe_key("Thorium")
+    mapping["BAR:iron"] = bar_recipe_key("Iron")
+    mapping["BAR:copper"] = bar_recipe_key("Copper")
+    mapping["BAR:silver"] = bar_recipe_key("Silver")
+    mapping["BAR:gold"] = bar_recipe_key("Gold")
+    mapping["BAR:bronze"] = bar_recipe_key("Bronze")
+    mapping["BAR:steel"] = bar_recipe_key("Steel")
 
     # Ore items (craft/boss) – optional
     mapping["ORE_ITEM:Ore_Onyxium"] = find_key_contains("ore", "onyxium")

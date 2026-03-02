@@ -1,4 +1,16 @@
 {
+  "Recipe_Bar_Prisma_Furnace": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Ore_Prisma",
+        "qty": 1
+      }
+    ]
+  },
   "Bench_Endgame": {
     "time_seconds": 3.0,
     "knowledge_required": false,
@@ -2137,6 +2149,4014 @@
       {
         "type": "item",
         "id": "Rock_Gem_Emerald",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Adamantite_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 6,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Adamantite_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Adamantite_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Adamantite_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Adamantite_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Adamantite_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Adamantite_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 5,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Adamantite_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Cindercloth_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Cindercloth_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Cindercloth_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Cindercloth_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Cindercloth_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Cindercloth_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Cindercloth_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Cindercloth_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Cotton_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Cotton_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Cotton_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Cotton_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Cotton_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Cotton_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Cotton_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Cotton_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Linen_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Linen_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Linen_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Linen_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Linen_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Linen_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Linen_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Linen_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Silk_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Silk_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Silk_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Silk_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Silk_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Silk_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Silk_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Silk_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Wool_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Wool_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Wool_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Wool_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Wool_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Wool_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cloth_Wool_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cloth_Wool_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cobalt_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 6,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cobalt_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cobalt_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cobalt_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cobalt_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cobalt_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Cobalt_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 5,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Cobalt_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Copper_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Copper_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Copper_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Copper_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Copper_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Copper_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Copper_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Copper_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Iron_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 6,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Iron_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Iron_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Iron_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Iron_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Iron_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Iron_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 5,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Iron_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Kweebec_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 4,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Kweebec_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Kweebec_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Kweebec_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Heavy_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Heavy_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Heavy_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Heavy_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Heavy_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Heavy_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Heavy_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Heavy_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Light_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Light_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Light_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Light_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Light_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Light_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Light_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Light_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Medium_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Medium_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Medium_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Medium_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Medium_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Medium_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Medium_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Medium_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Raven_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Raven_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Raven_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Raven_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Raven_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Raven_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Raven_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Raven_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Soft_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Soft_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Soft_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Soft_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Soft_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Soft_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Leather_Soft_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Leather_Soft_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Mithril_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 6,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Mithril_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Mithril_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Mithril_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Mithril_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Mithril_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Mithril_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 5,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Mithril_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Steel_Ancient_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 7,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Steel_Ancient_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Steel_Ancient_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Steel_Ancient_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Steel_Ancient_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 4,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Steel_Ancient_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Steel_Ancient_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 6,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Steel_Ancient_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Thorium_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 6,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Thorium_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Thorium_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Thorium_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Thorium_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Thorium_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Thorium_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 5,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Thorium_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Trork_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 4,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Trork_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Trork_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Trork_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Trork_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Trork_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Trork_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Trork_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Wood_Chest": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Wood_Chest",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Wood_Hands": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Wood_Hands",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Wood_Head": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Wood_Head",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Armor_Wood_Legs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Armor_Wood_Legs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Aqua_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Aqua_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Basalt_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Basalt_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Calcite_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Calcite_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Marble_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Marble_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Quartzite_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Quartzite_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_Red_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_Red_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Sandstone_White_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Sandstone_White_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Corner": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Corner",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Shale_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Shale_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Corner": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Corner",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Slate_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Slate_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Corner": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Corner",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Stone_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Stone_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Beam": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Beam",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Half": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Half",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Roof": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Roof",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Roof_Flat": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Roof_Flat",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Roof_Hollow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Roof_Hollow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Roof_Shallow": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Roof_Shallow",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Roof_Steep": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Roof_Steep",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Stairs": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Stairs",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Rock_Volcanic_Cobble_Wall": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Rock_Volcanic_Cobble_Wall",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hammer_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hammer_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hammer_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hammer_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hatchet_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hatchet_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hatchet_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hatchet_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hatchet_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hatchet_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hatchet_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hatchet_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hatchet_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hatchet_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hatchet_Mithril": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hatchet_Mithril",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hatchet_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hatchet_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hoe_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hoe_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hoe_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hoe_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hoe_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hoe_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Hoe_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Hoe_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Pickaxe_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Pickaxe_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Pickaxe_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Pickaxe_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Pickaxe_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Pickaxe_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Pickaxe_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Pickaxe_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Pickaxe_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Pickaxe_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Pickaxe_Mithril": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Pickaxe_Mithril",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Pickaxe_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Pickaxe_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Repair_Kit_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Repair_Kit_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Shovel_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Shovel_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Shovel_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Shovel_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Tool_Sickle_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Tool_Sickle_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Arrow_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Arrow_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Iron_Rusty": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Iron_Rusty",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Axe_Tribal": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Axe_Tribal",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Doomed": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 4,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Doomed",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Mithril": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Mithril",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Steel_Rusty": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Steel_Rusty",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Battleaxe_Tribal": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Battleaxe_Tribal",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Blowgun_Tribal": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Blowgun_Tribal",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Bomb_Fire": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Bomb_Fire",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Bomb_Popberry": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Bomb_Popberry",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Iron_Rusty": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Iron_Rusty",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Steel_Flail_Rusty": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Steel_Flail_Rusty",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Club_Tribal": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Club_Tribal",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Crossbow_Ancient_Steel": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Crossbow_Ancient_Steel",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Crossbow_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Crossbow_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Claw_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Claw_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Doomed": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Doomed",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Mithril": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Mithril",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Daggers_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Daggers_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Deployable_Healing_Totem": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 13,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Deployable_Healing_Totem",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Deployable_Slowness_Totem": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 8,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Deployable_Slowness_Totem",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Doomed": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Doomed",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Scarab": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Scarab",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Longsword_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Longsword_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Mithril": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Mithril",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Onyxium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Onyxium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Scrap": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Scrap",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Mace_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Mace_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Doomed": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Doomed",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Mithril": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Mithril",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Rusty": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Rusty",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Scrap": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Scrap",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shield_Wood": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shield_Wood",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Doomed": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Doomed",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Iron_Rusty": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Iron_Rusty",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Mithril": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Mithril",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Shortbow_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Shortbow_Thorium",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Spear_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Spear_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Spear_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Spear_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Spear_Leaf": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Spear_Leaf",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Spear_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Spear_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Staff_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Staff_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Adamantite": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Adamantite",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Bone": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Bone",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Cobalt": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Cobalt",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Copper": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Copper",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Crude": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Crude",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Doomed": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 3,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Doomed",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Iron": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Iron",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Mithril": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Mithril",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Scrap": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Scrap",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Steel_Rusty": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 1,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Steel_Rusty",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Stone_Trork": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Stone_Trork",
+        "qty": 1
+      }
+    ]
+  },
+  "Salvage_Weapon_Sword_Thorium": {
+    "time_seconds": 4.0,
+    "knowledge_required": false,
+    "output_qty": 2,
+    "inputs": [
+      {
+        "type": "item",
+        "id": "Weapon_Sword_Thorium",
         "qty": 1
       }
     ]

@@ -379,9 +379,22 @@ def canonical_for_input(inp: dict) -> str | None:
         if s.startswith("rock_") or s.startswith("rubble_"):
             return "MASS:stone"
         if s.startswith("ore_"):
-            # IMPORTANT: in your server, Prisma/Onyxium ore items exist but are NOT minable.
-            # Still, recipe inputs can use Ore_Prisma, so we keep as ORE_ITEM:<id>
-            # and later tie these to boss floors or to their own BOM if defined.
+            # Map vanilla ores to ORE_MATERIAL, endgame ores to ORE_ITEM
+            if "onyxium" in s or "mithril" in s:
+                return f"ORE_ITEM:{iid}"
+            for mat in [
+                "copper",
+                "iron",
+                "thorium",
+                "cobalt",
+                "silver",
+                "gold",
+                "adamantite",
+                "bronze",
+                "steel",
+            ]:
+                if mat in s:
+                    return f"ORE_MATERIAL:{mat}"
             return f"ORE_ITEM:{iid}"
         if s.startswith("plant_fruit_berries"):
             return "CROP:berry"
@@ -485,19 +498,28 @@ def main() -> None:
             if not candidates:
                 candidates = recipe_key_candidates(canonical_id)
             rk = pick_best_recipe_key(recipes, candidates)
-            if rk is None:
-                continue
-            if rk not in recipes:
+            inputs = []
+            out_qty = 1
+            synth_recipe_key = ""
+            if rk is not None and rk in recipes:
+                recipe = recipes[rk]
+                inputs = list(recipe.get("inputs", []))
+                out_qty = int(recipe.get("output_qty", 1) or 1)
+                if rk == "Ingredient_Bar_Mithril":
+                    # add furnace fuel (charcoal)
+                    inputs.append(
+                        {"type": "item", "id": "Ingredient_Charcoal", "qty": 1}
+                    )
+            elif canonical_id.startswith("BAR:"):
+                # Fallback: vanilla ore -> bar processing (recipe files not present)
+                mat = canonical_id.split(":", 1)[1]
+                synth_recipe_key = f"SYNTH:ORE_MATERIAL:{mat}"
+                # Use canonical ore material directly
+                inputs = [{"type": "canonical", "id": f"ORE_MATERIAL:{mat}", "qty": 1}]
+                out_qty = 1
+            else:
                 continue
 
-            recipe = recipes[rk]
-            inputs = list(recipe.get("inputs", []))
-            out_qty = int(recipe.get("output_qty", 1) or 1)
-            if rk == "Ingredient_Bar_Mithril":
-                # add furnace fuel (charcoal)
-                inputs.append(
-                    {"type": "item", "id": "Ingredient_Charcoal", "qty": 1}
-                )
             if not inputs:
                 continue
 
@@ -505,7 +527,10 @@ def main() -> None:
             missing = []
 
             for inp in inputs:
-                c_in = canonical_for_input(inp)
+                if inp.get("type") == "canonical":
+                    c_in = inp["id"]
+                else:
+                    c_in = canonical_for_input(inp)
                 qty = float(inp["qty"])
                 if c_in is None:
                     missing.append(inp["id"])
@@ -557,7 +582,7 @@ def main() -> None:
             bom_meta = {
                 **meta,
                 "calc": "bom",
-                "recipe_key": rk,
+                "recipe_key": rk or synth_recipe_key,
                 "missing_inputs": "|".join(missing) if missing else "",
             }
             if "icon_path" not in bom_meta:

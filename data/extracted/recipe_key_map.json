@@ -1,6 +1,6 @@
 {
   "BAR:prisma": [
-    "Ingredient_Bar_Prisma"
+    "Recipe_Bar_Prisma_Furnace"
   ],
   "BAR:onyxium": [
     "Ingredient_Bar_Onyxium"
@@ -8,6 +8,29 @@
   "BAR:mithril": [
     "Ingredient_Bar_Mithril"
   ],
+  "BAR:adamantite": [
+    "Ingredient_Bar_Adamantite"
+  ],
+  "BAR:cobalt": [
+    "Ingredient_Bar_Cobalt"
+  ],
+  "BAR:thorium": [
+    "Ingredient_Bar_Thorium"
+  ],
+  "BAR:iron": [
+    "Ingredient_Bar_Iron"
+  ],
+  "BAR:copper": [
+    "Ingredient_Bar_Copper"
+  ],
+  "BAR:silver": [
+    "Ingredient_Bar_Silver"
+  ],
+  "BAR:gold": [
+    "Ingredient_Bar_Gold"
+  ],
+  "BAR:bronze": [],
+  "BAR:steel": [],
   "ORE_ITEM:Ore_Onyxium": [
     "Ore_Onyxium"
   ],

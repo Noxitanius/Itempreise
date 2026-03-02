@@ -22,12 +22,19 @@ def read_text_from_zip(z: ZipFile, name: str) -> str | None:
 
 
 def extract_recipe(obj: dict) -> dict | None:
+    # Two formats:
+    # 1) Item JSON: { "Recipe": { "Input": [...], ... } }
+    # 2) Recipe JSON: { "Input": [...], "Output"/"PrimaryOutput": {...}, ... }
     r = obj.get("Recipe")
-    if not isinstance(r, dict):
-        return None
+    if isinstance(r, dict):
+        root = r
+    else:
+        if not isinstance(obj.get("Input"), list):
+            return None
+        root = obj
 
     inputs = []
-    for inp in r.get("Input", []) or []:
+    for inp in root.get("Input", []) or []:
         if not isinstance(inp, dict):
             continue
         qty = int(inp.get("Quantity", 0) or 0)
@@ -41,10 +48,24 @@ def extract_recipe(obj: dict) -> dict | None:
     if not inputs:
         return None
 
+    # output quantity (best effort)
+    out_qty = int(root.get("OutputQuantity", 1) or 1)
+    if out_qty <= 0:
+        out_qty = 1
+    primary = root.get("PrimaryOutput")
+    if isinstance(primary, dict):
+        out_qty = int(primary.get("Quantity", out_qty) or out_qty)
+    else:
+        out_list = root.get("Output")
+        if isinstance(out_list, list) and out_list:
+            first = out_list[0]
+            if isinstance(first, dict):
+                out_qty = int(first.get("Quantity", out_qty) or out_qty)
+
     return {
-        "time_seconds": float(r.get("TimeSeconds", 0) or 0),
-        "knowledge_required": bool(r.get("KnowledgeRequired", False)),
-        "output_qty": int(r.get("OutputQuantity", 1) or 1),
+        "time_seconds": float(root.get("TimeSeconds", 0) or 0),
+        "knowledge_required": bool(root.get("KnowledgeRequired", False)),
+        "output_qty": out_qty,
         "inputs": inputs,
     }
 
