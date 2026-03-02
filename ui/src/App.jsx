@@ -782,7 +782,7 @@ export default function App() {
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr) minmax(0,2fr)", gap: 16, marginTop: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "0.8fr 0.8fr 1.4fr", gap: 16, marginTop: 16 }}>
           <div style={card}>
             <Section title="Load files">
               <div
