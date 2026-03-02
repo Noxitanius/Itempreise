@@ -10,9 +10,9 @@ MANUAL_BUNDLE_PRICES = {
     "Ore_Gold": 12.0,  # per bundle (100)
     "Ore_Silver": 12.0,  # per bundle (100)
     "Ore_Adamantite": 20.0,  # per bundle (100)
-    "Ingredient_Hide_Light": 1.0 / 6.0,  # per hide
-    "Ingredient_Hide_Medium": 1.0 / 4.0,  # per hide
-    "Ingredient_Hide_Heavy": 1.0 / 2.0,  # per hide
+    "Ingredient_Hide_Light": 16.67,  # per bundle (100)
+    "Ingredient_Hide_Medium": 25.0,  # per bundle (100)
+    "Ingredient_Hide_Heavy": 50.0,  # per bundle (100)
 }
 
 
