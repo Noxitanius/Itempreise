@@ -892,25 +892,6 @@ export default function App() {
 
               <div style={{ height: 10 }} />
 
-              <div>
-                <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 6 }}>Icon base URL (optional)</div>
-                <input
-                  style={inputStyle}
-                  placeholder="e.g. https://example.com/Assets"
-                  value={iconBaseUrl}
-                  onChange={(e) => {
-                    const v = e.target.value;
-                    setIconBaseUrl(v);
-                    localStorage.setItem("nyrell_icon_base", v);
-                  }}
-                />
-                <div style={{ marginTop: 6, opacity: 0.7, fontSize: 12 }}>
-                  Used to render icons from `icon_path` in CSV.
-                </div>
-              </div>
-
-              <div style={{ height: 10 }} />
-
               <div
                 style={{
                   display: "grid",
