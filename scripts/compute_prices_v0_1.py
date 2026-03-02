@@ -12,6 +12,7 @@ MANUAL_BUNDLE_PRICES = {
     "Ingredient_Hide_Light": 1.0 / 6.0,  # per hide
     "Ingredient_Hide_Medium": 1.0 / 4.0,  # per hide
     "Ingredient_Hide_Heavy": 1.0 / 2.0,  # per hide
+    "Ingredient_Chitin_Sturdy": 37.5,  # per bundle (100)
 }
 
 

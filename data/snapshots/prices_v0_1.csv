@@ -30,7 +30,7 @@ Ingredient_Bolt_Silk,cloth,cloth_processing,3,rare,0.015,0.75,1,0.03,v0.1_model,
 Ingredient_Bolt_Stormsilk,cloth,cloth_processing,3,rare,0.015,0.75,1,0.03,v0.1_model,Icons/ItemsGenerated/Ingredient_Bolt_Stormsilk.png
 Ingredient_Bolt_Wool,cloth,cloth_processing,2,uncommon,0.015,0.75,1,0.02,v0.1_model,Icons/ItemsGenerated/Ingredient_Bolt_Wool_White.png
 Ingredient_Charcoal,basic,basic_gather,1,common,0.01,0.75,1,0.1,v0.1_model,Icons/ItemsGenerated/Rubble_Charcoal_Small.png
-Ingredient_Chitin_Sturdy,hide,misc,1,common,0.06,0.75,1,0.04,v0.1_model,Icons/ItemsGenerated/Ingredient_Chitin_Sturdy.png
+Ingredient_Chitin_Sturdy,hide,misc,1,common,0.06,0.75,1,37.5,v0.1_model,Icons/ItemsGenerated/Ingredient_Chitin_Sturdy.png
 Ingredient_Crystal_Blue,crystal,crystal,4,very_rare,0.04,0.75,1,0.14,v0.1_model,Icons/ItemsGenerated/Ingredient_Crystal_Fragments_Blue.png
 Ingredient_Crystal_Cyan,crystal,crystal,4,very_rare,0.04,0.75,1,0.14,v0.1_model,Icons/ItemsGenerated/Ingredient_Crystal_Fragments_Cyan.png
 Ingredient_Crystal_Green,crystal,crystal,4,very_rare,0.04,0.75,1,0.14,v0.1_model,Icons/ItemsGenerated/Ingredient_Crystal_Fragments_Green.png
