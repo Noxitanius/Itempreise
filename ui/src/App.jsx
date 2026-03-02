@@ -722,6 +722,7 @@ export default function App() {
     border: "1px solid rgba(76, 180, 170, 0.18)",
     borderRadius: 16,
     padding: 16,
+    width: "100%",
   };
 
   const inputStyle = {
@@ -765,8 +766,8 @@ export default function App() {
 
   return (
     <div style={{ ...shell, overflowX: "hidden" }}>
-      <div style={{ width: "100%", maxWidth: "100vw", margin: "0 auto", padding: 0, boxSizing: "border-box" }}>
-        <div style={{ width: "100%", maxWidth: "100vw", margin: "0 auto", padding: "0 16px", boxSizing: "border-box" }}>
+      <div style={{ width: "100%", margin: "0 auto", padding: 0, boxSizing: "border-box" }}>
+        <div style={{ width: "100%", margin: "0 auto", padding: "0 16px", boxSizing: "border-box" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 16 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img src={logo} alt="Nyrell" style={{ width: 56, height: 56 }} />
@@ -1278,18 +1279,40 @@ export default function App() {
             <div
               style={{
                 marginTop: 12,
-                overflow: "auto",
+                overflowY: "auto",
+                overflowX: "hidden",
                 maxHeight: 700,
                 borderRadius: 14,
                 border: "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, tableLayout: "fixed" }}>
                 <thead style={{ position: "sticky", top: 0, background: "#0b0f14" }}>
                   <tr style={{ textAlign: "left", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                    {["canonical_id", "kind", "zone", "rarity", "calc(B)", "price(A)", "price(B)", "Δ", "Δ%"].map((h) => (
-                      <th key={h} style={{ padding: "10px 12px", opacity: 0.85, fontWeight: 700, whiteSpace: "nowrap" }}>
-                        {h}
+                    {[
+                      { h: "canonical_id", w: "32%" },
+                      { h: "kind", w: "12%" },
+                      { h: "zone", w: "8%" },
+                      { h: "rarity", w: "10%" },
+                      { h: "calc(B)", w: "10%" },
+                      { h: "price(A)", w: "8%" },
+                      { h: "price(B)", w: "8%" },
+                      { h: "Δ", w: "6%" },
+                      { h: "Δ%", w: "6%" },
+                    ].map((c) => (
+                      <th
+                        key={c.h}
+                        style={{
+                          padding: "10px 12px",
+                          opacity: 0.85,
+                          fontWeight: 700,
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          width: c.w,
+                        }}
+                      >
+                        {c.h}
                       </th>
                     ))}
                   </tr>
@@ -1305,8 +1328,8 @@ export default function App() {
                         borderBottom: "1px solid rgba(255,255,255,0.06)",
                       }}
                     >
-                    <td style={{ padding: "10px 12px" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
                         {(r.icon_path_b || r.icon_path_a) ? (
                           <img
                             src={iconForPath(r.icon_path_b || r.icon_path_a)}
@@ -1318,21 +1341,21 @@ export default function App() {
                             }}
                           />
                         ) : null}
-                        <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", fontSize: 12 }}>
+                        <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", fontSize: 12, overflow: "hidden", textOverflow: "ellipsis" }}>
                           {r.canonical_id}
                         </span>
                       </div>
                     </td>
-                      <td style={{ padding: "10px 12px", opacity: 0.85 }}>{r.canonical_kind ?? "—"}</td>
-                      <td style={{ padding: "10px 12px", opacity: 0.85 }}>{r.zone ?? "—"}</td>
-                      <td style={{ padding: "10px 12px", opacity: 0.85 }}>{r.rarity_tag ?? "—"}</td>
-                      <td style={{ padding: "10px 12px", opacity: 0.85 }}>{r.calc_b ?? r.calc_a ?? "—"}</td>
-                      <td style={{ padding: "10px 12px" }}>{r.price_a == null ? "—" : r.price_a.toFixed(2)}</td>
-                      <td style={{ padding: "10px 12px" }}>{r.price_b == null ? "—" : r.price_b.toFixed(2)}</td>
-                      <td style={{ padding: "10px 12px" }}>
+                      <td style={{ padding: "10px 12px", opacity: 0.85, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.canonical_kind ?? "—"}</td>
+                      <td style={{ padding: "10px 12px", opacity: 0.85, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.zone ?? "—"}</td>
+                      <td style={{ padding: "10px 12px", opacity: 0.85, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.rarity_tag ?? "—"}</td>
+                      <td style={{ padding: "10px 12px", opacity: 0.85, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.calc_b ?? r.calc_a ?? "—"}</td>
+                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.price_a == null ? "—" : r.price_a.toFixed(2)}</td>
+                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.price_b == null ? "—" : r.price_b.toFixed(2)}</td>
+                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                         {r.delta == null ? "—" : `${r.delta >= 0 ? "+" : ""}${r.delta.toFixed(2)}`}
                       </td>
-                      <td style={{ padding: "10px 12px" }}>
+                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                         {r.pct == null ? "—" : `${r.pct >= 0 ? "+" : ""}${r.pct.toFixed(1)}%`}
                       </td>
                     </tr>

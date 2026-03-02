@@ -26,7 +26,40 @@ body {
 
 .main-grid {
   display: grid;
-  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr) minmax(640px, 2fr);
+  grid-template-columns: 1fr 1fr 2fr;
   gap: 16px;
   margin-top: 16px;
+  width: 100%;
+  align-items: stretch;
+}
+/* Layout overrides to ensure full-width usage */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 16px;
+  margin-top: 16px;
+  width: 100%;
+  max-width: 100%;
+  align-items: stretch;
+}
+
+.main-grid > * {
+  min-width: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
 }
