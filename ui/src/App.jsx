@@ -312,7 +312,8 @@ export default function App() {
     for (const r of merged) {
       const p = r.price_b ?? r.price_a;
       const b = num(r.bundle_qty_b ?? r.bundle_qty_a) ?? 1;
-      if (p != null) m.set(r.canonical_id, { bundle: b, price: p, unit: p / b });
+      const icon = r.icon_path_b ?? r.icon_path_a ?? "";
+      if (p != null) m.set(r.canonical_id, { bundle: b, price: p, unit: p / b, icon_path: icon });
     }
     return m;
   }, [merged]);
@@ -363,6 +364,13 @@ export default function App() {
       ? `${iconBaseUrl.replace(/\/$/, "")}/${iconPath.replace(/^\/+/, "")}`
       : `${appBase}${iconPath.replace(/^\/+/, "")}`
     : "";
+
+  const iconForPath = (p) => {
+    if (!p) return "";
+    return iconBaseUrl
+      ? `${iconBaseUrl.replace(/\/$/, "")}/${p.replace(/^\/+/, "")}`
+      : `${appBase}${p.replace(/^\/+/, "")}`;
+  };
 
   useEffect(() => {
     if (!selected) return;
@@ -1078,8 +1086,17 @@ export default function App() {
                                   }}
                                 >
                                   <div style={{ minWidth: 0 }}>
-                                    <div style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", fontSize: 12 }}>
-                                      {i.id} {i.canonical ? `→ ${i.canonical}` : ""}
+                                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                      {i.canonical && priceLookup.get(i.canonical)?.icon_path ? (
+                                        <img
+                                          src={iconForPath(priceLookup.get(i.canonical)?.icon_path)}
+                                          alt=""
+                                          style={{ width: 18, height: 18, borderRadius: 4 }}
+                                        />
+                                      ) : null}
+                                      <div style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", fontSize: 12 }}>
+                                        {i.id} {i.canonical ? `→ ${i.canonical}` : ""}
+                                      </div>
                                     </div>
                                     <div style={{ opacity: 0.75, fontSize: 12 }}>
                                       qty: {i.qty}
@@ -1300,9 +1317,20 @@ export default function App() {
                         borderBottom: "1px solid rgba(255,255,255,0.06)",
                       }}
                     >
-                      <td style={{ padding: "10px 12px", fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", fontSize: 12 }}>
-                        {r.canonical_id}
-                      </td>
+                    <td style={{ padding: "10px 12px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        {(r.icon_path_b || r.icon_path_a) ? (
+                          <img
+                            src={iconForPath(r.icon_path_b || r.icon_path_a)}
+                            alt=""
+                            style={{ width: 18, height: 18, borderRadius: 4 }}
+                          />
+                        ) : null}
+                        <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", fontSize: 12 }}>
+                          {r.canonical_id}
+                        </span>
+                      </div>
+                    </td>
                       <td style={{ padding: "10px 12px", opacity: 0.85 }}>{r.canonical_kind ?? "—"}</td>
                       <td style={{ padding: "10px 12px", opacity: 0.85 }}>{r.zone ?? "—"}</td>
                       <td style={{ padding: "10px 12px", opacity: 0.85 }}>{r.rarity_tag ?? "—"}</td>
