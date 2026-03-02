@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import "./App.css";
 import logo from "./assets/logo.png";
 
 // ---- tiny CSV parser (good enough for our snapshots) ----
