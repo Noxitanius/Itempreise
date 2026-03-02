@@ -27,6 +27,8 @@ def zone_factor(policy: dict, zone: int) -> float:
 
 
 def bundle_for(canonical_kind: str, canonical_id: str) -> int:
+    if canonical_id == "Ingredient_Life_Essence_Concentrated":
+        return 100
     if canonical_id == "Plant_Sapling_Apple":
         return 1
     if canonical_kind == "mass":
@@ -36,6 +38,27 @@ def bundle_for(canonical_kind: str, canonical_id: str) -> int:
     if canonical_kind == "crop":
         return 1000
     return 1
+
+
+def is_ore_rock_variant(canonical_id: str) -> bool:
+    if not canonical_id.startswith("Ore_"):
+        return False
+    s = canonical_id.lower()
+    return any(k in s for k in ("_basalt", "_magma", "_shale", "_slate", "_stone", "_volcanic", "_sandstone", "_calcite", "_mud"))
+
+
+def is_crop_block(canonical_id: str) -> bool:
+    s = canonical_id.lower()
+    return s.startswith("plant_crop_") and s.endswith("_block")
+
+
+def is_plant_stage(canonical_id: str) -> bool:
+    s = canonical_id.lower()
+    return s.startswith("plant_") and "_stage_" in s
+
+
+def is_salvage(canonical_id: str) -> bool:
+    return canonical_id.startswith("Salvage_")
 
 
 def minutes_per_unit(profile: str, canonical_kind: str, canonical_id: str) -> float | None:
@@ -171,6 +194,14 @@ def main() -> None:
         reader = csv.DictReader(f)
         for row in reader:
             canonical_id = row["canonical_id"]
+            if is_ore_rock_variant(canonical_id):
+                continue
+            if is_crop_block(canonical_id):
+                continue
+            if is_plant_stage(canonical_id):
+                continue
+            if is_salvage(canonical_id):
+                continue
             canonical_kind = row["canonical_kind"]
             profile = row["dominant_profile"]
             zone = int(row["max_zone"])
