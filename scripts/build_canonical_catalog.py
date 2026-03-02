@@ -32,6 +32,14 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
     s = norm(asset_id)
 
     # Exclusions
+    if asset_id.startswith("Salvage_"):
+        return None
+    if s.startswith("plant_") and "_stage_" in s:
+        return None
+    if s.startswith("plant_crop_") and s.endswith("_block"):
+        return None
+    if s.startswith("ore_") and any(k in s for k in ("_basalt", "_magma", "_shale", "_slate", "_stone", "_volcanic", "_sandstone", "_calcite", "_mud")):
+        return None
     if category == "ore_block" and material in ("mithril", "onyxium", "prisma"):
         return None
     if category == "ore_item" and material == "prisma":
