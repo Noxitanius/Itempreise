@@ -30,9 +30,3 @@ body {
   gap: 16px;
   margin-top: 16px;
 }
-
-@media (max-width: 1200px) {
-  .main-grid {
-    grid-template-columns: 1fr;
-  }
-}
