@@ -713,6 +713,7 @@ export default function App() {
     color: "#e8f6f6",
     minHeight: "100vh",
     padding: 20,
+    overflowX: "hidden",
   };
 
   const card = {
@@ -763,8 +764,8 @@ export default function App() {
 
   return (
     <div style={{ ...shell, overflowX: "hidden" }}>
-      <div style={{ width: "100%", maxWidth: "none", margin: "0 auto", padding: 0, boxSizing: "border-box" }}>
-        <div style={{ width: "100%", maxWidth: "none", margin: "0 auto", padding: "0 16px", boxSizing: "border-box" }}>
+      <div style={{ width: "100%", maxWidth: "100vw", margin: "0 auto", padding: 0, boxSizing: "border-box" }}>
+        <div style={{ width: "100%", maxWidth: "100vw", margin: "0 auto", padding: "0 16px", boxSizing: "border-box" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 16 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img src={logo} alt="Nyrell" style={{ width: 56, height: 56 }} />
