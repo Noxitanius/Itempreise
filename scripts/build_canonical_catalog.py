@@ -145,6 +145,14 @@ def canonicalize(row: dict) -> tuple[str, str] | None:
                 break
         return (f"ESSENCE:{et}" if et else "ESSENCE:generic", "essence")
 
+    # Armor / Weapon / Tool -> keep explicit ids but tag as gear
+    if s.startswith("armor_") or "armor_" in s:
+        return f"ARMOR:{asset_id}", "gear"
+    if s.startswith("weapon_") or "weapon_" in s:
+        return f"WEAPON:{asset_id}", "gear"
+    if s.startswith("tool_") or "tool_" in s:
+        return f"TOOL:{asset_id}", "gear"
+
     # Default: keep as-is (we will refine later)
     return f"{kind.upper()}:{asset_id}", "raw"
 

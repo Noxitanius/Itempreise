@@ -172,6 +172,12 @@ def recipe_key_candidates(canonical_id: str) -> list[str]:
     if canonical_id.startswith("BAR:"):
         mat = canonical_id.split(":", 1)[1]
         return [f"Ingredient_Bar_{mat.capitalize()}", f"Ingredient_Bar_{mat.upper()}"]
+    if canonical_id.startswith("ARMOR:"):
+        return [canonical_id.split(":", 1)[1]]
+    if canonical_id.startswith("WEAPON:"):
+        return [canonical_id.split(":", 1)[1]]
+    if canonical_id.startswith("TOOL:"):
+        return [canonical_id.split(":", 1)[1]]
     # If later we support direct ore items as crafts:
     if canonical_id.startswith("ORE_ITEM:"):
         x = canonical_id.split(":", 1)[1]
@@ -326,8 +332,12 @@ def main() -> None:
         for canonical_id in list(rows_by_id.keys()):
             # find recipe by candidate keys
             candidates = recipe_key_map.get(canonical_id, [])
+            if not candidates:
+                candidates = recipe_key_candidates(canonical_id)
             rk = pick_best_recipe_key(recipes, candidates)
             if rk is None:
+                continue
+            if rk not in recipes:
                 continue
 
             recipe = recipes[rk]

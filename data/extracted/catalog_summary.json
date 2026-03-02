@@ -1,6 +1,6 @@
 {
   "item|armor_item|gear": 86,
-  "item|item_misc|misc": 659,
+  "item|item_misc|misc": 633,
   "item|weapon_item|gear": 126,
   "item|crop_item|crop": 7,
   "item|bar_item|ore_t4": 1,
@@ -30,6 +30,7 @@
   "item|ore_item|ore_t2": 2,
   "item|seed_item|seed": 49,
   "item|gem_item|gem": 4,
+  "item|tool_item|gear": 26,
   "resource|resource_misc|misc": 65,
   "resource|wood_resource|wood_basic": 29,
   "block|block_misc|misc": 732,

@@ -131,6 +131,8 @@ def detect_category(kind: str, asset_id: str) -> str:
         return "armor_item"
     if s.startswith("weapon_") or "weapon_" in s:
         return "weapon_item"
+    if s.startswith("tool_") or "tool_" in s:
+        return "tool_item"
     if "ore_" in s:
         return "ore_item"
     return "item_misc"
@@ -174,6 +176,7 @@ DEFAULT_PROFILES = {
     "crop_item": (1, "common", "crop"),
     "armor_item": (None, None, "gear"),  # zone/rarity from material if present
     "weapon_item": (None, None, "gear"),
+    "tool_item": (None, None, "gear"),
     "item_misc": (1, "common", "misc"),
     "block_misc": (1, "common", "misc"),
     "resource_misc": (1, "common", "misc"),
