@@ -73,6 +73,8 @@ def bundle_for(canonical_kind: str, canonical_id: str) -> int:
         return 1000
     if canonical_kind in ("ore_material", "bar", "ore_item"):
         return 100
+    if canonical_kind in ("hide", "leather"):
+        return 100
     if canonical_kind in ("crop", "essence"):
         return 1000
     return 1
