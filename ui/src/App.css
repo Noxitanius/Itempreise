@@ -26,7 +26,7 @@ body {
 
 .main-grid {
   display: grid;
-  grid-template-columns: 0.25fr 0.25fr 0.5fr;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr) minmax(640px, 2fr);
   gap: 16px;
   margin-top: 16px;
 }
