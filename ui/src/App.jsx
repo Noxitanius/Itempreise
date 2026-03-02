@@ -136,6 +136,41 @@ function toCanonicalFromRecipeInput(inp) {
     if (s.startsWith("ingredient_bar_")) {
       return `BAR:${s.replace("ingredient_bar_", "")}`;
     }
+    if (s.startsWith("ingredient_hide")) {
+      if (s.includes("prism") || s.includes("prisma")) return "HIDE:prism";
+      for (const t of ["storm", "heavy", "medium", "light"]) {
+        if (s.includes(t)) return `HIDE:${t}`;
+      }
+      return "HIDE:generic";
+    }
+    if (s.startsWith("ingredient_leather")) {
+      if (s.includes("prism") || s.includes("prisma")) return "LEATHER:prism";
+      for (const t of ["storm", "heavy", "medium", "light"]) {
+        if (s.includes(t)) return `LEATHER:${t}`;
+      }
+      return "LEATHER:generic";
+    }
+    if (s.includes("fabric_scrap") || s.includes("ingredient_fabric_scrap")) {
+      if (s.includes("shadow")) return "CLOTH:shadow_weave";
+      if (s.includes("cinder")) return "CLOTH:cinder_cloth";
+      if (s.includes("linen")) return "CLOTH:linen_scraps";
+      return "CLOTH:scraps";
+    }
+    if (s.includes("ingredient_bolt")) {
+      if (s.includes("cotton")) return "CLOTH:cotton";
+      if (s.includes("silk")) return "CLOTH:silk";
+      if (s.includes("wool")) return "CLOTH:wool";
+    }
+    if (s.startsWith("ingredient_stick")) return "BASIC:stick";
+    if (s.startsWith("ingredient_charcoal")) return "BASIC:charcoal";
+    if (s.startsWith("ingredient_fibre") || s.startsWith("ingredient_fiber"))
+      return "BASIC:plant_fiber";
+    if (s.startsWith("ingredient_tree_sap")) return "BASIC:tree_sap";
+    if (s.startsWith("ingredient_feather") || s.startsWith("ingredient_feathers"))
+      return "BASIC:feather_dark";
+    if (s.startsWith("ingredient_powder_boom")) return "BASIC:boom_powder";
+    if (s.startsWith("ingredient_sac_venom")) return "BASIC:venom_sac";
+    if (s.startsWith("ingredient_voidheart")) return "BASIC:voidheart";
     if (s.startsWith("ingredient_crystal_")) {
       return `CRYSTAL:${s.replace("ingredient_crystal_", "")}`;
     }
@@ -150,10 +185,25 @@ function toCanonicalFromRecipeInput(inp) {
     if (s.startsWith("rock_gem_") || s.includes("rock_gem_")) {
       return `GEM:${s.replace("rock_gem_", "")}`;
     }
+    if (s.startsWith("plant_fruit_berries")) {
+      return "CROP:berry";
+    }
+    if (s.startsWith("potion_") || s.includes("potion_")) {
+      return `POTION:${id}`;
+    }
+    if (s.startsWith("rock_") || s.startsWith("rubble_")) {
+      return "MASS:stone";
+    }
     return null;
   }
 
-  if (t === "resource") return `RESOURCE:${id}`;
+  if (t === "resource") {
+    const rs = String(id).toLowerCase();
+    if (rs === "rock" || rs === "rubble") return "MASS:stone";
+    if (rs === "wood" || rs === "wood_all" || rs === "wood_trunk") return "RESOURCE:wood";
+    if (rs.startsWith("resource_wood_")) return "RESOURCE:wood";
+    return `RESOURCE:${id}`;
+  }
   return null;
 }
 
