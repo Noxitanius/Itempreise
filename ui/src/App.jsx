@@ -1290,15 +1290,14 @@ export default function App() {
                 <thead style={{ position: "sticky", top: 0, background: "#0b0f14" }}>
                   <tr style={{ textAlign: "left", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                     {[
-                      { h: "canonical_id", w: "28%" },
+                      { h: "canonical_id", w: "30%" },
                       { h: "kind", w: "12%" },
                       { h: "zone", w: "8%" },
                       { h: "rarity", w: "10%" },
                       { h: "calc(B)", w: "10%" },
-                      { h: "price(A)", w: "8%" },
-                      { h: "price(B)", w: "8%" },
-                      { h: "Δ", w: "6%" },
-                      { h: "Δ%", w: "6%" },
+                      { h: "price(A)", w: "10%" },
+                      { h: "price(B)", w: "10%" },
+                      { h: "Δ%", w: "10%" },
                     ].map((c) => (
                       <th
                         key={c.h}
@@ -1350,11 +1349,8 @@ export default function App() {
                       <td style={{ padding: "10px 12px", opacity: 0.85, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.zone ?? "—"}</td>
                       <td style={{ padding: "10px 12px", opacity: 0.85, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.rarity_tag ?? "—"}</td>
                       <td style={{ padding: "10px 12px", opacity: 0.85, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.calc_b ?? r.calc_a ?? "—"}</td>
-                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.price_a == null ? "—" : r.price_a.toFixed(2)}</td>
-                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.price_b == null ? "—" : r.price_b.toFixed(2)}</td>
-                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                        {r.delta == null ? "—" : `${r.delta >= 0 ? "+" : ""}${r.delta.toFixed(2)}`}
-                      </td>
+                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.price_a == null ? "—" : r.price_a.toFixed(0)}</td>
+                      <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.price_b == null ? "—" : r.price_b.toFixed(0)}</td>
                       <td style={{ padding: "10px 12px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                         {r.pct == null ? "—" : `${r.pct >= 0 ? "+" : ""}${r.pct.toFixed(1)}%`}
                       </td>
@@ -1362,7 +1358,7 @@ export default function App() {
                   ))}
                   {filtered.length === 0 && (
                     <tr>
-                      <td colSpan={9} style={{ padding: 16, opacity: 0.75 }}>
+                      <td colSpan={8} style={{ padding: 16, opacity: 0.75 }}>
                         No rows. Load snapshots or adjust filters.
                       </td>
                     </tr>
