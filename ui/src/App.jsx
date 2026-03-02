@@ -356,10 +356,13 @@ export default function App() {
     () => filtered.find((r) => r.canonical_id === selectedId) ?? merged.find((r) => r.canonical_id === selectedId),
     [filtered, merged, selectedId]
   );
-  const iconUrl =
-    selected && iconBaseUrl && (selected.icon_path_b || selected.icon_path_a)
-      ? `${iconBaseUrl.replace(/\/$/, "")}/${(selected.icon_path_b || selected.icon_path_a).replace(/^\/+/, "")}`
-      : "";
+  const appBase = import.meta.env.BASE_URL || "/";
+  const iconPath = selected?.icon_path_b || selected?.icon_path_a || "";
+  const iconUrl = iconPath
+    ? iconBaseUrl
+      ? `${iconBaseUrl.replace(/\/$/, "")}/${iconPath.replace(/^\/+/, "")}`
+      : `${appBase}${iconPath.replace(/^\/+/, "")}`
+    : "";
 
   useEffect(() => {
     if (!selected) return;
