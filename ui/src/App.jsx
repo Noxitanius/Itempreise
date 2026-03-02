@@ -1290,7 +1290,7 @@ export default function App() {
                 <thead style={{ position: "sticky", top: 0, background: "#0b0f14" }}>
                   <tr style={{ textAlign: "left", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                     {[
-                      { h: "canonical_id", w: "32%" },
+                      { h: "canonical_id", w: "28%" },
                       { h: "kind", w: "12%" },
                       { h: "zone", w: "8%" },
                       { h: "rarity", w: "10%" },
