@@ -10,6 +10,15 @@ def load_policy(path: Path) -> dict:
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
+def load_icons(path: Path) -> dict:
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def load_recipes(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -166,6 +175,35 @@ def farm_damp(policy: dict, canonical_id: str) -> float:
     return 1.0
 
 
+def canonical_to_item_id(canonical_id: str) -> str | None:
+    if canonical_id.startswith("BAR:"):
+        mat = canonical_id.split(":", 1)[1]
+        return f"Ingredient_Bar_{mat.capitalize()}"
+    if canonical_id.startswith("ORE_ITEM:"):
+        return canonical_id.split(":", 1)[1]
+    if canonical_id.startswith("ORE_MATERIAL:"):
+        mat = canonical_id.split(":", 1)[1]
+        return f"Ore_{mat.capitalize()}"
+    if canonical_id.startswith("ARMOR:"):
+        return canonical_id.split(":", 1)[1]
+    if canonical_id.startswith("WEAPON:"):
+        return canonical_id.split(":", 1)[1]
+    if canonical_id.startswith("TOOL:"):
+        return canonical_id.split(":", 1)[1]
+    if canonical_id.startswith("CRYSTAL:"):
+        t = canonical_id.split(":", 1)[1]
+        return f"Ingredient_Crystal_{t.capitalize()}"
+    if canonical_id.startswith("GEM:"):
+        t = canonical_id.split(":", 1)[1]
+        return f"Rock_Gem_{t.capitalize()}"
+    if canonical_id.startswith("ESSENCE:"):
+        t = canonical_id.split(":", 1)[1]
+        return f"Ingredient_{t.capitalize()}_Essence"
+    if canonical_id == "BASIC:charcoal":
+        return "Ingredient_Charcoal"
+    return None
+
+
 def recipe_key_candidates(canonical_id: str) -> list[str]:
     # Map canonical ids to likely recipe keys (filename stems)
     # BAR:prisma -> Ingredient_Bar_Prisma
@@ -257,6 +295,7 @@ def canonical_for_input(inp: dict) -> str | None:
 
 def main() -> None:
     policy = load_policy(Path("policies/policy.yml"))
+    icons = load_icons(Path("data/extracted/item_icons.json"))
     recipes = load_recipes(Path("data/extracted/recipes.json"))
     recipe_key_map = load_recipe_key_map(Path("data/extracted/recipe_key_map.json"))
 
@@ -312,6 +351,7 @@ def main() -> None:
                 "rarity_tag": rarity,
                 "minutes_per_unit": mpu,
                 "calc": "fixed" if canonical_id == "BASIC:charcoal" else "model",
+                "icon_path": icons.get(canonical_to_item_id(canonical_id) or "", ""),
             }
             base_prices[canonical_id] = (bqty, bundle_price, meta)
 
@@ -400,18 +440,24 @@ def main() -> None:
                     "rarity_tag": row["rarity_tag"],
                     "minutes_per_unit": "",
                     "calc": "bom",
+                    "icon_path": icons.get(canonical_to_item_id(canonical_id) or "", ""),
                 }
             new_bundle = total_cost_per_unit * bqty
 
+            bom_meta = {
+                **meta,
+                "calc": "bom",
+                "recipe_key": rk,
+                "missing_inputs": "|".join(missing) if missing else "",
+            }
+            if "icon_path" not in bom_meta:
+                bom_meta["icon_path"] = icons.get(
+                    canonical_to_item_id(canonical_id) or "", ""
+                )
             overrides[canonical_id] = (
                 bqty,
                 new_bundle,
-                {
-                    **meta,
-                    "calc": "bom",
-                    "recipe_key": rk,
-                    "missing_inputs": "|".join(missing) if missing else "",
-                },
+                bom_meta,
             )
 
         if not overrides:
@@ -432,6 +478,7 @@ def main() -> None:
             "calc",
             "recipe_key",
             "missing_inputs",
+            "icon_path",
         ]
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()
@@ -449,6 +496,7 @@ def main() -> None:
                     "calc": meta.get("calc", "model"),
                     "recipe_key": meta.get("recipe_key", ""),
                     "missing_inputs": meta.get("missing_inputs", ""),
+                    "icon_path": meta.get("icon_path", ""),
                 }
             )
 

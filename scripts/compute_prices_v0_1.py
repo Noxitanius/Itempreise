@@ -9,6 +9,15 @@ def load_policy(path: Path) -> dict:
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
+def load_icons(path: Path) -> dict:
+    if not path.exists():
+        return {}
+    try:
+        return yaml.safe_load(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def rarity_factor(policy: dict, rarity_tag: str) -> float:
     return float(policy["rarity"].get(rarity_tag, 1.0))
 
@@ -111,9 +120,39 @@ def apply_guardrails(
     return price
 
 
+def canonical_to_item_id(canonical_id: str) -> str | None:
+    if canonical_id.startswith("BAR:"):
+        mat = canonical_id.split(":", 1)[1]
+        return f"Ingredient_Bar_{mat.capitalize()}"
+    if canonical_id.startswith("ORE_ITEM:"):
+        return canonical_id.split(":", 1)[1]
+    if canonical_id.startswith("ORE_MATERIAL:"):
+        mat = canonical_id.split(":", 1)[1]
+        return f"Ore_{mat.capitalize()}"
+    if canonical_id.startswith("ARMOR:"):
+        return canonical_id.split(":", 1)[1]
+    if canonical_id.startswith("WEAPON:"):
+        return canonical_id.split(":", 1)[1]
+    if canonical_id.startswith("TOOL:"):
+        return canonical_id.split(":", 1)[1]
+    if canonical_id.startswith("CRYSTAL:"):
+        t = canonical_id.split(":", 1)[1]
+        return f"Ingredient_Crystal_{t.capitalize()}"
+    if canonical_id.startswith("GEM:"):
+        t = canonical_id.split(":", 1)[1]
+        return f"Rock_Gem_{t.capitalize()}"
+    if canonical_id.startswith("ESSENCE:"):
+        t = canonical_id.split(":", 1)[1]
+        return f"Ingredient_{t.capitalize()}_Essence"
+    if canonical_id == "BASIC:charcoal":
+        return "Ingredient_Charcoal"
+    return None
+
+
 def main() -> None:
     policy_path = Path("policies/policy.yml")
     policy = load_policy(policy_path)
+    icons = load_icons(Path("data/extracted/item_icons.json"))
 
     nyra_per_min = float(policy["economy"]["nyra_per_minute"])
 
@@ -169,6 +208,7 @@ def main() -> None:
                     "bundle_qty": bqty,
                     "price_nyra": round(bundle_price, 2),
                     "confidence": "v0.1_fixed" if canonical_id == "BASIC:charcoal" else "v0.1_model",
+                    "icon_path": icons.get(canonical_to_item_id(canonical_id) or "", ""),
                 }
             )
 
@@ -185,6 +225,7 @@ def main() -> None:
             "bundle_qty",
             "price_nyra",
             "confidence",
+            "icon_path",
         ]
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()

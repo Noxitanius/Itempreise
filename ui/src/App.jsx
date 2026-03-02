@@ -162,6 +162,9 @@ export default function App() {
   const [pricesB, setPricesB] = useState(null); // v0.2
   const [recipes, setRecipes] = useState(null);
   const [recipeKeyMap, setRecipeKeyMap] = useState(null);
+  const [iconBaseUrl, setIconBaseUrl] = useState(
+    () => localStorage.getItem("nyrell_icon_base") || ""
+  );
   const [overrides, setOverrides] = useState(null); // { name, obj }
   const [overrideDraft, setOverrideDraft] = useState({
     price_nyra: "",
@@ -270,6 +273,7 @@ export default function App() {
         calc_a: r.calc,
         recipe_key_a: r.recipe_key,
         missing_inputs_a: r.missing_inputs,
+        icon_path_a: r.icon_path,
         bundle_qty_a: r.bundle_qty,
         minutes_a: r.minutes_per_unit,
         price_a: num(r.price_nyra),
@@ -286,6 +290,7 @@ export default function App() {
         calc_b: r.calc,
         recipe_key_b: r.recipe_key,
         missing_inputs_b: r.missing_inputs,
+        icon_path_b: r.icon_path ?? prev.icon_path_b,
         bundle_qty_b: r.bundle_qty,
         minutes_b: r.minutes_per_unit,
         price_b: num(r.price_nyra),
@@ -351,6 +356,10 @@ export default function App() {
     () => filtered.find((r) => r.canonical_id === selectedId) ?? merged.find((r) => r.canonical_id === selectedId),
     [filtered, merged, selectedId]
   );
+  const iconUrl =
+    selected && iconBaseUrl && (selected.icon_path_b || selected.icon_path_a)
+      ? `${iconBaseUrl.replace(/\/$/, "")}/${(selected.icon_path_b || selected.icon_path_a).replace(/^\/+/, "")}`
+      : "";
 
   useEffect(() => {
     if (!selected) return;
@@ -803,6 +812,25 @@ export default function App() {
 
               <div style={{ height: 10 }} />
 
+              <div>
+                <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 6 }}>Icon base URL (optional)</div>
+                <input
+                  style={inputStyle}
+                  placeholder="e.g. https://example.com/Assets"
+                  value={iconBaseUrl}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setIconBaseUrl(v);
+                    localStorage.setItem("nyrell_icon_base", v);
+                  }}
+                />
+                <div style={{ marginTop: 6, opacity: 0.7, fontSize: 12 }}>
+                  Used to render icons from `icon_path` in CSV.
+                </div>
+              </div>
+
+              <div style={{ height: 10 }} />
+
               <div
                 style={{
                   display: "grid",
@@ -968,7 +996,12 @@ export default function App() {
                 </div>
               ) : (
                 <div>
-                  <div style={{ fontSize: 16, fontWeight: 800, marginBottom: 8 }}>{selected.canonical_id}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+                    {iconUrl ? (
+                      <img src={iconUrl} alt="" style={{ width: 28, height: 28, borderRadius: 6 }} />
+                    ) : null}
+                    <div style={{ fontSize: 16, fontWeight: 800 }}>{selected.canonical_id}</div>
+                  </div>
                   <div style={{ opacity: 0.85, fontSize: 13, lineHeight: 1.65 }}>
                     {badge(selected.canonical_kind ?? "—")}
                     {badge(`zone ${selected.zone ?? "—"}`)}
@@ -1077,6 +1110,8 @@ export default function App() {
                   <div style={{ marginTop: 12, fontSize: 12, opacity: 0.75 }}>
                     recipe_key(B): {selected.recipe_key_b || "—"} <br />
                     missing_inputs(B): {selected.missing_inputs_b || "—"}
+                    <br />
+                    icon_path: {selected.icon_path_b || selected.icon_path_a || "—"}
                   </div>
 
                   <div style={{ marginTop: 14, padding: 12, borderRadius: 14, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.08)" }}>
