@@ -314,6 +314,13 @@ def main() -> None:
 
         return None
 
+    # Apply manual bundle prices before BOM so dependent chains use these values
+    for cid, price in MANUAL_BUNDLE_PRICES.items():
+        if cid in base_prices:
+            bqty, _, meta = base_prices[cid]
+            meta = {**meta, "calc": "manual"}
+            base_prices[cid] = (bqty, float(price), meta)
+
     # Second pass: BOM pricing for craftable entries (BAR, LEATHER, CLOTH, etc.)
     # Iterate until stable (or max passes) to resolve long dependency chains.
     max_passes = 20
