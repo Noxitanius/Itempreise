@@ -937,7 +937,7 @@ Ingredient_Bolt_Stormsilk,cloth,1,3,rare,cloth_processing
 Ingredient_Bolt_Wool,cloth,1,2,uncommon,cloth_processing
 Ingredient_Bone_Fragment,raw,1,1,common,misc
 Ingredient_Charcoal,basic,1,1,common,basic_gather
-Ingredient_Chitin_Sturdy,raw,1,1,common,misc
+Ingredient_Chitin_Sturdy,hide,1,1,common,misc
 Ingredient_Crystal_Blue,crystal,1,4,very_rare,crystal
 Ingredient_Crystal_Cyan,crystal,1,4,very_rare,crystal
 Ingredient_Crystal_Green,crystal,1,4,very_rare,crystal

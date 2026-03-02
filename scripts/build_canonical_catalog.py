@@ -94,6 +94,9 @@ def canonicalize(row: dict, id_set: set[str]) -> tuple[str, str] | None:
     # Essences
     if "essence" in s:
         return asset_id, "essence"
+    # Chitin -> treat as hide
+    if "chitin" in s:
+        return asset_id, "hide"
 
     # Default: keep as-is
     return asset_id, "raw"
